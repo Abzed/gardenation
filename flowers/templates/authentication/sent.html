@@ -1,0 +1,31 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/universal.css' %}">  
+{% endblock  %}
+  
+
+{% block content %}
+
+<a href="/">
+    <div class="container vender-registration mt-3">           
+        <img class="img-fluid img-logo-reg" src="../static/img/build.png" alt="buildsoko-logo" />
+        <h2 class="logo-name-reg">BUILDSOKO</h2>
+    </div>
+    </a>
+
+<div class="container register-wrapper mt-5">
+    <h3 class="register-welcome text-left mt-3">Password Reset Link Sent</h3>
+    <hr>
+        <p class="welcome-note text-left mt-3">We've emailed you a link 
+            for resetting your password. If an account exists 
+            with the email you entered, you should receive an email shortly. If you don't receive an email, 
+            please make sure you've entered the correct email and check your spam folder.</p>
+
+            <button class="btn btn-primary btn-block mt-3 mb-4 register"><a style="color: white;" href="{% url 'login' %}">Return to login page</a></button>
+  </div>
+
+{% endblock %}

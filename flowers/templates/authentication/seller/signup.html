@@ -1,0 +1,198 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">  
+<link rel="stylesheet" href="{% static 'css/universal.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+<a href="/">
+    <div class="container vender-registration mt-3">           
+        <img class="img-fluid img-logo-reg" src="../static/img/build.png" alt="buildsoko-logo" />
+        <h2 class="logo-name-reg">BUILDSOKO</h2>
+    </div>
+    </a>
+
+    <div class="container register-wrapper mt-5">
+
+
+    <div class="welcome-pair">
+        <h1 class="register-welcome mt-3">Welcome To Buildsoko</h1>
+    <p class="welcome-note mt-4">Get full access to building products and finishes across Kenya.</p>
+    </div>
+
+    <form class="p-0" action="{% url 'sellersignup' %}" id="sellerform" method="post" autocomplete="off">
+        {% csrf_token %}
+
+        {% for message in messages %}
+            <p style="color: red;"> <i class="fas fa-exclamation-triangle"></i>  {{message}}</p>
+            {% endfor %}
+        
+    <div class="name-center">
+        
+    <div class="inpt">
+        <label class="text-left name-register name-left" for="first_name">First Name</label>
+        <input type="text" name="first_name" class="form-control inpt-name form-control-lg" autocomplete="off" required />
+    </div>
+    <div class="inpt">
+        <label for="last_name"></label>
+        <input type="text" name="last_name" placeholder="Last Name" class="form-control inpt-last form-control-lg" autocomplete="off" required />
+    </div>
+       
+    </div>
+
+
+    <center>
+    <div class="form inpt mt-4">
+      <label class="business-register" style="margin-left: -52%;" for="business">Business Name</label>
+        <input type="text" name="business_name" placeholder="Enter Business Name" id="business_name" class="form-control business-name" autocomplete="off" required  />
+    </div>
+    </center>
+
+    <center>
+      <div class="form inpt mt-4">
+          <input type="email" name="email" placeholder="Enter Email" id="email" class="form-control email" autocomplete="off" required  />
+          <span style="margin-left: -37%;" class="help-block"><i class="fas fa-exclamation-triangle"></i> Please provide your email</span>
+      </div>
+      </center>
+
+    <center>
+    <div class="form inpt mt-4">
+        <input type="tel" name="phone_number" placeholder="Phone Number" id="phone" class="form-control phone" autocomplete="off" required />
+    </div>
+    </center>
+
+    <center>
+    <div class="form inpt mt-4">
+    <label style="margin-left: -58%;" class="text-left pass-register" for="password">Password</label>
+        <input type="password" name="password1" placeholder="Enter Password" id="password" class="form-control password" autocomplete="off" required />
+    </div>
+    </center>
+
+    <center>
+    <div class="form inpt mt-4">
+     <input type="password" name="password2" placeholder="Confirm Password" id="pass" class="form-control password" autocomplete="off" required />
+    </div>
+    </center>
+
+    <div class="gender-left d-flex justify-content-between mt-4">
+
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="inlineRadio1"
+                value="Male"
+            />
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+        
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="inlineRadio2"
+                value="Female"
+                
+            />
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+        
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="inlineRadio3"
+                value="Other"
+            />
+            <label class="form-check-label" for="inlineRadio3">Custom</label>
+            </div>
+
+    </div>
+
+    <br />
+    <center>
+    <button type="submit" class="btn btn-primary btn-block mb-4 register">Register</button>
+    </center>
+    <input type="hidden" name="next" value="{{next}}" />
+    </form>
+
+
+
+    <br />
+    <center>
+    <button type="submit" class="btn btn-primary btn-block mb-4 google" disabled> 
+        <img class="img-fluid mr-2" src="../static/img/search.png" alt="google-logo" /> 
+        <span class="sign-g">Sign in with Google</span></button>
+    </center>
+    
+
+    <div class="or-hr">
+
+        <hr class="or" />
+        <p class="or-p">or</p>
+        <hr class="or" />
+
+    </div>
+    
+    <div class="account mt-3">
+        <p>Already have an account?</p>
+        <p class="log"><a class="register-a" href="/login">Log in</a></p>
+    </div>
+
+    <div class="account mt-3">
+        <p>Do you want to buy products? <a class="register-a" href="/buyer-registration">Register as buyer</a></p>
+        <!-- <p class="log"><a class="register-a" href="/buyer-registration">Register as buyer</a></p> -->
+    </div>
+
+
+
+
+
+
+
+    <br />
+        
+    </div>
+
+    <div class="container agree mt-2 mb-3">
+        <p>By signing in or creating an account, you agree with
+        our <b>Terms & Conditions</b> and <b>Privacy Statement</b></p>
+    </div>
+
+    <script>
+
+        $('#sellerform input').on('change', function(){
+            $('input[name=gender]:checked', '#sellerform').val();
+          })
+
+
+          $('.email').blur(function(){
+            if(!$(this).val()){
+                $('.help-block').show();
+                $(this).addClass("errors");
+                $(this).removeClass("pass");
+            } 
+
+            else if($(this).val()){
+                $(this).addClass("pass");
+                $('.help-block').hide();
+            }
+
+            else{
+                $('.help-block').hide();
+                $(this).removeClass("errors");
+            }
+        });
+            
+    </script>
+
+
+{% endblock  %}

@@ -116,6 +116,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'garden.wsgi.application'
 
 
+AUTH_USER_MODEL = 'flowers.CustomUser'
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
