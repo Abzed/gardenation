@@ -126,14 +126,13 @@ class Product(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='seller_profile')
     title = models.CharField(max_length=200, null=True, blank=True)
-    color = models.CharField(max_length=200, null=True, blank=True)
     images = CloudinaryField('image')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category', null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category', null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
     location = models.CharField(max_length=200, blank=True, null=True)
     view = models.IntegerField(default=0)  
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     
     def __str__(self):
         return self.title

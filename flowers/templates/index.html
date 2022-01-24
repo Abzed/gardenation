@@ -1,10 +1,9 @@
-{% load social_share %}
 {%include 'base.html'%}
 {% load static %}
 {% load cloudinary %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">  
+<link rel="stylesheet" href="{% static 'css/universal.css' %}">  
 {% endblock  %}
   
 
@@ -45,7 +44,7 @@
 
     <div class="carousel-item active">
       <img
-        src="https://www.buildsoko.com/wp-content/uploads/2021/05/Buildsoko-Living.jpg"
+        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mothers-day-flower-bouquet-1588610191.jpg"
         class="d-block w-100 img-car"
         alt="..."
       />
@@ -65,7 +64,7 @@
 
     <div class="carousel-item">
       <img
-        src="https://www.buildsoko.com/wp-content/uploads/2021/05/Buildsoko-Cactus.jpg"
+        src="https://images.ctfassets.net/i3tkg7dt3kro/5W5N3vWz9q2iqWjoNdtxG2/8f760ba236135a672566e9a8d0b139d4/shutterstock_529504228-scaled.jpg"
         class="d-block w-100 img-car"
         alt="buildsoko-cactus"
       />
@@ -85,7 +84,7 @@
 
     <div class="carousel-item">
       <img
-        src="https://www.buildsoko.com/wp-content/uploads/2021/05/Buildsoko.jpg"
+        src="https://www.brides.com/thmb/0e7-nzbVnar2vGR0ONm8xnFIXIw=/2453x1840/smart/filters:no_upscale()/140_Kurt_Boomer_Photography_www.kurtboomer.com-e9bf630249964a908ceb02f89c3a06de.jpg"
         class="d-block w-100 img-car"
         alt="buildsoko"
       />
@@ -105,7 +104,7 @@
 
     <div class="carousel-item">
       <img
-        src="https://www.buildsoko.com/wp-content/uploads/2021/05/Buildsoko-Home.jpg"
+        src="https://imagesvc.meredithcorp.io/v3/jumpstartpure/image?url=https://cf-images.us-east-1.prod.boltdns.net/v1/static/5985631785001/40a1f068-ade1-494c-99f4-45523fc8eae9/d3d31307-9939-4349-8424-c536360b9271/1280x720/match/image.jpg&w=1280&h=720&q=90&c=cc"
         class="d-block w-100 img-car"
         alt="buildsoko-home"
       />
@@ -547,65 +546,7 @@
           {% if products %}
         {% for item in products|slice:":8" %} 
            
-              <div class="col">
-                <center>
-                  <div class="form-popup" id="myForm">
-                    <form action="" id="shareForm" class="form-container">
-                      <h4>Share product</h4>
-                  
-                      <div class="d-flex flex-row justify-content-between">
-          
-                      <div>
-                      <label for="email"><b>{% post_to_facebook item.get_absolute_url 'Facebook'  %}</b></label>
-                      <a target="_blank" href="{{ facebook_url }}" type="button" class="btn btn-sm"> 
-                      <i class="fab fa-facebook-square fa-2x">
-                      </i></a>
-                      </div>
-                      
-                      <div>
-                      <label for="email"><b>{% post_to_whatsapp item.get_absolute_url 'Whatsapp' %}</b></label>
-                      <a target="_blank" href="{{ whatsapp_url }}" type="button" class="btn"> 
-                      <i class="fab fa-whatsapp-square fa-2x">
-                      </i></a>
-                      </div>
-                  
-                      <div>
-                      <label for="psw"><b>{% post_to_twitter item.get_absolute_url item 'Twitter'  %}</b></label>
-                      <a target="_blank" href="{{ tweet_url }}" type="button" class="btn"> 
-                      <i class="fab fa-twitter-square fa-2x"></i></a>
-                      </div>
-          
-                      </div>
-                  
-                      <div class="d-flex flex-row justify-content-evenly mt-2">
-          
-                      <div>
-                        <label for="psw"><b>{% send_email subject text_to_post item.get_absolute_url 'Mail' %}</b></label>
-                      <a target="_blank" href="{{ mailto_url }}" type="button" class="btn">
-                        <i class="far fa-envelope fa-2x"></i></a>
-                      </div>
-        
-                      <div>
-                        <label for="psw"><b>{% post_to_linkedin item.get_absolute_url 'LinkedIn' %}</b></label>
-                      <a href="https://www.linkedin.com/feed/" type="button" class="btn">
-                      <i class="fab fa-linkedin fa-2x"></i></a>
-                      </div>
-                      
-                      <div>
-                        <label for="psw"><b>{% post_to_telegram item.get_absolute_url item 'Telegram' %}</b></label>
-                      <a target="_blank" href="{{ telegram_url }}" type="button" class="btn">
-                      <i class="fab fa-telegram-plane fa-2x"></i>
-                      </a>
-                      </div>
-          
-                    </div>              
-                      
-                      <button type="button" class="btn btn-sm cancel">Close</button>
-                    </form>
-                  </div>
-                </center>
-
-          
+              <div class="col">          
               <a href="{% url 'singleproduct' item.uuid %}">
                   <div class="card h-100 product-card">
                   <img

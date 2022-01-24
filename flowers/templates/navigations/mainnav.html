@@ -4,71 +4,296 @@
 
 {% block styles %}
 <link href="{% static 'css/nav.css' %}" rel="stylesheet">
+<link href="{% static 'css/universal.css' %}" rel="stylesheet">
 {% endblock  %}
 
 
-<footer class="text-center text-lg-start">
-          
-<section class="footer">
-  <div class="container text-center text-md-start mt-5">
-    <div class="row mt-3">
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-        <img class="img-fluid img-footer" src='{% static "img/logo-white.png" %}' alt="logo" />
-      </div>
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-        <h6 class="text-uppercase foot-head fw-bold mb-4">
-         Get to Know Us
-        </h6>
-        <p class="foot-text">
-        About Buildsoko
-        </p>
-        <p class="foot-text">Privacy policy</p>
-        <p class="foot-text">Terms & Conditions</p>
-        <p class="foot-text">Membership & Subscription</p>
-      </div>
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-        <h6 class="text-uppercase foot-head fw-bold mb-4">
-        Make Money With Us
-        </h6>
-        <p>
-          <a href="#!" class="text-reset foot-text">Sell Products on Buildsoko</a>
-        </p>
-        <p>
-          <a href="#!" class="text-reset foot-text">Advertise Your Products</a>
-        </p>
-
-      </div>
-
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-        <h6 class="text-uppercase foot-head fw-bold mb-4">
-        LET US HELP YOU
-        </h6>
-        <p>
-          <a href="#!" class="text-reset foot-text">Your Account</a>
-        </p>
-        <p>
-          <a href="#!" class="text-reset foot-text">Login & Security</a>
-        </p>
-
-      </div>
-
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
-        <h6 class="text-uppercase foot-head fw-bold mb-4">
-        JOIN US ON
-        </h6>
-        <div class="join-icon d-flex justify-content-between">
-        <p><i class="fab fa-facebook-f foot-icon"></i></p>
-        <p><i class="fab fa-instagram foot-icon"></i></p>
-        <p><i class="fab fa-twitter foot-icon"></i></p>
+<nav class="navbar nav-first navbar-expand-lg navbar-light bg-light nav-bg">
+    <div class="container-fluid first-navigation nav-bg">
+        <div class="d-flex nav-bg">
+        <a class="navbar-brand me-2 mb-1 d-flex align-items-center nav-bg" href="/">
+            <img class="nav-bg" 
+            src="{% static 'img/logo-supa-removebg.png' %}"
+            height="40"
+            alt="logo"
+            loading="lazy"
+            />
+        </a>
         </div>
-      </div>
+
+        <ul class="navbar-nav flex-row d-none d-md-flex nav-bg">
+        <li class="nav-item me-3 me-lg-1 active nav-bg">
+
+        <form method="get" action="{% url 'search_products' %}" id="top-nav-form" class="input-group w-auto my-auto d-none d-sm-flex nav-bg">
+        <input
+        autoComplete="off"
+        type="search" 
+        name="product"
+        class="form-control rounded"
+        placeholder="I’m looking for..."
+        />
+        
+        <input
+        autoComplete="off"
+        type="search"  
+        name="location"
+        class="form-control rounded search-hide search-center"
+        placeholder="Located in..."
+        />
+
+        <input
+        autoComplete="off"
+        type="search" 
+        name="category"
+        class="form-control search-hide rounded"
+        placeholder="In catergory"
+        />
+
+        <button class="btn btn-sm top-nav-submit-btn" type="submit"><i class="fas fa-search fa-lg top-nav-search-icon"></i></button>
+        </form>
+        </li>               
+        </ul>
+        
+        {% if user.is_authenticated %}
+
+        {% if user.is_buyer %}
+          
+        <ul class="navbar-nav flex-row nav-bg">
+        <li class="nav-item me-3 me-lg-1 nav-bg">
+            <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'buyerprofile' request.user.first_name %}">
+            <span class="nav-bg"><i class="far fa-user fa-lg nav-bg user-icon"></i></span>
+            <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.first_name}}</span>
+            
+            </a>
+        </li>
+
+        
+        <li class="nav-item dropdown me-3 me-lg-1 nav-bg">
+            <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'buyerprofile' request.user.first_name %}"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            >
+            {% if not "profile" in request.get_full_path %} 
+            <i class="fas fa-chevron-down nav-bg drop"></i>
+            {% endif %}
+            </a>
+            <ul
+            class="dropdown-menu dropdown-menu-end nav-bg"
+            aria-labelledby="navbarDropdownMenuLink"
+            >
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'buyerprofile' request.user.first_name %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
+            </li>
+            <li class="disabled">
+                <a class="dropdown-item nav-bg user profile-hover disabled" href=""><i class="far fa-envelope"></i> <span class="prof-icons"> Inbox </span> </a>
+            </li>
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'wishlist' request.user.first_name %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
+            </li>
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover logout-line" href="/logout"><i class="fas fa-sign-out-alt"></i> <span class="prof-icons"> LOGOUT </span> </a>
+            </li>
+            </ul>
+        </li>
+        
+        </ul>
+
+        {% elif user.is_seller %}
+
+        <ul class="navbar-nav flex-row nav-bg">
+          <li class="nav-item me-3 me-lg-1 nav-bg">
+              <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'sellerprofile' request.user.first_name %}">
+              <span class="nav-bg"><i class="far fa-user fa-lg nav-bg user-icon"></i></span>
+              <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.first_name}}</span>
+              
+              </a>
+          </li>
+  
+          <li class="nav-item dropdown me-3 me-lg-1 nav-bg">
+              <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'sellerprofile' request.user.first_name %}"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+              >
+              <i class="fas fa-chevron-down nav-bg drop"></i>
+              </a>
+              <ul
+              class="dropdown-menu dropdown-menu-end nav-bg"
+              aria-labelledby="navbarDropdownMenuLink"
+              >
+              <li>
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'sellerprofile' request.user.first_name %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
+              </li>
+              <li class="">
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'add' request.user.first_name %}"><i class="fas fa-plus-circle"></i> <span class="prof-icons"> Sell Product </span> </a>
+              </li>
+              <li>
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'saved' request.user.first_name %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
+              </li>
+              <li>
+                  <a class="dropdown-item nav-bg user profile-hover logout-line" href="/logout"><i class="fas fa-sign-out-alt"></i> <span class="prof-icons"> LOGOUT </span> </a>
+              </li>
+              </ul>
+          </li>
+          </ul>
+
+        {% endif %}
+
+        {% else %}
+        <ul class="navbar-nav flex-row nav-bg">
+        <li class="nav-item me-3 me-lg-1 nav-bg">
+        <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="/login">
+        <span class="nav-bg"><i class="far fa-user fa-lg nav-bg user-icon"></i></span>
+        <span class="d-none d-sm-block ms-1 nav-bg user-main"> Log In | Register</span>
+        </a>
+        </li>
+
+        <li class="nav-item dropdown me-3 me-lg-1 nav-bg">
+            <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="/"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+            >
+            <i class="fas fa-chevron-down nav-bg drop"></i>
+            </a>
+            <ul
+            class="dropdown-menu dropdown-menu-end nav-bg"
+            aria-labelledby="navbarDropdownMenuLink"
+            >
+            <li>
+                <a class="dropdown-item nav-bg profile-hover user" href="{% url 'registration_type' %}">Sign up</a>
+            </li>
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover log-in-line" href="/login">Log in</a>
+            </li>
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover sell-prod-line" href="/">Sell product</a>
+            </li>
+
+            <li>
+                <a class="dropdown-item nav-bg user profile-hover" href="/">Help</a>
+            </li>
+
+            </ul>
+        </li>
+        </ul>
+        {% endif %}
+
     </div>
-  </div>
-</section>   
+    </nav>
 
-<div class="text-center pb-4">
+    <nav class="navbar text-white navbar-light bot-bg">
+        <div class="container-fluid second-navigation bot-bg">
+        <div class="bottom-first">
+    
+          <div class="btn-group">
+          <button
+            class="navbar-toggler text-white"
+            type="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false" 
+          >
+            <i class="fas fa-bars"> <span class="bottom-nav-names">All Categories</span></i>
+          </button>        
 
-<hr class="foot-line text-center" />
-© 2021 Gobuildsoko Kenya or its affiliates
-</div>
-</footer>
+          <ul class="dropdown-menu user-main bottom-drop" role="menu">
+          {% for item in category %}
+          <li><a class="dropdown-item user profile-hover" href="{% url 'category_filter' item.category %}"><span class="prof-icons"> {{ item.category }} </span></a></li>
+          {% endfor %}
+          </ul>
+          </div>
+        
+          
+            <a href="{% url 'browse' %}">
+            <button class="navbar-toggler bottom-nav-names"><span class="bottom-nav-names">Browse products</span></button>
+            </a>
+          </div>
+
+          <div class="bottom-second">
+
+            {% if user.is_seller %}
+            <a type="button" href="{% url 'add' request.user.first_name %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
+            {% elif user.is_buyer %}
+            <a type="button" href="{% url 'sellersignup' %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
+            {% else %}
+            <a type="button" href="{% url 'sellersignup' %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
+            {% endif %}
+         
+
+          
+          {% if user.is_buyer %}
+            
+          <a class="resp3" href="{% url 'wishlist' request.user.first_name %}">
+            <button
+              class="navbar-toggler text-white"
+              type="button"
+              
+            >
+            <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
+            </button>
+            </a>
+            
+             
+  
+              
+              <a class="resp4" href="{% url 'wishlist' request.user.first_name %}">
+              <button class="navbar-toggler text-white"
+              type="button">
+             <i class="far fa-heart b-icon"></i> <span class="bottom-nav-names"> Wishlist</span>
+             </button>
+              </a>
+
+          {% elif user.is_seller %}
+
+          <a class="resp5" href="">
+            <button
+              class="navbar-toggler text-white disabled"
+              type="button" disabled
+              
+            >
+            <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
+            </button>
+            </a>
+            
+             
+  
+              
+              <a class="resp6" href="{% url 'saved' request.user.first_name %}">
+              <button class="navbar-toggler text-white"
+              type="button">
+             <i class="far fa-heart b-icon"></i> <span class="bottom-nav-names"> Wishlist</span>
+             </button>
+              </a>
+
+          {% else %}
+          
+          <a class="resp7" title="Login required" href="/login">
+          <button
+            class="navbar-toggler text-white disabled"
+            type="button" disabled
+          >
+          <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
+          </button>
+          </a>
+          
+           
+
+            
+            <a class="resp8" title="Login required" href="/login">
+            <button disabled class="navbar-toggler text-white disabled"
+            type="button">
+           <i class="far fa-heart b-icon"></i> <span class="bottom-nav-names"> Wishlist</span>
+           </button>
+            </a>
+
+            {% endif %}
+            
+            
+          </div>
+
+        </div>
+      </nav>

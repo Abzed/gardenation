@@ -1,0 +1,1422 @@
+/* Main Contents */
+
+
+.product-card:hover img {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+}
+
+.card-img-overlay{
+    height: 2px;
+    width: 77px;
+    border-radius: 3px;
+    padding: 5px 9px 19px !important;
+    background-color: #DCEEFA;
+    position: absolute;
+    top: 5% !important;
+    left: 9% !important;
+}
+
+.nego{
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    color:#010609;
+}
+
+.singlebg{
+    background-color: #F6F8F9 !important;
+}
+
+.singlebg2{
+    background-color: #AFD8F3 !important;
+}
+
+.singlefull a{
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    color: #082435;
+}
+
+.have{
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #082435;
+}
+
+.ans{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #082435;
+}
+
+@media only screen and (max-device-width: 519px) {
+   /* styles for mobile browsers smaller than 480px; (iPhone) */
+
+   /* nav and main page */
+
+   .to-left{
+       margin-left: auto;
+       display: inline;
+   }
+
+   .to-right{
+       margin-left: 4%;
+   }
+
+   .tabs{
+       text-align: center;
+       border-bottom: none !important;
+       width: 160px;
+   }
+
+   .product-card{
+    width: 100%;
+    height: 347px;
+    border-radius: 8px;
+    }
+
+    .ic{
+        margin-left: 21px;
+    }
+
+    
+    .resp3{
+        display: none;
+    }
+
+    .resp4{
+        display: none;
+    }
+
+    .resp5{
+        display: none;
+    }
+
+    .resp6{
+        display: none;
+    }
+
+    .resp7{
+        display: none;
+    }
+
+    .resp8{
+        display: none;
+    }
+
+
+    .bottom-sell{
+        display: none !important;
+    }
+
+
+   /* login page */
+
+
+    .vender-registration{    
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        top: 0%;
+    }
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 90%;
+        text-align: center;
+    }
+
+    .password{
+        width: 100%;
+    }
+
+    .register{
+        width: 100%;
+    }
+
+    .google{
+        width: 100%;
+    }
+
+    .email-login{
+        margin-left: -85% !important;
+    }
+
+    .forgot{
+        display: block;
+    }
+
+    .remember{
+        margin-left: 3% !important;
+    }
+
+    .remember-label{
+        margin-left: -39% !important;
+    }
+
+    .forgot-login{
+        margin-left: -64% !important;
+        margin-top: 5% !important;
+    }
+
+   /* browse page */
+
+    .browse-toggled{
+        display: none;
+    }
+
+    .grid{
+        display: none;
+    }
+
+    .list{
+        display: none;
+    }
+
+   /* buyerprofile page */
+
+   .show-menu{
+       display: inline;
+   }
+
+   .buyer-status{
+       display: none;
+   }
+
+   .show-nav1{
+       display: none;
+   }
+
+    .profile-side-nav-main{
+        width: 100%;
+    }
+
+    .down-buy{
+        visibility: visible;
+        cursor: pointer;
+    }
+
+    .up-buy{
+        visibility: visible;
+        cursor: pointer;
+    }
+
+    .fa-eye-slash{
+        position: absolute;
+        margin-left: 79%;
+        margin-top: -10.5%;
+    }
+    
+    /* .fa-eye{
+        position: absolute;
+        margin-left: 79%;
+        margin-top: -10.5%;
+    } */
+
+    /* vendor register*/
+    
+    .name-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }   
+    
+    .inpt input{
+        width: 100%;
+    }
+
+    .name-register{
+        margin-left: -72% !important;
+    }
+
+    .pass-register{
+        margin-left: -72% !important;
+    }
+
+    .business-register{
+        margin-left: -61% !important;
+    }
+
+    .forgoturn{
+        margin-left: -63%;
+    }
+
+    .reset-register{
+        margin-left: -65%;
+    }
+
+    /* vendor nav */
+
+    .search-profile input{
+        margin-left: 0% !important;
+    }
+
+    /* seller nav */
+
+    .search-profile input{
+        display: none;
+        margin-left: -4% !important;
+        margin-top: -13.5%;
+        width: 79.5%;
+    }
+
+    .sellernav-flex{
+        display: inline-flex !important;
+        justify-content: space-between;
+    }
+
+    /* .sel-brand {
+        margin-left: -19%;
+    } */
+
+    .left-selnav{
+        margin-left: -15%;
+    } 
+
+    .hide-last{
+        display: none;
+    }
+
+    .fa-chevron-down{
+        font-size: 24px;
+        display: inline;
+    }
+
+    .hidden-sel-nav{
+        display: none;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    .sel-hide{
+        display: none;
+    }
+
+    .home-hidden{
+        display: inline;
+    }
+
+    .iclg{
+        font-size: 31px !important;
+    }
+
+    .prof-pic img{
+        width: 37px;
+        height: 37px;
+    }
+
+    .nav-first{
+        font-size: 21px;
+    }
+
+    .vendornav{
+        padding: 20px 0px 20px;
+    }
+
+    /* seller profile page */
+    .profile-input-precise input{
+        width: 100%;
+    }
+
+    .profile-input-location input{
+        width: 100%;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .profile-inputs input{
+        width: 82vw;
+    }
+
+    .pass-form input{
+        width: 100%;
+    }
+
+    /* dashboard */
+
+    .posted-links{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-device-width: 520px) and (max-device-width: 767px){
+    
+    /* For surface duo */
+    /* main page */
+
+    .cat-two{
+        margin-top: 30px;
+    }
+
+    .to-left{
+        margin-left: auto;
+        display: inline;
+    }
+ 
+    .to-right{
+        margin-left: 4%;
+    }
+ 
+    .tabs{
+        text-align: center;
+        border-bottom: none !important;
+        width: 160px;
+    }
+
+    .resp3{
+        display: none;
+    }
+
+    .resp4{
+        display: none;
+    }
+
+    .resp5{
+        display: none;
+    }
+
+    .resp6{
+        display: none;
+    }
+
+    .resp7{
+        display: none;
+    }
+
+    .resp8{
+        display: none;
+    }
+
+    .product-card{
+        width: 100%;
+    }
+
+    .ic{
+        margin-left: 39px;
+    }
+
+    .card-foot-icon i{
+    
+        height: 18.3px;
+        width: 17.5px;
+    }
+
+    .product-img{
+        height: 350px;
+    }
+
+    .first-navigation{
+        display: flex;
+        justify-content: space-between !important;
+    }
+
+    .second-navigation{
+        display: flex;
+        justify-content: space-between !important;
+    }
+
+    /* login page */
+
+
+    .vender-registration{    
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        top: 0%;
+    }
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 90%;
+        text-align: center;
+    }
+
+    .password{
+        width: 100%;
+    }
+
+    .register{
+        width: 100%;
+    }
+
+    .google{
+        width: 100%;
+    }
+
+    .email-login{
+        margin-left: -85% !important;
+    }
+
+    .forgot{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* browse page */
+
+    .browse-toggled{
+        display: none;
+    }
+
+    .grid{
+        display: none;
+    }
+
+    .list{
+        display: none;
+    }
+
+    .show-menu{
+        display: inline;
+    }
+ 
+    .buyer-status{
+        display: none;
+    }
+ 
+    .show-nav1{
+        display: none;
+    }
+ 
+     .profile-side-nav-main{
+         width: 100%;
+     }
+ 
+     .down-buy{
+         visibility: visible;
+         cursor: pointer;
+     }
+ 
+     .up-buy{
+         visibility: visible;
+         cursor: pointer;
+     }
+
+    .fa-eye-slash{
+        position: absolute;
+        margin-left: -7%;
+        margin-top: 2.7%;
+    }
+    
+    /* .fa-eye{
+        position: absolute;
+        margin-left: -7%;
+        margin-top: 2.7%;
+    } */
+
+    /* vendor register*/
+    
+    .name-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }   
+    
+    .inpt input{
+        width: 100%;
+    }
+
+    .name-register{
+        margin-left: -81% !important;
+    }
+
+    .pass-register{
+        margin-left: -81% !important;
+    }
+
+    .business-register{
+        margin-left: -73% !important;
+    } 
+    
+    .forgoturn{
+        margin-left: -73%;
+    }
+
+    .reset-register{
+        margin-left: -76%;
+    }
+
+    /* seller nav */
+
+    .search-profile input{
+        display: none;
+        margin-left: -4% !important;
+        margin-top: -13.5%;
+        width: 79.5%;
+    }
+
+    .sellernav-flex{
+        display: inline-flex !important;
+        justify-content: space-between;
+    }
+
+    /* .sel-brand {
+        margin-left: -30%;
+    } */
+
+    .left-selnav{
+        margin-left: -35%;
+    } 
+
+    .fa-chevron-down{
+        font-size: 24px;
+        display: inline;
+    }
+
+    .hidden-sel-nav{
+        display: none;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    /* seller profile page */
+    .profile-input-precise input{
+        width: 100%;
+    }
+
+    .profile-input-location input{
+        width: 100%;
+    }
+
+    .profile-inputs input{
+        width: 468px;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .pass-form input{
+        width: 100%;
+    }
+
+     /* dashboard */
+
+     .posted-links{
+        display: none;
+    }
+
+  }
+
+/* For 1024 Resolution laptop */  
+@media only screen and (min-device-width : 768px) and (max-device-width : 1023px){
+
+    /* main page */  
+    .cat-top{
+        margin-top: 30px;
+    }
+
+    .int-lg{
+        margin-top: 30px;
+    }
+
+    /* .nav-first{
+        padding-bottom: 100px !important;
+    } */
+
+    .search-hide{
+        display: none !important;
+    }
+
+    .user-main-resp{
+        display: inline;
+    }
+
+    .first-navigation{
+        display: flex;
+        justify-content: space-around !important;
+    }
+
+    .second-navigation{
+        display: flex;
+        justify-content: space-around !important;
+    }
+
+    .resp3{
+        display: none;
+    }
+
+    .resp4{
+        display: none;
+    }
+
+    .resp5{
+        display: none;
+    }
+
+    .resp6{
+        display: none;
+    }
+
+    .resp7{
+        display: none;
+    }
+
+    .resp8{
+        display: none;
+    }
+
+    .to-left{
+        margin-left: auto;
+        display: inline;
+    }
+ 
+    .to-right{
+        margin-left: 4%;
+    }
+ 
+    .tabs{
+        text-align: center;
+        border-bottom: none !important;
+        width: 190px;
+    }
+
+    .product-card{
+        width: 100%;
+    }
+
+    .ic{
+        margin-left: 21px;
+    }
+
+    /* login page */
+
+    .email-login{
+        margin-left: -93% !important;
+    }
+
+    .vender-registration{    
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        top: 0%;
+    }
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 80%;
+        text-align: center;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .password{
+        width: 100%;
+    }
+
+    .register{
+        width: 100%;
+    }
+
+    .google{
+        width: 100%;
+    }
+
+    .forgot{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* browse page */ 
+
+    .browse-toggled{
+        display: none;
+    }
+
+    /* buyerprofile page */ 
+
+    .fa-eye-slash{
+        position: absolute;
+        margin-left: -7%;
+        margin-top: 2.7%;
+    }
+    
+    /* .fa-eye{
+        position: absolute;
+        margin-left: -7%;
+        margin-top: 2.7%;
+    } */
+
+    /* vendor register*/
+    
+    .name-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }  
+    
+    .name-center > .inpt-name{
+        margin-left: 50px !important;
+    }
+    
+    .inpt input{
+        width: 100%;
+    }
+
+    .name-register{
+        margin-left: -82% !important;
+    }
+
+    .pass-register{
+        margin-left: -82% !important;
+    }
+
+    .business-register{
+        margin-left: -75% !important;
+    } 
+
+    .forgoturn{
+        margin-left: -75%;
+    }
+
+    .reset-register{
+        margin-left: -77.5%;
+    }
+
+    /* seller nav */
+
+    .search-profile input{
+        /* display: none; */
+        margin-left: -17% !important;
+        margin-top: -13.5%;
+        width: 120%;
+    }
+
+    .sellernav-flex{
+        display: inline-flex !important;
+        justify-content: space-between;
+    }
+
+    .sel-brand {
+        margin-left: -140%;
+    }
+
+    .left-selnav{
+        margin-left: -35%;
+    } 
+
+    .fa-chevron-down{
+        font-size: 24px;
+        display: inline;
+    }
+
+    .hidden-sel-nav{
+        display: none;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    /* seller profile page */
+    .profile-input-precise input{
+        width: 100%;
+    }
+
+    .profile-input-location input{
+        width: 100%;
+    }
+
+    .profile-inputs input{
+        width: 57.5vw;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .pass-form input{
+        width: 100%;
+    }
+
+    .posted-links{
+        display: none;
+    }
+
+} 
+
+@media only screen and (min-width: 820px) and (max-width: 1023px){
+
+    /* seller nav */
+
+    .search-profile input{
+        /* display: none; */
+        margin-left: -18% !important;
+        margin-top: -13.5%;
+        width: 120%;
+    }
+
+    .sellernav-flex{
+        display: inline-flex !important;
+        justify-content: space-between;
+    }
+
+    .sel-brand {
+        margin-left: -160%;
+    }
+
+    .left-selnav{
+        margin-left: -35%;
+    } 
+
+    .fa-chevron-down{
+        font-size: 24px;
+        display: inline;
+    }
+
+    .hidden-sel-nav{
+        display: none;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 912px) and (max-width: 1023px){
+
+    /* seller nav */
+
+    .search-profile input{
+        /* display: none; */
+        margin-left: -19% !important;
+        margin-top: -13.5%;
+        width: 120%;
+    }
+
+    .sellernav-flex{
+        display: inline-flex !important;
+        justify-content: space-between;
+    }
+
+    .sel-brand {
+        margin-left: -195%;
+    }
+
+    .left-selnav{
+        margin-left: -35%;
+    } 
+
+    .fa-chevron-down{
+        font-size: 24px;
+        display: inline;
+    }
+
+    .hidden-sel-nav{
+        display: none;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    .profile-inputs input{
+        width: 58.5vw;
+    }
+
+    textarea{
+        width: 100%;
+    }
+
+    .posted-links{
+        display: none;
+    }
+}
+
+/* For 1366 Resolution laptops */ 
+@media only screen and (min-width: 1024px) and (max-width: 1366px){
+
+/* mainpage */  
+    .first-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .second-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .cat-top{
+        margin-top: 30px;
+    }
+
+    
+
+    .product-card{
+        width: 100%;
+    }
+
+    .ic{
+        margin-left: 11px;
+    }
+
+    /* vendor register*/
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 60%;
+        text-align: center;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .name-center .inpt-name{
+        margin-left: 1%;
+        width: 87%;
+    }
+
+    .name-center .inpt-last{
+        margin-left: 9%;
+        width: 87%;
+    }
+
+    .name-center{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+    }   
+
+    .name-center input{
+        margin-left: 8%;
+    }
+    
+    .inpt input{
+        width: 70%;
+    }
+
+    .google{
+        width: 70%;
+    }
+
+    .register{
+        width: 70%;
+    }
+
+    .gender-left{
+        margin-left: 15%;
+        width: 70%;
+    }
+
+    .account{
+        margin-left: 15%;
+    }
+
+   .name-register{
+        margin-left: -63%;
+    }
+
+    .pass-register{
+        margin-left: -63%;
+    }
+
+    .business-register{
+        margin-left: -71%;
+    }
+
+    .forgot{
+        margin-left: -11%;
+    }
+
+    .dont{
+        margin-left: -27%;
+    }
+
+    /* .welcome-note{
+        margin-left: 14.5%;
+    } */
+
+    .forgoturn{
+        margin-left: -50%;
+    }
+
+    /* .register-welcome{
+        margin-left: 14%;
+    } */
+
+    .reset-register{
+        margin-left: -52.5%;
+    }
+
+    .email-login{
+        margin-left: -63% !important;
+    }
+
+    .forgot-note{
+        margin-left: 14.5%;
+    }
+
+    .forgot-register{
+        margin-left: -64%;
+    }
+
+    .forgot-welcome{
+        margin-left: -7%;
+    }
+
+    .create-note{
+        margin-left: -37.5%;
+    }
+
+    /* seller nav */
+
+    /* .search-profile input{
+        width: 150%;
+    } */
+
+    .posted-filter2{
+        display: none;
+    }
+
+    .posted-links{
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 1367px) {
+    /* for sumo sized (mac) screens */
+
+    /* styles for browsers larger than 1440px; */
+    .first-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .second-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .cat-top{
+        margin-top: 30px;
+    }
+
+    
+
+    .product-card{
+        width: 100%;
+    }
+
+    .ic{
+        margin-left: 11px;
+    }
+
+
+    /* vendor register*/
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 60%;
+        text-align: center;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .name-center .inpt-name{
+        margin-left: 1%;
+        width: 88%;
+    }
+
+    .name-center .inpt-last{
+        margin-left: 10%;
+        width: 88%;
+    }
+    
+    .name-center{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+    }   
+
+    .name-center input{
+        margin-left: 8%;
+    }
+    
+    .inpt input{
+        width: 70%;
+    }
+
+    .google{
+        width: 70%;
+    }
+
+    .register{
+        width: 70%;
+    }
+
+    .gender-left{
+        margin-left: 15%;
+        width: 70%;
+    }
+
+    .account{
+        margin-left: 15%;
+    }
+
+   .name-register{
+        margin-left: -62%;
+    }
+
+    .pass-register{
+        margin-left: -62%;
+    }
+
+    .business-register{
+        margin-left: 3%;
+    }
+
+    /* seller nav */
+
+    /* .search-profile input{
+        margin-left: 21%;
+        width: 120%;
+    } */
+
+    .posted-filter2{
+        display: none;
+    }
+
+    .posted-links{
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 1440px) {
+    /* styles for browsers larger than 1440px; yeee*/
+    .first-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .second-navigation{
+        display: flex;
+        justify-content: space-evenly !important;
+    }
+
+    .cat-top{
+        margin-top: 30px;
+    }
+
+    
+
+    .product-card{
+        width: 100%;
+    }
+
+    .ic{
+        margin-left: 11px;
+    }
+
+    /* vendor register*/
+
+    .register-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #AFD8F3;
+        width: 60%;
+        text-align: center;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+    .name-center{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+    }   
+
+    .name-center input{
+        margin-left: 8%;
+    }
+    
+    .inpt input{
+        width: 72%;
+    }
+
+    /* registration */
+
+    /* .welcome-pair{
+        margin-left: 14.5%;
+    } */
+
+    .email-login{
+        margin-left: -59% !important;
+    }
+
+    .inpt input{
+        width: 65%;
+    }
+
+    .google{
+        width: 65%;
+    }
+
+    .register{
+        width: 65%;
+    }
+
+    .gender-left{
+        margin-left: 17.5%;
+        width: 67%;
+    }
+
+    .account{
+        margin-left: 17.5%;
+    }
+
+    .name-register{
+        margin-left: -62% !important;
+    }
+
+    .pass-register{
+        margin-left: -54% !important;
+    }
+
+    .business-register{
+        margin-left: -48% !important;
+    }
+
+    .forgot{
+        margin-left: -10.5%;
+    }
+
+    .dont{
+        margin-left: -25%;
+    }
+
+    .forgot-note{
+        margin-left: 17.5%;
+    }
+
+    .forgot-register{
+        margin-left: -59%;
+    }
+
+    .forgot-welcome{
+        margin-left: -5.5%;
+    }
+
+    .reset-register{
+        margin-left: -49%;
+    }
+
+    .create-note{
+        margin-left: -33.5%;
+    }
+
+    /* .welcome-note{
+        margin-left: 3%;
+    } */
+
+    /* seller account */
+
+
+    .posted-filter2{
+        display: none;
+    }
+
+    .posted-links{
+        display: flex;
+    }
+}
+
+
+
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+}
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+    /* For portrait layouts only */
+    
+  }
+  
+  @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+    /* For landscape layouts only */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
