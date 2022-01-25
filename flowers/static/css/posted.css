@@ -1,0 +1,642 @@
+table, tr, td, th {
+    border: none;
+  }
+  
+  #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #DCEEFA;;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    #posted tr:hover {background-color: #ddd !important;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #F6F8F9;;
+      color: #333333;
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  
+    #posted th{
+      padding: 20px;
+    }
+  
+    #posted td{
+      text-align: center;
+      padding: 11px;
+    }
+  
+    .invoice-card{
+      height: 588px;
+      width: 100%;
+    }
+  
+    #invoice td, #invoice th {
+      padding: 8px;
+      border: none !important;
+    }
+  
+    #invoice th{background-color: #AFD8F3;}
+    
+    #invoice tr:hover {background-color: #ddd;}
+    
+    #invoice th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #AFD8F3;
+      color: #333333;
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  
+  
+  
+  .prod-post{
+    text-align: left !important;
+    font-family: Mulish;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #082435;
+  }
+  
+  .prod-pos{
+    /* text-align: left !important; */
+    font-family: Mulish;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: center;
+    color: #082435;
+  }
+  
+  .expires{
+    width: 110px !important;
+    text-align: left !important;
+  }
+  
+  .icns{
+    margin-top: 17% !important;
+  }
+  
+  .icns a{
+    padding-left: 3px;
+  }
+  
+  .prod-post img{
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50% !important;
+    object-fit: cover;
+    padding-right: 3px;
+  }
+  
+  .posted-cat{
+    margin-left: 17%;
+    height: 20px;
+    width: auto;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #0F4161;
+  }
+
+  .posted-header{
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #082435;
+    background-color: #AFD8F3 !important;
+  }
+  
+    .table-main{
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 16px;
+      text-align: left; 
+      color: #333333;  
+      line-height: 27px; 
+    }
+  
+  .compare{
+      font-family: Lato;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 17.2px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #082435;
+  }
+  
+  .back-home i{
+      padding-right: 14.19px;
+  }
+  
+  .back-home{
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #082435;
+  }
+  
+  .card-img-top{
+      width: 255px;
+      height: 255px;
+      border-radius: 8px !important;
+      object-fit: cover;
+  }
+  
+  .compare-text{
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #333333;
+  }
+  
+  .product-call-btn{
+      width: 200px;
+      text-align: center;
+      background-color: #1C7BB8 !important;
+      color: #FFFFFF !important;
+      text-transform: none !important;
+  }
+  
+  .fa-star{
+      font-size: 16px;
+      color: #1C7BB8;
+  }
+  
+  .rates{
+      font-family: Lato;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 17px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #000000;
+  }
+  
+  .posted-prod{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #000000;
+  }
+  
+  .prod-link a{
+    background-color: #FFFFFF !important;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #010609;
+  }
+  
+  .posted-prods{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .posted-filter{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .posted-filter input{
+    width: 140px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #928c8c;
+    text-align: center;
+    margin-bottom: 7px;
+  }
+  
+  input:focus{
+    border: none !important;
+    /* outline: none !important; */
+  }
+  
+  .posted-filter select{
+    width: 130px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #928c8c;
+    text-align: center;
+    margin-left: 10px !important;
+  }
+  
+  .posted-filter2 select{
+    width: 110px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #928c8c;
+    text-align: center;
+  }
+  
+  .posted-btn{
+    color: #928c8c !important;
+  }
+  
+  ul li {
+    list-style-type: none;
+    color: #928c8c;
+  }
+  
+  /* .page{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;  
+  } */
+  
+  .plan-head{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;  
+    color: #010609;
+  }
+  
+  .plan-main{
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #0F4161;
+  }
+  
+  .card{
+    border: 1px solid #1C7BB8;
+  }
+  
+  .card-title{
+    font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: center;
+  color: #1C7BB8;
+  }
+  
+  small{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #1C7BB8;
+  }
+  
+  .subs{
+    border-radius: 8px !important;
+    color: #1C7BB8;
+  }
+  
+  .subs:hover{
+    color: #FFFFFF;
+    background-color: #1C7BB8;
+  }
+  
+  .disabled{
+    opacity:0.6; 
+    pointer-events: none;
+  }
+  
+  .to-prod a:hover{
+    color: #1C7BB8 !important;
+  }
+  
+  .sub-icons a{
+    padding-right: 15px;
+    font-size: 18px;
+  }
+  
+  .sub-icons a:hover{
+    color: black;
+  }
+  
+  .sub-icons2 a:hover{
+    color: black !important;
+  }
+  
+  .actived{
+    width: 60px;
+    height: auto;
+    color: #1C7BB8;
+    padding: 4px;
+    background-color: #83c3ee !important;
+    border: 1px solid #379adb !important;
+  }
+  
+  .ends{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Button used to open the contact form - fixed at the bottom of the page */
+  .open-button {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .open-button:hover{
+      /* color: #1C7BB8 !important; */
+      font-size: 16px;
+      }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin:-50px 0 0 -100px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 320px;
+    padding: 10px;
+    background-color: #E5E5E5;
+  }
+  
+  /* When the inputs get focus, do something */
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    /* background-color: #1C7BB8; */
+    /* color: #FFFFFF; */
+    border: none;
+    cursor: pointer;
+    width: 69%;
+    opacity: 0.8;
+    padding: 3px;
+    font-size: 24px;
+    border-radius: 8px !important;
+  }
+  
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: #1C7BB8;
+    margin-top: 9px;
+    width: 55px;
+    height: 28px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 8px !important;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  
+  /* Popup container - can be anything you want */
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1C7BB8 !important;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  
+  
+  .fone{
+    cursor: pointer;
+  }
+  
+  .fone:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+  }
+  
+  
+  
+  
+  .popup2 {
+    width: 50%;
+    position: fixed;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    text-align: center;
+    cursor: pointer;
+    top: 0;
+    z-index: 100;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup2 .popuptext2 {
+    visibility: hidden;
+    width: 59%;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    /* margin: 0 auto; */
+    text-align: center;
+    background-color: #1C7BB8;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    margin-top: 2%;
+  }
+  
+  /* Popup arrow */
+  .popup2 .popuptext2::after {
+    content: "";
+    position: fixed;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup2 .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

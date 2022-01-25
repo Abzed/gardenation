@@ -1,0 +1,143 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/posted.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+<div class="col-md-8 col-lg-9 col-12 col-sm-12">
+    <div class="card mt-3 p-3">
+      <div class="table-responsive">
+      <h5 class="posted-prod mb-5">Your posted products</h5>
+  
+      <div class="posted-prods">
+
+
+  
+      <div class="posted-filter">
+  
+        <form action="{% url 'search_postedfilter' request.user.username %}" method="get">
+          <input placeholder="Filter products" type="search" name="postedfilter" autocomplete="off" />
+          <input type="submit" style="display: none;">
+        </form>
+        
+        <select class="form-select" name="sort" onChange="window.location.href=this.value">
+          <option selected disabled>Sort By...</option>
+          <option {% if request.resolver_match.url_name == 'posted_latest' %} selected {% endif %} value="{% url 'posted_latest' request.user.username %}">Latest</option>
+          <option {% if request.resolver_match.url_name == 'posted_oldest' %} selected {% endif %} value="{% url 'posted_oldest' request.user.username %}">Oldest</option>
+          </select>
+  
+        <select id="type" class="form-select" onChange="window.location.href=this.value">
+          <option selected disabled>Ascending</option>
+          <option {% if request.resolver_match.url_name == 'posted_ascending' %} selected {% endif %} value="{% url 'posted_ascending' request.user.username %}">Ascending</option>
+          <option {% if request.resolver_match.url_name == 'posted_descending' %} selected {% endif %} value="{% url 'posted_descending' request.user.username %}">Decending</option>
+          </select>
+  
+  
+  </div>
+          
+      </div>
+  
+      
+        <table class="table table-hover text-nowrap" id="posted">
+          <tr>
+              <th class="posted-header img-head">Title</th>
+              <th class="posted-header">Price</th>
+              <th style="width: 88px;" class="posted-header">Comments</th>
+              <th style="width: 46px;" class="posted-header">Saves</th>
+              <th style="width: 51px;" class="posted-header">Views</th>
+              <th style="width: 101px;" class="posted-header">Action</th>
+          </tr>
+          {% if page_obj %}
+  
+          {% for item in page_obj %}
+            
+          <tr>
+              <td class="prod-post">  
+                <img class="posted-img img-fluid" 
+                src="{{ item.images.url }}" alt="">            
+                {{ item.title| title }} <br> <span class="posted-cat">{{ item.category.category }} > {{ item.sub_category.subcategory }}</span>
+                </td>
+                <td class="prod-pos">Ksh.{{ item.price }}</td>
+                <td class="prod-pos">{{ item.post_comment.count }}</td>
+                <td class="prod-pos">{{ item.saves.count }}</td>
+                <td class="prod-pos">{{ item.view }}</td>
+              <td class="d-flex justify-content-between sub-icons">
+              <a class="to-prod" href="{% url 'singleproduct' item.uuid %}"><i class="far fa-eye"></i></a>
+              <a class="to-prod" href="{% url 'edit_product' item.uuid request.user.username %}"><i class="fas fa-edit"></i></a>
+              <a class="to-prod" href="{% url 'delete_product' item.uuid %}"><i class="far fa-trash-alt"></i></a>
+              </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td>
+              No item available
+            </td>
+          </tr>
+          {% endif %}
+          
+        
+          </table>
+      </div>
+  
+          <br />
+  
+          {% if page_obj.has_other_pages %}
+          <div class="d-flex justify-content-end mt-3">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  {% if page_obj.has_previous %}
+                      <a class="page-link" aria-label="Previous" href="?page=1">
+                        <span class="ends" aria-hidden="true">&laquo;</span>
+                      </a>
+                  {% endif %}
+                </li>
+
+                {% for n in page_obj.paginator.page_range %}
+                {% if page_obj.number == n %}
+                  <li class="page-item active">
+                    <span class="page-link page-num">{{ n }}<span class="sr-only">(current)</span></span>
+                  </li>
+                {% elif n > page_obj.number|add:'-4' and n < page_obj.number|add:'4' %}
+                  <li class="page-item page-num"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                {% endif %}
+              {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+                    <span class="ends" aria-hidden="true">&raquo;</span>
+                  </a>
+                  {% endif %}
+                </li>
+              </ul>
+            </nav>
+          </div>
+          {% endif %}
+
+  
+      </div>
+  </div>
+  </div>
+</div>
+
+  <br />
+  <br />
+
+  <script>
+  function getTypeValue()
+  {
+      var selectedValue = document.getElementById("postedtype").value;
+      console.log(selectedValue);
+  }
+  getTypeValue();
+  </script>
+{% endblock  %}

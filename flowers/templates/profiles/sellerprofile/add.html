@@ -1,0 +1,372 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/add.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+
+<div class="col-md-8 col-lg-9 col-12 col-sm-12">
+   
+<div class="card p-4 mt-4">
+    <h4 class="add-head">Add New Product</h4>
+    <h5 class="add-detail mt-3">Product Details</h5>
+    <hr />
+
+    <form class="mt-4 p-0" method="post" id="upload" action="{% url 'add' user %}" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+
+    <div id="form" class="input">
+        <input class="title" type="text" id="title" name="title" placeholder="Enter Product Name" required />
+    </div>
+    <span class="help-block unvisible"><i class="fas fa-exclamation-triangle"></i> Please provide product title</span>
+
+    <br />
+    <br />
+
+    <label for="category">Select product category</label>
+    <select style="background-color: inherit !important;" class="form-select mb-5" name="sub_category" 
+    id="category" onchange="getCategoryValue();" aria-label="Default select example" required>
+        <option selected disabled>Choose category...</option>
+        {% for item in category %}
+    <option value="{{item.subcategory}}" >{{item.category}}</option>
+        {% endfor %}
+    </select>
+
+    <div class="add-select">
+        <div>
+            <label for="category">Select product type</label>
+        <select id="type" class="form-select" name="type" aria-label="Default select example" onchange="getTypeValue();" required>
+        <option selected disabled>Type...</option>
+        <option value="Auction">Auction</option>
+        <option value="Rent">Rent</option>
+        <option value="Sell">Sell</option>
+        <option value="Buy">Buy</option>
+        </select> 
+        </div>
+
+        <div>
+            <label for="category">Condition</label>
+            <select id="condition" class="form-select" name="condition" aria-label="Default select example" 
+            onchange="getConditionValue();" required>
+        <option selected disabled>Product condition...</option>
+            <option value="New">New</option>
+            <option value="Used">Used</option>
+            <option value="Manufacturer Refurbished">Manufacturer Refurbished</option>
+            <option value="For Parts & Not Working">For Parts & Not Working</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+        <div class="form input mt-4">
+            <label style="color: #010609;" class="form-label" for="price">Price</label>
+            <input placeholder="Ksh.000" name="price" type="number" id="price" class="title" required />
+        </div>
+        </div>
+
+    </div>
+
+    <div class="form-check check mt-3 mb-3">
+        <input
+            class="negotiatable"
+            type="checkbox"
+            id="negotiatable"
+            name="negotiatable" 
+            value="False"
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+            Is Negotiatable
+        </label>
+        </div>
+
+            <div class="box" id="drop_zone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <br>
+                <label id="drag" for="file">Drag and drop the images of your product to upload</label>
+                <p class="file-or mt-3">Or</p>
+                <input required class="inputfile" type="file" name="images" accept=".jpg, .jpeg, .png" 
+                id="images" multiple />
+                <div class="label">
+                <!-- <label for="file" class="btn btn-sm" type="button"><span>Browse Files</span></label> -->
+                </div>
+            </div>
+        <output id="list"></output>
+
+        <br />
+        <p class="img-conditions">Upload images larger than 750px x 450px. <br />
+        Max number of images is 5. <br />
+        Max image size is 20MB.</p>
+
+        <div class="input mt-3">
+        <label id="description" class="form-label" for="textAreaExample">Description</label>
+        <textarea placeholder="Product description" class="form-control" name="description" id="description" rows="4" required></textarea>          
+        </div>
+        <br />
+        <br />
+
+        <h4 class="loc_cont mt-3">Location And Contact</h4>
+        <hr />
+
+        <div class="form-check edits mt-4 mb-3">
+            <input
+                class="addresscheck"
+                type="checkbox"
+                id="address"
+                name="address"
+            />
+            <label class="form-check-label px-2" for="flexCheckChecked">
+                Edit address for this product
+            </label>
+            </div>
+
+        <div class="input">
+        <label class="form-label" for="location">Location</label>
+        <input type="text" name="location" id="location" class="title address"
+        {% if user.location %}
+          value="{{ user.location }}"
+        {% else %}
+        value=""
+        {% endif %}
+         required disabled />
+        </div>
+
+        <div class="form-group input-precise">
+        <label class="form-label" for="form12">Precise location</label>
+        <input type="text" placeholder="Search" id="precise_location" name="precise_location" class="title address"
+        {% if user.precise_location %}
+          value="{{ user.precise_location }}"
+        {% else %}
+        value=""
+        {% endif %}
+       disabled />
+        </div>
+
+        <a class="disabled" href=""><p class="use mt-3"><span style="padding-right: 3.96px;"><i class="fas fa-map-marker-alt"></i></span> Use my current location</p></a>
+
+        <div class="form-check edits mt-4 mb-3">
+            <input
+                class="contactcheck"
+                type="checkbox"
+                id="contact"
+                name="contact" 
+            />
+            <label class="form-check-label px-2" for="flexCheckChecked">
+                Edit phone number.
+            </label>
+            <span id="phone-alert" class="help-block unvisible visible"><i class="fas fa-exclamation-triangle"></i> This change will affect all your products!</span>
+            </div>
+
+        <div class="input">
+        <label class="form-label" for="form12">Phone number</label>
+        <input type="tel" name="phone_number" id="phone_number" class="title contact"
+        {% if user.seller.phone_number %}
+          value="{{ user.seller.phone_number }}"
+        {% else %}
+        value=""
+        {% endif %}
+       disabled />
+        </div>
+
+        <br />
+
+        <h4 class="loc_cont mt-4">Agreement Policy</h4>
+        <hr />
+
+        <div class="form-check edits mt-4 mb-4">
+        <input
+            class=""
+            type="checkbox"
+            id="agreement" 
+            name="agreement" 
+            value="False"
+            required
+        />
+        <label class="form-check-label px-2" for="flexCheckChecked3">
+        I agree to terms & conditions
+        </label>
+        </div>
+
+        <button style="border-radius: 8px !important;" class="btn btn-primary btn-sm" type="submit">Post product</button>
+        
+
+    </form>
+    <br />
+    <br />
+    <br />
+    <br />
+      </div>
+    </div>
+    
+    </div>
+</div>
+
+
+    <script>
+
+        $("input[type='checkbox']").on('change', function(){
+            $(this).val(this.checked ? "True" : "False");
+            console.log(this.value)
+       });
+
+        function handleFileSelect(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+        
+            var files = evt.dataTransfer.files; // FileList object.
+        
+            // files is a FileList of File objects. List some properties.
+            var output = [];
+            for (var i = 0, f; f = files[i]; i++) {
+              output.push('<li class="img-name mt-3">', escape(f.name), ' (', f.type || 'n/a', ') - ',
+                          f.size, ' bytes',
+                          '</li>');
+            }
+            document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+          }
+        
+          function handleDragOver(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+          }
+
+          const dropArea = document.getElementById('drop_zone');
+          dropArea.addEventListener('drop', (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            const fileList = event.dataTransfer.files;
+            console.log(fileList);
+          });
+        
+          // Setup the dnd listeners.
+          var dropZone = document.getElementById('drop_zone');
+          dropZone.addEventListener('dragover', handleDragOver, false);
+          dropZone.addEventListener('drop', handleFileSelect, false);
+
+          var $form = $('.box');
+
+          $form.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+          })
+          .on('dragover dragenter', function() {
+            $form.addClass('is-dragover');
+          })
+          .on('dragleave dragend drop', function() {
+            $form.removeClass('is-dragover');
+          })
+
+            var _URL = window.URL || window.webkitURL;
+            $(".inputfile").on("change", function() {
+                if ($(".inputfile")[0].files.length > 5) {
+                    alert("You can select only 5 images");
+                    $(".inputfile").val("");
+                    return false;
+                }
+
+            if ($(".inputfile")[0].files.size > 200000) {
+                alert("Total file size cannot exceed 20Mbs");
+                $(".inputfile").val("");
+                return false;
+            }
+
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function() {
+                    if(this.width < 750 && this.height < 450){
+                        alert("Images must be larger than 750px by 450px")
+                        $(".inputfile").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function() {
+                    alert( "not a valid file: " + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+
+
+            }
+
+            });
+
+
+            function getCategoryValue()
+            {
+                var selectedValue = document.getElementById("category").value;
+                console.log(selectedValue);
+            }
+            getCategoryValue();
+
+            function getTypeValue()
+            {
+                var selectedValue = document.getElementById("type").value;
+                console.log(selectedValue);
+            }
+            getTypeValue();
+
+            function getConditionValue()
+            {
+                var selectedValue = document.getElementById("condition").value;
+                console.log(selectedValue);
+            }
+            getConditionValue();
+
+            document.addEventListener("wheel", function(event){
+                if(document.activeElement.type === "number"){
+                    document.activeElement.blur();
+                }
+            });
+
+            $("#contact").on('change', function(event){
+                event.preventDefault();
+
+                if (this.checked) {
+                    $('.unvisible').removeClass('visible');
+                    $('.contact').prop("disabled", false); // Element(s) are now enabled.
+                }
+
+                else{
+                    $('.unvisible').addClass('visible');
+                    $('.contact').prop("disabled", true);  
+                }
+             });
+
+             $("#address").on('change', function(event){
+                event.preventDefault();
+                if (this.checked) {
+                    $('.address').prop("disabled", false); // Element(s) are now enabled.
+                }
+
+                else{
+                    $('.address').prop("disabled", true);  
+                }
+             });
+
+             $('#title').on("focus", function(){
+                 $('.unvisible').addClass('visible')
+                });
+
+            $('#upload input[type="text"]').blur(function(){
+                if(!$(this).val()){
+                    $(this).removeClass('background');
+                    
+                } else{
+                    $(this).addClass('background');
+                    
+                }
+            });
+
+    </script>
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|s)no-js(s|$)/,"$1js$2")})(document,window,0);</script>
+
+
+{% endblock %} 

@@ -19,13 +19,13 @@
     <div class="card category-card h-100">
     <div class="card-body">
         <h5 class="card-title"><div class="rounded-circles">
-        <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+        <img class="img-fluid" src='{% static "img/logo.jpg" %}' alt="external" />
         </div></h5>
         <span class="card-activity">
           {{ submitted }}
            Ads Remaining</span><br>
         <span class="lead-activity">{% now |'M d, Y' %}</span>
-        <p class="card-activity">Account submission type</p>          
+        <p class="card-activity">Today's date</p>          
     </div>
     </div>
     </div>
@@ -36,7 +36,7 @@
 <div class="card category-card h-100">
 <div class="card-body">
     <h5 class="card-title"><div class="rounded-circles">
-    <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+    <img class="img-fluid" src='{% static "img/logo.jpg" %}' alt="external" />
     </div></h5>
     <span class="card-activity">Submitted Ads </span><br>
         <span class="lead-activity">{{ submitted }}</span>
@@ -51,7 +51,7 @@
 <div class="card category-card h-100">
 <div class="card-body">
     <h5 class="card-title"><div class="rounded-circles">
-    <img class="img-fluid" src='{% static "img/star.png" %}' alt="external" />
+    <img class="img-fluid" src='{% static "img/logo.jpg" %}' alt="external" />
     </div></h5>
     <span class="card-activity">Your rating</span><br>
         <span class="lead-activity">
@@ -72,7 +72,7 @@
   <div class="card category-card h-100">
   <div class="card-body">
       <h5 class="card-title"><div class="rounded-circles">
-      <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+      <img class="img-fluid" src='{% static "img/logo.jpg" %}' alt="external" />
       </div></h5>
       <span class="card-activity">Favourite Ads</span><br>
       <span class="lead-activity">
@@ -130,9 +130,7 @@
           <table class="table table-hover text-nowrap" id="posted">
               <tr style="border-radius: 8px !important;">
                   <th class="posted-header img-head" scope="col">Title</th>
-                  <th class="posted-header" scope="col">Status</th>
                   <th class="posted-header" scope="col">Price</th>
-                  <th class="posted-header" scope="col">Expires</th>
                   <th class="posted-header" scope="col">Comments</th>
                   <th class="posted-header" scope="col">Saves</th>
                   <th class="posted-header" scope="col">Views</th>
@@ -146,19 +144,9 @@
                   <td class="prod-post">  
                     <img class="posted-img img-fluid" 
                     src="{{ item.images.url }}" alt="">            
-                    {{ item.title| title }} <br> <span class="posted-cat">{{ item.category.category }} > {{ item.sub_category.subcategory }}</span>
-                    </td>
-                    <td class="prod-pos">
-                      {% if item.live == True %}
-                      Live
-                      {% elif item.sold == True %}
-                      Sold
-                      {% elif item.expired == True %}
-                      Expired
-                      {% endif %}
+                    {{ item.title| title }} <br> <span class="posted-cat">{{ item.category.category }}</span>
                     </td>
                     <td class="prod-pos">Ksh.{{ item.price }}</td>
-                    <td class="prod-pos expires">{{ item.date|date:"M d, Y"  }}</td>
                     <td class="prod-pos">{{ item.post_comment.count }}</td>
                     <td class="prod-pos">{{ item.saves.count }}</td>
                     <td class="prod-pos">{{ item.view }}</td>
@@ -166,7 +154,6 @@
                   <a class="to-prod" href="{% url 'singleproduct' item.uuid %}"><i class="far fa-eye"></i></a>
                   <a class="to-prod" href="{% url 'edit_product' item.uuid request.user.username %}"><i class="fas fa-edit"></i></a>
                   <a class="to-prod" href="{% url 'delete_product' item.uuid %}"><i class="far fa-trash-alt"></i></a>
-                  <a class="to-prod" href=""><i class="fas fa-chart-line"></i></a>
                   </td>
               </tr>
               {% endfor %}

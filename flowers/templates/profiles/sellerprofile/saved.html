@@ -1,0 +1,156 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/posted.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+<div class="col-md-8 col-lg-9 col-12 col-sm-12">
+
+    <div class="card mt-3 p-3">
+      <h5 class="posted-prod mb-5 mt-4 px-3">Your saved products</h5>
+
+      <center>
+        <div class="popup2">
+          <span class="popuptext2 removed2" id="removed">Item removed!</span>
+        </div>
+      </center>
+  
+      <div class="table-responsive">  
+        <table class="table table-hover text-nowrap" id="posted">
+          <tr>
+              <th class="posted-header img-head">Title</th>
+              <th class="posted-header">Price</th>
+              <th style="width: 88px;" class="posted-header">Comments</th>
+              <th style="width: 46px;" class="posted-header">Saves</th>
+              <th style="width: 51px;" class="posted-header">Views</th>
+              <th style="width: 131px;" class="posted-header">Action</th>
+          </tr>
+          {% if page_obj %}            
+            {% for item in page_obj %}
+          <tr>
+           
+              <td class="prod-post">  
+                <img class="posted-img img-fluid" 
+              src="{{ item.wished_item.images.url }}" alt="">            
+              {{ item.wished_item.title| title }} <br> <span class="posted-cat">{{ item.wished_item.category.category }} > {{ item.wished_item.sub_category.subcategory }}</span>
+              </td>
+
+              <td class="prod-pos">Ksh.{{ item.wished_item.price }}</td>
+              <td class="prod-pos">{{ item.wished_item.post_comment.count }}</td>
+                <td class="prod-pos">{{ item.wished_item.saves.count }}</td>
+              <td class="prod-pos">{{ item.wished_item.view }}</td>
+              <td class="d-flex justify-content-between sub-icons">
+              <a class="to-prod" href="{% url 'singleproduct' item.wished_item.uuid %}"><i class="far fa-eye"> View</i></a>
+              <a style="cursor: pointer;" data-product="{{ item.wished_item.uuid }}" class="to-prod px-2 add"><i class="fas fa-heart"> Unsave</i></a>
+              </td>
+            </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td style="width: 100%;">
+                  No product saved to wishlist</a>
+                </td>
+              </tr>
+              {% endif %}
+          
+          
+         
+          </table>
+      </div>
+
+  
+          <br />
+  
+          {% if page_obj.has_other_pages %}
+          <div class="d-flex justify-content-end mt-3">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  {% if page_obj.has_previous %}
+                      <a class="page-link" aria-label="Previous" href="?page=1">
+                        <span class="ends" aria-hidden="true">&laquo;</span>
+                      </a>
+                  {% endif %}
+                </li>
+
+                {% for n in page_obj.paginator.page_range %}
+                {% if page_obj.number == n %}
+                  <li class="page-item active">
+                    <span class="page-link page-num">{{ n }}<span class="sr-only">(current)</span></span>
+                  </li>
+                {% elif n > page_obj.number|add:'-4' and n < page_obj.number|add:'4' %}
+                  <li class="page-item page-num"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                {% endif %}
+              {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+                    <span class="ends" aria-hidden="true">&raquo;</span>
+                  </a>
+                  {% endif %}
+                </li>
+              </ul>
+            </nav>
+          </div>
+          {% endif %}
+  
+      </div>
+
+  </div>    
+  </div>
+
+  
+
+  <br />
+<br />
+<script>
+  function getTypeValue()
+  {
+      var selectedValue = document.getElementById("savedtype").value;
+      console.log(selectedValue);
+  }
+  getTypeValue();
+
+  $(".add").on('click', function(){
+    var _pid=$(this).attr('data-product');
+
+    $.ajax({
+      url:"/add-to-wishlist",
+      data:{
+        product_id:_pid
+      },
+      dataType:'json',
+      success:function(res){
+        location.reload();
+        if (res.bool==true){ 
+          $(".added2").css('visibility','hidden');
+          show_fadeout = false;
+          helper_text = $(".removed2").css('visibility','visible');
+          show_fadeout = true;
+
+        }else{
+          if (res.bool==false){
+            show_fadeout = true;
+            helper_text = $(".added2").css('visibility','visible');
+            show_fadeout = true;               
+          }
+        }
+
+        if(show_fadeout) {
+          helper_text.fadeIn();
+              helper_text.fadeOut(3000, function() {  });
+          }
+      }
+    });      
+  });
+  </script>
+
+{% endblock  %}

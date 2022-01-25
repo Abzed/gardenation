@@ -662,10 +662,10 @@ def descending_saved(request, username):
 
 @login_required
 def add(request, username):
+    category = Category.objects.all()
     user = get_object_or_404(Seller, seller__username=username)
     if request.method == 'POST':
         title = request.POST["title"]
-        color = request.POST["color"]
         price = request.POST["price"]
         location = request.POST.get("location", user.location) 
         images = request.FILES.getlist('images')
@@ -674,8 +674,8 @@ def add(request, username):
         for image in images: 
             img = image    
                    
-        product = Product.objects.create(user=user, title=title, color=color, images=img, price=price, 
-            location=location, type=type)
+        product = Product.objects.create(user=user, title=title, images=img, price=price, 
+            location=location)
         
         cumstomuser = CustomUser.objects.filter(username=username).update(phone_number=phone_number)
                    
@@ -687,7 +687,7 @@ def add(request, username):
                         
         return HttpResponseRedirect(reverse('posted', args=[username]))
     
-    return render(request,'./profiles/sellerprofile/add.html', {'user': user})
+    return render(request,'./profiles/sellerprofile/add.html', {'user': user, 'category': category})
 
 
 def registration_type(request):
