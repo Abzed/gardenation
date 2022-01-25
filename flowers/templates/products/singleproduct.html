@@ -1,0 +1,645 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+{% load mathfilters %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/singleproduct.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+<div class="card">
+
+{% include "../navigations/mainnav.html" %}
+
+
+<div class="container mt-3">
+    <center>
+        <div class="popup2">
+          <span class="popuptext2 added2" id="added">Added to wishlist!</span>
+          <span class="popuptext2 removed2" id="removed">Removed from wishlist!</span>
+        </div>
+      </center>
+
+
+
+      {% for items in images %}
+            <!-- Grid column -->
+            <!--Modal: Name-->
+            <div style="cursor: zoom-out;" class="modal fade" id="modal{{items.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+            <div class="embed-responsive embed-responsive-16by9
+            z-depth-1-half">
+            <img data-mdb-dismiss="modal" class="embed-responsive-item" src="{{ items.other_images.url }}"
+            alt="{{ items.product.title }}" allowfullscreen>
+            </div>
+            </div>
+
+            </div>
+            <!--/.Content-->
+            </div>
+            </div>
+            <!--Modal: Name-->
+            {% endfor %}
+
+
+            <!-- Grid column -->
+            <!--Modal: Name-->
+            <div style="cursor: zoom-out;" class="modal fade" id="modal1" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+            <div class="embed-responsive embed-responsive-16by9
+            z-depth-1-half">
+            <img data-mdb-dismiss="modal" class="embed-responsive-item" src="{{ product.images.url }}"
+            alt="{{ product.title }}" allowfullscreen>
+            </div>
+            </div>
+
+            </div>
+            <!--/.Content-->
+            </div>
+            </div>
+            <!--Modal: Name-->
+
+
+
+
+
+
+        <h4 class="main-prod-title">{{product.title| title}}</h4>
+        <h5 class="sub-prod-title top-view">Home >> {{product.category| title}}</h5>
+
+        <div class="row">
+            <div class="col-md-6 col-12 col-lg-6 col-sm-12 mt-3">
+            
+            <img class="img-fluid img-detail-main" src="{{ product.images.url}}"" alt="{{ product.title}}" 
+            data-mdb-toggle="modal" data-mdb-target="#modal1" />            
+            
+            <div class="img-sub mt-3 d-flex flex-wrap flex-row single-img">
+
+                  {% if images %}
+                {% for image in images %}
+                
+            <img style="cursor: zoom-in;" class="img-fluid img-detail-sub" src="{{ image.other_images.url}}" alt="{{ product.title}}" 
+            data-mdb-toggle="modal" data-mdb-target="#modal{{image.id}}" />
+
+                {% endfor %}
+                {% else %}
+                <img class="img-fluid img-detail-sub" src="https://www.waangoo.com/content/images/thumbs/default-image_600.png" alt="{{ product.title}}" />
+                {% endif %}
+
+            </div>
+            </div>
+
+            <div class="col-md-6 col-12 col-lg-6 col-sm-12 mt-3">
+            
+            <h4 class="product-name">{{product.title| title}}</h4>
+            <p class="vendor mt-3">Vendor: {{ product.user.seller.username| title }}  <span class="check"><i class="fas fa-check-circle ver-ven"></i></span></p>
+
+            <a style="cursor: pointer;" class="other-products other mt-3">Other products from {{ product.user.seller.username| title }}</a>
+
+            <div style="width: 100% !important;" class="mt-3 d-flex flex-row justify-content-start">
+              <div class="star-ratings-css3">
+                <div class="star-ratings-css-top3" style="width: {{ rating }}%">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom3"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            {% if count == 1 %}
+            <p class="rating-txt"> {{ count }} Rating</p>
+            {% elif count > 1 %}
+            <p class="rating-txt"> {{ count }} Ratings</p>
+            {% else %}
+            <p class="rating-txt"> 0 Ratings</p>
+            {% endif %}
+            
+            </div>
+
+            <a class="btn mt-3 product-call-btn" href='tel: {{product.phone_number}}'>Call For Price</a>
+
+            <hr />
+
+            <h5 class="product-sum">Product Summary</h5>
+            <p class="product-txt mt-3 text-capitalize">PRICE: <b>Ksh.{{product.price}}</b></p>
+            <p class="product-txt">{{product.description|truncatechars:121}}</p>
+
+            <div>
+            {% if user.is_authenticated %}
+            <div class="popup">
+            <a class="icon-a add fone" data-product="{{product.uuid}}" ><i class="far fa-heart icon"></i> <span class="product-icon">Wishlist</span></a>
+            <span class="popuptext added" id="added">Added to wishlist!</span>
+            <span class="popuptext removed" id="removed">Removed from wishlist</span>
+            </div>
+            {% else %}
+            <a class="icon-a disabled" ><i class="far fa-heart icon"></i> <span class="product-icon">Wishlist</span></a>
+            {% endif %}
+            <a class="icon-a mx-4 fone" onclick="window.print()"><i class="fas fa-print icon"></i> <span class="product-icon">Print</span></a>
+            
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-8 col-12 col-lg-8 col-sm-12 mt-3">
+
+        <div class="card des-card singlebg mt-3">
+        <h5 class="card-header full-des">FULL PRODUCT DESCRIPTION</h5>
+        <div class="card-body">
+          <p class="product-txt mt-3 text-capitalize">PRICE: <b>Ksh.{{product.price}}</b></p>
+
+        <p class="product-txt">{{product.description}}</p>
+        </div>
+        </div>
+
+        <div class="card des-card singlebg mt-3">
+        <h5 class="card-header full-des">CUSTOMER QUESTIONS AND ANSWERS</h5>
+        <div class="card-body">
+            <h5 class="card-title"><i class="fa-regular fa-circle-q"></i> How can we be in contact?</h5>
+            <p class="card-text">
+            <i class="fa-regular fa-circle-a"></i> Thank you for your feedback. To get in contact with us, you can call the number displayed at the top to enquire about any purchases you would like to make.
+            </p>
+        </div>
+        </div>
+
+       
+
+        <div class="card des-card singlebg mt-3">
+        <h5 class="card-header full-des">CUSTOMER REVIEWS</h5>
+        <div class="card-body">
+        <div class="row">
+        <div class="col-md-3 col-12 col-lg-3">
+
+        
+        <div class="d-block card-rate mb-2">
+           <div class="rate-box">
+
+            <h2 class="ave-rate">{{ave| floatformat:"0"}}/5</h2>
+            <div class="d-flex flex-row justify-content-center">
+            <center>
+              <div class="star-ratings-css2">
+                <div class="star-ratings-css-top2" style="width: {{ rating }}%">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom2"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            </center>
+            </div>
+            <h3 class="ave-count">{{count| floatformat:"0"}} Ratings</h3>
+
+           </div>
+        </div>
+        
+        </div>
+
+        <div class="col-md-1 col-12 col-lg-1"></div>
+        <div class="col-md-8 col-12 col-lg-8">
+
+          <p class="prog prod-rate-count">PRODUCT RATINGS ({{count| floatformat:"0"}})</p>
+
+        {% if reviews %}
+
+        <div class="prog">  
+          <p><span class="rate-no">5</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">
+            ({{ five }})
+          </span></p>
+          <div class="progress">
+          <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: {{ five }}%;"
+              aria-valuenow="{{ five }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+          ></div>
+          </div>
+          </div>  
+    
+       
+        <div class="prog">      
+        <p><span class="rate-no">4</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">({{ four }})</span></p>
+        <div class="progress">
+        <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ four }}%;"
+            aria-valuenow="{{ four }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+        ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">3</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">({{ three }})</span></p>
+        <div class="progress">
+        <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ three }}%;"
+            aria-valuenow="{{ three }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+        ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">2</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">({{ two }})</span></p>
+        <div class="progress">
+        <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ two }}%;"
+            aria-valuenow="{{ two }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+        ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">1</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">({{ one }})</span></p>
+        <div class="progress">
+        <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ one }}%;"
+            aria-valuenow="40 "
+            aria-valuemin="0"
+            aria-valuemax="100"
+        ></div>
+        </div>
+        </div>
+
+        {% else %}
+
+        <div class="prog">  
+          <p><span class="rate-no">5</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">(0)</span></p>
+          <div class="progress">
+          <div
+              class="progress-bar w-75"
+              role="progressbar"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+          ></div>
+          </div>
+          </div>  
+    
+       
+        <div class="prog">      
+        <p><span class="rate-no">4</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">(0)</span></p>
+        <div class="progress">
+          <div
+          class="progress-bar w-75"
+          role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+      ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">3</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">(0)</span></p>
+        <div class="progress">
+          <div
+          class="progress-bar w-75"
+          role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+      ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">2</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">(0)</span></p>
+        <div class="progress">
+          <div
+          class="progress-bar w-75"
+          role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+      ></div>
+        </div>
+        </div>
+
+        <div class="prog">      
+        <p><span class="rate-no">1</span> <i class="fas fa-star product-star-b"></i> <span class="rate-no-b">(0)</span></p>
+        <div class="progress">
+          <div
+          class="progress-bar w-75"
+          role="progressbar"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+      ></div>
+        </div>
+        </div>
+
+        {% endif %}
+
+
+        </div>
+
+
+        <h4 class="mt-3 mb-3">Product Reviews</h4>
+
+        <hr />
+
+
+        {% if reviews %}
+          
+        {% for review in reviews|slice:":3" %}
+            
+        <div class="text-left">
+          <div class="star-ratings-css3">
+            <div class="star-ratings-css-top3" style="width: {{review.rating|mul:20}}%">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-css-bottom3"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+
+        <p class="lead rate-title mt-3">{{review.title}}</p>
+        <p class="rate-des">{{review.description}}</p>
+        <div class="d-flex flex-row justify-content-between">
+        <p class="reviewer">{{review.date}} by {{review.user.username}}</p>
+
+        {% if review.purchased == True %}
+        <p><span><i class="far fa-check-circle"></i></span>  Verified purchase</p>
+        {% else %}
+        <p> <span><i class="far fa-times-circle"></i></span>  Unverified purchase</p>
+        {% endif %}
+
+        </div>
+
+        </div>
+
+        {% endfor %}
+
+        {% if reviews|length > 3 %}
+        <a class="see-more" href="{% url 'all_reviews' product.uuid %}">See more reviews</a>
+        {% endif %}
+        {% else %}
+        <p>No reviews available <a class="custom-rate" href="{% url 'review' product.uuid %}">rate this product</a></p>
+        {% endif %}
+        
+
+        </div>
+        </div>
+        </div>
+
+
+        </div>
+
+
+
+        <div class="col-md-4 col-12 col-lg-4 col-sm-12 mt-3">
+        
+        <div class="mt-3">
+
+        <h5 class="mt-3 pt-5 ven-head">Vendor Information</h5>
+
+        <p class="mt-3">Phone Number {{ product.user.seller.phone_number }}</p>
+
+        <p class="mt-3">{{product.location}},  {{product.precise_location}} :</p>
+            
+        </div>
+
+        <div class="card map-card mt-3 mb-5">
+
+        <div class="mapouter">
+        <div class="gmap_canvas">
+
+       
+        <iframe width="350" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q={{ product.location }},{{ product.precise_location }}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+        frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="map2">
+        </iframe>     
+        <a href="https://www.embedgooglemap.net">iframe google maps</a>
+        
+        </div>
+        </div>
+
+      </div>
+
+      <hr />
+
+      <div class="card border text-center singlefull shadow-0 mb-4 mt-5">
+        <div class="card-header singlebg2 border-info">
+          <a class="to-full-des">
+          <i class="fa-solid fa-memo"></i> Full product description
+        </a>
+      </div>
+        <div class="card-body singlebg">
+              <p class="card-text">
+                <i class="fa-solid fa-comment-question"></i> Customer questions and answers
+                </p>
+            </a>
+        </div>
+        <div class="card-footer singlebg border-info">
+          <a href="{% url 'all_reviews' product.uuid %}">
+            <i class="far fa-comment-dots"></i> Customer reviews
+          </a>
+        </div>
+        </div>
+
+        <script>
+          $(".to-full-des").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".full-des").offset().top},
+                'slow');
+        });
+        </script>
+
+        <hr class="mt-5" />
+
+        <h5 class="mt-4 have">Have a question about this product?</h5>
+
+        <p class="ans mt-3">Find answers in product description, Q&As, Reviews</p>
+
+        <p class="mb-3 mt-4">No results? <a style="color: #1C7BB8; text-decoration: underline; padding-bottom: 3px;" href='mailto: {{product.user.seller.email}}'>Ask your question here</a> </p>
+
+        <hr />
+
+        <a class="btn review-btn text-center" href="{% url 'review' product.uuid %}">Write a Review for this Product</a>
+        </div>
+
+        </div>
+
+        <h3 class="mb-3 mt-5">Other products from this vendor</h3>
+
+        <div class="row row-cols-12 row-cols-md-4 g-4">
+
+            {% for item in user_products|slice:":4" %}
+              
+           
+            <div class="col">
+
+            <a href="{% url 'singleproduct' item.uuid %}">
+                <div class="card h-100 product-card">
+                <img
+                    src="{{ item.images.url }}"
+                    class="card-img-top product-img"
+                    alt="{{item.title}}"
+                />
+                {% if item.negotiatable == True %}
+                    <div class="card-img-overlay">
+                      <h5 class="card-title nego p-0">Negotiable</h5>
+                    </div>
+                    {% endif %}
+                <div class="card-body card-cont">
+                <div class="location">
+                <h6 class="prod-cat">{{item.sub_category}}</h6>
+                <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
+                </div>
+                    <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
+                    <div class="card-foot mt-3">
+                    <p class="card-text price">Ksh. {{item.price}}</p>
+
+                    <div class="card-foot-icon">
+                        
+                      <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
+                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                        {% if user.is_authenticated %}
+                        <div class="popup">
+                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                        <span class="popuptext added" id="added">Added to wishlist!</span>
+                        <span class="popuptext removed" id="removed">Removed from wishlist</span>
+                        </div>
+                        {% else %}
+                        <i title="login to add to save" class="far fa-heart ic disabled"></i>
+                        {% endif %}
+                        <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
+
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+
+                </div>
+
+
+                <h3 class="mb-3 mt-5">Products related to this item</h3>
+
+               <div class="row row-cols-1 row-cols-md-4 g-4">
+
+
+                {% for item in related|slice:":4" %}
+           
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 flex-wrap pb-3">
+  
+                <a href="{% url 'singleproduct' item.uuid %}">
+                    <div class="card h-100 product-card">
+                    <img
+                        src="{{ item.images.url }}"
+                        class="card-img-top product-img"
+                        alt="{{item.title}}"
+                    />
+                    {% if item.negotiatable == True %}
+                    <div class="card-img-overlay">
+                      <h5 class="card-title nego p-0">Negotiable</h5>
+                    </div>
+                    {% endif %}
+                    <div class="card-body card-cont">
+                    <div class="location">
+                    <h6 class="prod-cat">{{item.sub_category}}</h6>
+                    <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
+                    </div>
+                        <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
+                        <div class="card-foot mt-3">
+                        <p class="card-text price">Ksh. {{item.price}}</p>
+  
+                        <div class="card-foot-icon">
+                        
+                          <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
+                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                        {% if user.is_authenticated %}
+                        <div class="popup">
+                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                        <span class="popuptext added" id="added">Added to wishlist!</span>
+                        <span class="popuptext removed" id="removed">Removed from wishlist</span>
+                        </div>
+                        {% else %}
+                        <i title="login to add to save" class="far fa-heart ic disabled"></i>
+                        {% endif %}
+                        <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
+  
+                        </div>
+                        
+                        </div>
+                    </div>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+
+                </div>
+
+        <button class="to-top-btn mt-5">Back To Top <span class="to-top-icon"> <i class="fas fa-chevron-up"></i></span></button>
+
+
+            
+        </div>
+
+
+
+
+
+
+    {% block scripts %}
+
+    <script src="{% static 'js/all.js' %}">
+      let btn2 = document.querySelector('.other');
+      let el2 = document.querySelector('.from');
+      btn2.addEventListener('click', function() {
+        el2.scrollIntoView(false);
+    });
+    </script>
+
+    <script>
+
+      new Autocomplete('#autocomplete3', {
+        search : input => {
+          
+          const url = `/all_reviews-search/{{product.uuid}}?autoComplete3=${input}`
+          return new Promise(resolve => {
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              resolve(data.data)
+            })
+          })
+        },
+        onSubmit : result => {
+          window.open(`/product/{{product.uuid}}/search-reviews?autoComplete3=${result}`,`_self`)
+        }
+      })
+
+
+    </script>
+
+    {% endblock %}
+    
+    <br />
+    <br />
+
+  </div>
+    {% include "../navigations/footer.html" %}
+{% endblock %} 

@@ -404,7 +404,7 @@
                     
                     <div class="card-body card-cont">
                     <div class="location">
-                    <h6 class="prod-cat">{{item.sub_category}}</h6>
+                    <h6 class="prod-cat">{{item.category}}</h6>
                     <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
                     </div>
                         <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
@@ -417,12 +417,12 @@
                           
                         {% if user.is_authenticated %}
                         <div class="popup">
-                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                          <a class="add mx-3" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                         <span class="popuptext added" id="added">Added to wishlist!</span>
                         <span class="popuptext removed" id="removed">Removed from wishlist</span>
                         </div>
                         {% else %}
-                        <i title="Login to save" class="far fa-heart ic disabled"></i>
+                        <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
                         {% endif %}
                         <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
 
@@ -467,7 +467,7 @@
                     {% endif %}
                   <div class="card-body card-cont">
                   <div class="location">
-                  <h6 class="prod-cat">{{item.sub_category}}</h6>
+                  <h6 class="prod-cat">{{item.category}}</h6>
                   <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
                   </div>
                       <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
@@ -480,12 +480,12 @@
                           
                         {% if user.is_authenticated %}
                         <div class="popup">
-                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                          <a class="add mx-3" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                         <span class="popuptext added" id="added">Added to wishlist!</span>
                         <span class="popuptext removed" id="removed">Removed from wishlist</span>
                         </div>
                         {% else %}
-                        <i title="Login to save" class="far fa-heart ic disabled"></i>
+                        <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
                         {% endif %}
                         <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
 
@@ -531,7 +531,7 @@
                     {% endif %}
                   <div class="card-body card-cont">
                   <div class="location">
-                  <h6 class="prod-cat">{{item.sub_category}}</h6>
+                  <h6 class="prod-cat">{{item.category}}</h6>
                   <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
                   </div>
                       <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
@@ -542,12 +542,12 @@
                           
                         {% if user.is_authenticated %}
                         <div class="popup">
-                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                          <a class="add mx-3" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                         <span class="popuptext added" id="added">Added to wishlist!</span>
                         <span class="popuptext removed" id="removed">Removed from wishlist</span>
                         </div>
                         {% else %}
-                        <i title="Login to save" class="far fa-heart ic disabled"></i>
+                        <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
                         {% endif %}
                         <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
 
