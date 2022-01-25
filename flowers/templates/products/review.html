@@ -1,0 +1,93 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/rate.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+<div class="container mb-5 mt-5">
+    <a href="{% url 'singleproduct' product.uuid%}">
+        <h6 class="rate-name mb-4"><i class="fas fa-long-arrow-alt-left"></i> Rate & Review</h6>
+    </a>
+    
+<form action="{% url 'review' product.uuid %}" id="addReview" method="post">
+    {% csrf_token %}
+    <h5 class="rate-head mb-3">SELECT THE STARS TO RATE THE PRODUCT</h5>
+
+    <div class="row mb-5">
+    <div class="col-md-2 col-lg-2 col-12">
+        <img class="rate-img img-fluid"
+        src="{{ product.images.url }}" alt="rate-img" />
+    </div>
+
+    <!-- <div class="col-md-1 col-lg-1"></div> -->
+    <div class="col-md-5 col-lg-5 col-12">
+        <p id="p-title">{{ product.title| title }}</p>
+        <fieldset>
+            <span class="star-cb-group">
+              <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+              <input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
+              <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+              <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+              <input type="radio" id="rating-1" name="rating" value="1" required /><label for="rating-1">1</label>
+              <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+            </span>
+          </fieldset>
+
+    </div>
+    </div>
+
+    <h5 class="head">Leave a review</h5>
+
+        <div class="row mb-4">
+            <div class="col mb-3">
+            <div class="review-body">
+                <label class="form-label r-title" for="form3Example1">Review Title</label>
+                <input type="text" name="title" id="form3Example1" class="form-group" required />
+            </div>
+            </div>
+
+            <br>
+
+            <textarea name="description" placeholder="Tell us more about your rating" rows="5" cols="17" required></textarea>
+
+            <div class="form-check mb-3 mt-3">
+            <input
+                name="purchased" 
+                class="form-input"
+                type="checkbox"
+                value="False" 
+                id="purchased" 
+                
+            />
+            <label class="form-check-label purch" for="flexCheckChecked">
+            I have purchased this product.
+            </label>
+            <div id="checkbox-value"></div>
+            </div>
+            <button class="btn btn-block btn-primary" type="submit">Submit your Review</button>
+        </div>
+        </form>
+
+        <script>
+            var logID = 'log',
+            log = $('<div id="'+logID+'"></div>');
+            $('body').append(log);
+            $('[type*="radio"]').change(function () {
+                var me = $(this);
+                log.html(me.attr('value'));
+            });
+
+            $("input[type='checkbox']").on('change', function(){
+                $(this).val(this.checked ? "TRUE" : "FALSE");
+                console.log(this.value)
+              })
+                
+        </script>
+</div>
+
+{% endblock  %}

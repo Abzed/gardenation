@@ -163,16 +163,6 @@
         </div>
         </div>
 
-        <div class="card des-card singlebg mt-3">
-        <h5 class="card-header full-des">CUSTOMER QUESTIONS AND ANSWERS</h5>
-        <div class="card-body">
-            <h5 class="card-title"><i class="fa-regular fa-circle-q"></i> How can we be in contact?</h5>
-            <p class="card-text">
-            <i class="fa-regular fa-circle-a"></i> Thank you for your feedback. To get in contact with us, you can call the number displayed at the top to enquire about any purchases you would like to make.
-            </p>
-        </div>
-        </div>
-
        
 
         <div class="card des-card singlebg mt-3">
@@ -414,7 +404,7 @@
 
         <p class="mt-3">Phone Number {{ product.user.seller.phone_number }}</p>
 
-        <p class="mt-3">{{product.location}},  {{product.precise_location}} :</p>
+        <p class="mt-3">{{product.location}} :</p>
             
         </div>
 
@@ -424,7 +414,7 @@
         <div class="gmap_canvas">
 
        
-        <iframe width="350" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q={{ product.location }},{{ product.precise_location }}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+        <iframe width="350" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q={{ product.location }}&t=&z=13&ie=UTF8&iwloc=&output=embed" 
         frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="map2">
         </iframe>     
         <a href="https://www.embedgooglemap.net">iframe google maps</a>
@@ -436,25 +426,6 @@
 
       <hr />
 
-      <div class="card border text-center singlefull shadow-0 mb-4 mt-5">
-        <div class="card-header singlebg2 border-info">
-          <a class="to-full-des">
-          <i class="fa-solid fa-memo"></i> Full product description
-        </a>
-      </div>
-        <div class="card-body singlebg">
-              <p class="card-text">
-                <i class="fa-solid fa-comment-question"></i> Customer questions and answers
-                </p>
-            </a>
-        </div>
-        <div class="card-footer singlebg border-info">
-          <a href="{% url 'all_reviews' product.uuid %}">
-            <i class="far fa-comment-dots"></i> Customer reviews
-          </a>
-        </div>
-        </div>
-
         <script>
           $(".to-full-des").click(function() {
             $('html,body').animate({
@@ -463,15 +434,6 @@
         });
         </script>
 
-        <hr class="mt-5" />
-
-        <h5 class="mt-4 have">Have a question about this product?</h5>
-
-        <p class="ans mt-3">Find answers in product description, Q&As, Reviews</p>
-
-        <p class="mb-3 mt-4">No results? <a style="color: #1C7BB8; text-decoration: underline; padding-bottom: 3px;" href='mailto: {{product.user.seller.email}}'>Ask your question here</a> </p>
-
-        <hr />
 
         <a class="btn review-btn text-center" href="{% url 'review' product.uuid %}">Write a Review for this Product</a>
         </div>
@@ -501,7 +463,7 @@
                     {% endif %}
                 <div class="card-body card-cont">
                 <div class="location">
-                <h6 class="prod-cat">{{item.sub_category}}</h6>
+                <h6 class="prod-cat">{{item.category}}</h6>
                 <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
                 </div>
                     <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
@@ -510,16 +472,16 @@
 
                     <div class="card-foot-icon">
                         
-                      <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
-                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                      
+                          
                         {% if user.is_authenticated %}
                         <div class="popup">
-                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                          <a class="add mx-3" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                         <span class="popuptext added" id="added">Added to wishlist!</span>
                         <span class="popuptext removed" id="removed">Removed from wishlist</span>
                         </div>
                         {% else %}
-                        <i title="login to add to save" class="far fa-heart ic disabled"></i>
+                        <i title="login to add to save" class="far fa-heart ic disabled mx-3"></i>
                         {% endif %}
                         <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
 
@@ -558,25 +520,24 @@
                     {% endif %}
                     <div class="card-body card-cont">
                     <div class="location">
-                    <h6 class="prod-cat">{{item.sub_category}}</h6>
+                    <h6 class="prod-cat">{{item.category}}</h6>
                     <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
                     </div>
                         <h5 class="card-title mt-3 overflow">{{item.title}}</h5>
                         <div class="card-foot mt-3">
                         <p class="card-text price">Ksh. {{item.price}}</p>
   
-                        <div class="card-foot-icon">
-                        
-                          <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
-                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                        <div class="card-foot-icon">  
+                          
+                          
                         {% if user.is_authenticated %}
                         <div class="popup">
-                          <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                          <a class="add mx-3" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                         <span class="popuptext added" id="added">Added to wishlist!</span>
                         <span class="popuptext removed" id="removed">Removed from wishlist</span>
                         </div>
                         {% else %}
-                        <i title="login to add to save" class="far fa-heart ic disabled"></i>
+                        <i title="login to add to save" class="far fa-heart ic disabled mx-3"></i>
                         {% endif %}
                         <a class="fone" title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
   

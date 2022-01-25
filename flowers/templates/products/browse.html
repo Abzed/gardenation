@@ -1,0 +1,382 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/category.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "../navigations/mainnav.html" %}
+
+
+<div class="container mt-3 px-3">
+
+  <center>
+    <div class="popup2">
+      <span class="popuptext2 added2" id="added">Added to wishlist!</span>
+      <span class="popuptext2 removed2" id="removed">Removed from wishlist!</span>
+    </div>
+  </center>
+
+    {% if legend %}
+    <h5 class="mt-5 home">Home >> Browse products >> {{query}} >> {{legend}}</h5>
+    {% else %}
+    <h5 class="mt-5 home">Home >> Browse products</h5>
+    {% endif %}
+
+        
+
+        <div class="row mt-5">
+            <div class="col-md-12 col-12 col-lg-3 col-sm-12 ">
+
+            <div class="sidenav mb-3">
+
+            <div class="nav-filter">
+            <div class="top-nav-content d-inline">
+            <button
+            class="navbar-toggler browse-toggle"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#sideNav"
+            aria-controls="sideNav"
+            aria-expanded="true"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars" style="color: #FFFFFF;"> <span class="filter">Filter products</span></i>
+          </button>
+
+         <a href="{% url 'browse' %}"><i class="fas fa-sync"></i></a>
+        </div>
+        </div>
+           
+          <div id="sideNav" class="collapse-later browse-toggled">
+
+          <p class="bold-side mt-3">Keyword</p>
+
+      <form role="search" action="{% url 'search_title' %}" method="get">
+      <div id="autocomplete" class="autocomplete userInfoForm">
+      <input type="search" id="autoComplete" name="autoComplete" 
+      placeholder="Search for..." class="form-group autocomplete-input browse-input" />
+      <ul class="autocomplete-result-list"></ul>
+    </div>
+      </form>
+
+      <p class="bold-side mt-3">Category</p>
+
+      {% for item in category %}
+
+      <a class="side-text toggle{{item.id}}"> {{ item.category}} <span class="float-end"><i id="{{item.id}}chev" class="fas fa-chevron-up" style="display: none;"></i> <i id="chev{{item.id}}" class="fas fa-chevron-down"></i></span></a>
+
+      {% endfor %}          
+
+
+          <p class="bold-side mt-3">Location</p>
+
+          <form role="search" action="{% url 'search_location' %}" method="get">
+            <div id="autocomplete2" class="autocomplete userInfoForm">
+            <input type="search" id="autoComplete2" name="autoComplete2" 
+            placeholder="Start Typing..." class="form-group autocomplete-input browse-input" />
+            <ul class="autocomplete-result-list"></ul>
+          </div>
+            </form>
+
+          <p class="bold-side mt-3">Price</p>
+
+          <form action="{% url 'price_filter' %}" method="get">
+            <div class="row mb-2">
+              
+              <div class="col">
+                <div class="userInfoForm">
+                  <input type="number" id="min" name="min" minlength="0" placeholder="Min" class="form-control browse-input" />
+                  <label class="form-label" for="min"></label>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="userInfoForm"> 
+                  <input type="number" id="max" name="max" placeholder="Max" class="form-control browse-input" />
+                  <label class="form-label" for="max"></label>
+                </div>
+              </div>
+              
+            </div>
+            <input type="submit" style="display: none;" />
+          </form>
+
+              </div>            
+              </div>
+
+            </div>
+
+            <div class="col-md-12 col-lg-9 col-sm-12">
+
+            <div class="d-flex justify-content-between flex-row">
+              <p class="all-results  top-view">{{ page_obj.start_index }}-{{ page_obj.end_index }} of {{ page_obj.paginator.count }} results</p>
+
+              <div class="sort">
+              <div class="btn-group shadow-0">
+              <button
+                type="button"
+                class="btn btn-outline-info text-black dropdown-toggle "
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sort By...
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item all-results" href="{% url 'order_by_latest' %}">Latest</a></li>
+
+                <li><a class="dropdown-item all-results" href="{% url 'order_by_last' %}">Oldest</a></li>
+
+                <li><a type="submit" class="dropdown-item all-results" href="{% url 'random' %}">Shuffle</a></li>
+              </ul>
+            </div>
+           <a class="grid"><i class="fas fa-th-large fa-lg" style="color: #1C7BB8;"></i></a>
+
+          <a class="list"> <i class="fas fa-list"></i></a>
+          </div>
+        </div>
+
+        {% if page_obj %}  
+
+        <div style="display: none; cursor: pointer;" class="mt-5 list-view">
+
+        {% for item in page_obj %}
+        
+          <div class="card h-100 mt-3">
+            <div class="row">
+              <div class="col-md-4">  
+                <a href="{% url 'singleproduct' item.uuid %}">            
+                <div class="card-image p-3">
+                  <img class="img-fluid list-img" src="{{ item.images.url }}" alt="">
+                </div>
+                </a>
+              </div>
+
+              
+              <div class="col-md-8 px-3">
+                <a href="{% url 'singleproduct' item.uuid %}">
+                  <div class="card-body card-list">
+                      <div class="d-flex justify-content-between">
+                        <p class="list-cat">{{item.category}}</p>
+                        <p class="list-icon"><i class="fas fa-map-marker-alt"></i> <span class="list-loc">{{item.location}}</span></p>
+                      </div>
+  
+                    <p class="list-tit">{{item.title}}</p>
+  
+                    <p class="list-pri">Ksh. {{item.price}}</p>
+  
+                      <div class="float-end list-icons">
+                                         
+                        {% if user.is_authenticated %}
+                        <div class="popup">
+                          <a title="Save this product" class="add mx-3" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                        <span class="popuptext added" id="added">Added to wishlist!</span>
+                        <span class="popuptext removed" id="removed">Removed from wishlist</span>
+                        </div>
+                        {% else %}
+                        <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
+                        {% endif %}
+                        <a title="Call seller" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt"></i></a>
+                      </div>
+                    </div>
+                  </a>
+              </div>
+            
+            </div>
+            </div>
+        
+
+          {% endfor %}
+
+        </div>
+
+
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 g-4 grid-view">
+
+            {% for item in page_obj %}
+           
+            <div class="col">
+              
+            <a href="{% url 'singleproduct' item.uuid %}">
+                <div class="card h-100 product-card">
+                <img
+                    src="{{ item.images.url }}"
+                    class="card-img-top product-img"
+                    alt="{{item.title}}"
+                />
+                    
+                <div class="card-body card-cont">
+                <div class="location">
+                <h6 class="prod-cat">{{item.category}}</h6>
+                <h6 class="prod-location"><span class="prod-location prod-icon-location"><i class="fas fa-map-marker-alt"></i></span> {{item.location}}</h6>
+                </div>
+                    <h5 style="text-align: left !important;" class="card-title text-left mt-3 overflow">{{item.title}}</h5>
+                    <div class="card-foot mt-3">
+                    <p class="card-text price">Ksh. {{item.price}}</p>
+
+                    <div class="card-foot-icon">
+
+                      
+                      <a title="Compare" class="compare fone" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                    {% if user.is_authenticated %}
+                    <div class="popup">
+                      <a title="Save this product" class="add fone" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                    </div>
+                    {% else %}
+                    <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
+                    {% endif %}
+                    <a title="Call seller" class="fone" href="tel:{{ item.user.seller.phone_number }}"><i class="fas fa-phone-alt ic lc fone"></i></a>
+
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}   
+            {% else %}   
+            
+            <div class="no-query">
+              <p>No results available matching your filter!</p>
+          </div>
+            
+            {% endif %}         
+            </div> 
+
+            {% if page_obj.has_other_pages %}
+            
+            <div class="page-it mt-5">
+              <div>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      {% if page_obj.has_previous %}
+                          <a class="page-link" aria-label="Previous" href="?page=1">
+                            <span class="ends" aria-hidden="true">&laquo;</span>
+                          </a>
+                      {% endif %}
+                    </li>
+    
+                    {% for n in page_obj.paginator.page_range %}
+                    {% if page_obj.number == n %}
+                      <li class="page-item active">
+                        <span class="page-link page-num">{{ n }}<span class="sr-only">(current)</span></span>
+                      </li>
+                    {% elif n > page_obj.number|add:'-4' and n < page_obj.number|add:'4' %}
+                      <li class="page-item page-num"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+    
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+                        <span class="ends" aria-hidden="true">&raquo;</span>
+                      </a>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              
+           <div class="per-page">
+            <p class="show-per-page px-2">Show </p>
+  
+            <form id="pagesubmit" method="GET">
+              <select id="paginate" name="paginate" onchange="getPaginationValue()" class="form-select page-select" aria-label="Default select example">
+                <option {% if "8" in request.get_full_path %} selected {% endif %} class="submit" value="8">8</option>
+                <option {% if "24" in request.get_full_path %} selected {% endif %} class="submit" value="24">24</option>
+                <option {% if "32" in request.get_full_path %} selected {% endif %} class="submit" value="32">32</option>
+              </select>
+            </form>
+  
+            <p class="show-per-page px-2"> per page</p>
+              
+           </div>
+
+            </div>
+            {% endif %}
+
+            <button id="to-top" class="to-top-btn mt-4">Back To Top <span class="to-top-icon"> <i class="fas fa-chevron-up"></i></span></button>
+
+      </div>
+
+        </div>
+
+        
+
+
+        </div>
+
+
+<script src="{% static 'js/all.js' %}"></script>
+
+<script>
+  new Autocomplete('#autocomplete', {
+    search : input => {
+      
+      const url = `/search?autoComplete=${input}`
+      return new Promise(resolve => {
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          resolve(data.data)
+        })
+      })
+    },
+    onSubmit : result => {
+      window.open(`/products/autosearch?autoComplete=${result}`,`_self`)
+    }
+  })
+
+  new Autocomplete('#autocomplete2', {
+    search : input => {
+      
+      const url = `/location-search?autoComplete2=${input}`
+      return new Promise(resolve => {
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          resolve(data.data)
+        })
+      })
+    },
+    onSubmit : result => {
+      window.open(`/products/location-autosearch?autoComplete2=${result}`,`_self`)
+    }
+  })
+
+
+  $(".list").click(function(){
+    $(".list-view").css("display","block");
+    $(".grid-view").css("display","none");
+  });
+
+  $(".grid").click(function(){
+    $(".grid-view").css("display","flex");
+    $(".list-view").css("display","none");    
+  });
+
+  $(".browse-toggle").click(function(){
+    $(".browse-toggled").toggle();
+  });
+
+  $('select').change(function (){
+    $(this).closest('form').submit();
+});
+
+  function getPaginationValue()
+    {
+        var selectedValue = document.getElementById("paginate").value;
+        console.log(selectedValue);
+    }
+    getPaginationValue();
+</script>
+
+<br />
+<br />
+{% include "../navigations/footer.html" %}
+{% endblock %} 

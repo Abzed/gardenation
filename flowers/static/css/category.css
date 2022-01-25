@@ -1,0 +1,722 @@
+.sidenav {
+    /* position: fixed; */
+    z-index: 1;
+    background: #F6F8F9;
+    overflow-x: hidden;
+    /* padding: 8px 0; */
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 9px 16px;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: blue;
+  }
+    
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+.side-text{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #082435;
+    cursor: pointer;
+}
+
+.side-text-sub{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #082435;
+    padding: 0px !important;
+    padding-left: 8px !important;
+}
+
+.side-text-sub:hover{
+    color: #1C7BB8;
+}
+
+
+.bold-side{
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #0C0C0C;
+    padding: 7px 8px 0px 16px;
+}
+
+.nav-form{
+    color: black;
+
+}
+
+.all-results{
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 9px;
+
+}
+
+.sorted{
+    float: right;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 7px !important;
+}
+
+.per-page{
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.show-per-page{
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    /* line-height: 22px; */
+    letter-spacing: 0em;
+    color: #082435;
+}
+
+.page-select{
+  background-color: inherit !important;
+  width: 67px !important;
+  height: 35px;
+  color: #082435 !important;
+}
+
+.page-num a{
+  font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.ends{
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.page-num span{
+  font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.page-num a:hover{
+  background-color: #1C7BB8 !important;
+  color: #FFFFFF;
+}
+
+.page-it{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+.overflow{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 22px;
+    /* width: 187px; */
+    /* border-radius: nullpx; */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left !important;
+    color: #010609;
+    text-transform: capitalize;
+}
+
+.card-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ic{
+    margin-left: 8px;
+}
+
+.lc{
+    margin-right: 3px;
+}
+
+.card-foot-icon i{
+    
+    height: 11.3px;
+    width: 12.5px;
+    border-radius: 0px;
+    color: #292D32;
+}
+
+.product-card{
+    width: auto;
+    height: 347px;
+    border-radius: 8px;
+}
+
+
+.product-img{
+    width: 275px;
+    height: 218px;;
+    padding: 7px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-card:hover > .product-img{
+    transform: scale(0.99);
+    transition: all .2s ease-in-out;
+    padding: 0px;
+}
+
+.product-heading{
+    font-family: Lato;
+    text-align: left;
+    color: #1C7BB8;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+    border-bottom: 3px solid #1C7BB8;
+}
+
+.location{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.prod-cat{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #526A7A;
+}
+
+.prod-location{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #526A7A;
+}
+
+.prod-icon-location{
+    padding-right: 9.96px;
+}
+
+.price{
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1C7BB8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.to-top-btn{
+    height: 44px;
+    width: 153px;
+    float: right !important;
+    border-radius: 8px;
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    padding: 10px, 20px, 10px, 20px;
+    border: none;
+}
+
+.to-top-btn:hover{
+    background-color: #FFFFFF;
+    color: #1C7BB8;
+    border: 1px solid #000000 !important;
+}
+
+.to-top-icon{
+    padding-left: 14px;
+}
+
+
+.home{
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+
+.filter{
+    padding-left: 18px;
+    color: #FFFFFF;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.fa-list{
+  font-size: 23px;
+}
+
+.fa-sync{
+    font-size: 23px;
+    padding-right: 23px;
+    color: #FFFFFF;
+    /* padding-bottom: 14.5px; */
+    text-align: right;
+    float: right;
+    margin-top: -30px;
+}
+
+.fa-sync:hover{
+  color: #000000;
+}
+
+.nav-filter{
+    background-color: #1C7BB8;
+    border-radius: 5px;
+    height: 48px;
+    width: 100%;
+    padding-top: 14.5px;
+    padding-bottom: 39px !important;
+    padding-left: 10.5px;
+    overflow: hidden;
+}
+
+.nav-sync{
+    background-color: #1C7BB8;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+}
+
+.userInfoForm input {
+  width: 90% !important;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #859DAD;
+  margin-left: 13.25px;
+  background-color: #F6F8F9;
+  margin-right: 13.25px !;
+}
+
+
+#autocomplete input {
+    width: 90% !important;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #859DAD;
+    margin-left: 13.25px;
+    background-color: #F6F8F9;
+    margin-right: 13.25px !;
+}
+
+#autocomplete2 input {
+  width: 90% !important;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #859DAD;
+  margin-left: 13.25px;
+  background-color: #F6F8F9;
+  margin-right: 13.25px !;
+}
+
+input:focus,
+input:active {
+    background-color: inherit !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    outline: none !important;
+    border-color: #859DAD;
+}
+
+
+[placeholder]:focus::-webkit-input-placeholder {
+    background-color: inherit !important ;
+    border-color: #859DAD;
+    outline: none !important;
+    border: none !important;
+ }
+
+ /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.sort i{
+    margin-left: 17px !important;
+}
+
+.disabled{
+    opacity:0.6; 
+    pointer-events: none;
+}
+
+.card-list{
+  margin-left: -7%;
+}
+
+.list-img{
+  width: 255px !important;
+  height: 184px !important;
+  border-radius: 8px !important;
+  object-fit: cover;
+}
+
+.list-cat{
+  font-family: Lato;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  color: #526A7A;
+}
+
+.list-loc{
+  padding-left: 7px;
+  padding-right: 15px;
+  font-family: Lato;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  color: #526A7A;
+}
+
+.list-tit{
+  font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  color: #082435;
+}
+
+.list-pri{
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+  color: #1C7BB8;
+}
+
+.list-icons i{
+  padding-right: 15px;
+  font-size: 18px;
+}
+
+.grid i:hover{
+  color: #000000 !important;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .open-button:hover{
+      /* color: #1C7BB8 !important; */
+      font-size: 16px;
+      }
+
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin:-50px 0 0 -100px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 320px;
+    padding: 10px;
+    background-color: #E5E5E5;
+  }
+  
+  /* When the inputs get focus, do something */
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    /* background-color: #1C7BB8; */
+    /* color: #FFFFFF; */
+    border: none;
+    cursor: pointer;
+    width: 69%;
+    opacity: 0.8;
+    padding: 3px;
+    font-size: 24px;
+    border-radius: 8px !important;
+  }
+
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: #1C7BB8;
+    margin-top: 9px;
+    width: 55px;
+    height: 28px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 8px !important;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1C7BB8 !important;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  .fone{
+    cursor: pointer;
+}
+
+.fone:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+}
+
+
+
+
+  .popup2 {
+    width: 100%;
+    position: fixed;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    top: 0;
+    z-index: 100;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup2 .popuptext2 {
+    visibility: hidden;
+    width: 59%;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #1C7BB8;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    margin-top: 2%;
+  }
+  
+  /* Popup arrow */
+  .popup2 .popuptext2::after {
+    content: "";
+    position: fixed;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup2 .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
