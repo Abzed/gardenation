@@ -1,0 +1,290 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+{% load bootstrap5 %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/sidenav.css' %}">  
+<link rel="stylesheet" href="{% static 'css/universal.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "navigations/mainnav.html" %}
+
+<br>
+
+<div class="container mt-3">
+
+<div class="row">
+
+<div class="col-md-3 col-lg-3 col-sm-3 col-12">
+
+    <ul class="nav flex-column profile-side-nav-main mb-4">
+
+      <a class="show-menu show-nav prof-side-nav-link px-3 pt-3 pb-2">
+        <h6>Profile navigation  <span class="float-end">
+          <i class="fas fa-angle-down down-buy" style="font-size: 21px;"></i>
+        </span></h6>
+      </a>
+
+      <a class="show-menu show-nav1 prof-side-nav-link px-3 pt-3 pb-2">
+        <h6>Hide navigation  <span class="float-end">
+          <i class="fas fa-angle-up up-buy" style="font-size: 21px;"></i>
+        </span></h6>
+      </a>
+
+        <div class="buyer-status">
+          <li class="nav-item prof-side-nav-link">
+            <a class="nav-link prof-side-nav-link active" aria-current="page"  href="{% url 'buyerprofile' request.user.username %}">
+              <i class="far fa-user"></i> <span class="side-prof-nav-name">My Account 
+               </span></a>
+          </li>
+          <li class="nav-item prof-side-nav-link">
+            <a class="nav-link prof-side-nav-link"  href="{% url 'wishlist' request.user.username %}"><i class="far fa-heart"></i><span class="side-prof-nav-name">Saved Items</span></a>
+          </li>
+          <li class="nav-item prof-side-nav-link log-out-link">
+            <a class="nav-link prof-side-nav-link"  href="/logout"><i class="fas fa-sign-out-alt"></i><span class="side-prof-nav-name">Logout</span></a>
+          </li>
+        </div>
+
+      </ul>
+      
+</div>
+
+<div class="col-md-9 col-lg-9 col-sm-9 col-12">           
+
+<div class="card">
+
+<div class="card-header">
+
+<h3 class="account-det mt-3">Account details</h3>
+
+<h4 class="account-det mt-4">Personal information</h4>
+
+<hr style="width: 734px; color: #AFD8F3;" />
+
+<form action="{% url 'buyerprofile_update' request.user.username %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+<div class="d-block profile-avatar mt-5">  
+
+    <center>
+      {% if profile.buyer.avatar  %}
+        <img class="img-fluid rounded" 
+        src="{{profile.buyer.avatar.url}}" alt={{profile.buyer.username}}-avatar />
+        {% else %}
+        <img class="img-fluid rounded" 
+        src="{% static 'img/default.png' %}" alt={profile.buyer.username} />
+        {% endif %}
+        <h5 class="avatar-name mt-3">{{profile.buyer.username| title}} {{profile.buyer.last_name| title}}</h5>
+        <label class="change-avatar" for="avatar">Change Avatar</label>
+        <br>
+        <input type="file" id="avatar" style="display:none;" name="avatar" />
+        </center>
+    
+
+
+</div>
+
+
+<div class="profile-inputs mt-3">
+<div class="row mb-4">
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="username">Username</label>
+        <input type="text" name="username" value="{{profile.buyer.username| title}}" id="username" class="form-control" />
+        
+    </div>
+    </div>
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="last_name">Last name</label>
+        <input type="text" name="last_name" value="{{profile.buyer.last_name| title}}" id="last_name" class="form-control" />
+       
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="profile-inputs">
+<div class="row mb-4">
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="email">E-Mail</label>
+        <input type="text" name="email" value="{{profile.buyer.email}}" id="email" class="form-control" />
+       
+    </div>
+    </div>
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="phone_number">Phone Number</label>
+        <input type="text" name="phone_number" value="{{profile.buyer.phone_number}}" id="phone_number" class="form-control" />
+        
+    </div>
+    </div>
+</div>
+</div>
+
+
+<br />
+
+<button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+</form>
+
+
+<h4 class="change-pass mt-5">Change Password</h4>
+
+<hr style="color: #AFD8F3; width: 564px;" />
+
+<form action="{% url 'changepassword' request.user.username %}" method="post">
+  {% csrf_token %}            
+<div class="pass-form mb-4">
+    <label class="form-label" for="oldpass">Old Password</label>
+    <br>
+    <input type="password" id="oldpass" name="oldpassword" />
+    <i class="far fa-eye-slash" id="togglePassold"></i>
+    <i class="far fa-eye" id="togglePassold-slash"></i>
+    <br>
+    <br>
+    <label class="form-label" for="newpass">New Password</label>
+    <br>
+    <input type="password" id="newpass" name="password1" class="form-group" />
+    <i class="far fa-eye-slash" id="togglePassnew"></i>
+    <i class="far fa-eye" id="togglePassnew-slash"></i>
+    <br>
+    <br>
+
+    <label class="form-label" for="confirm">Confirm New Password</label>
+    <br>
+    <input type="password" id="confirm" name="password2" class="form-group" />
+    <i class="far fa-eye-slash" id="confirmpass"></i>
+    <i class="far fa-eye" id="confirmslash"></i>
+    <br>
+    <br>
+
+    <button type="submit" class="pass-btn">Change Password</button>
+</div>
+</form>
+
+<h4>Delete Account</h4>
+
+<hr />
+
+<p>This will permanently delete your <br />
+account and all of its data. You will <br />
+not be able to reactivate this account.</p>
+
+<button type="button" id="myBtn" class="btn btn-outline-primary delete-btn">Delete Account</button>
+    
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Your account will be permanently deleted...</p>
+          <div>
+              <a href="{% url 'delete_account' request.user.username %}" type="button" class="btn btn-danger">delete</a>
+              <button type="button" id="close-btn" class="btn btn-secondary">cancel</button>
+          </div>
+        </div>
+      </div>
+
+
+<br />
+<br />       
+<br />
+
+
+<script>
+
+    $(document).ready(function(){
+        $("#togglePassold-slash").click(function(){
+            const password = document.querySelector('#oldpass');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+          $("#togglePassold").toggle()
+        });
+
+        $("#togglePassnew-slash").click(function(){
+            const password = document.querySelector('#newpass');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+          $("#togglePassnew").toggle()
+        });
+
+        $("#confirmslash").click(function(){
+            const password = document.querySelector('#confirm');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+          $("#confirmpass").toggle()
+        });
+    });
+
+
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+var btnClose = document.getElementById("close-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+btnClose.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+$("#avatar").change(function() {
+  $(".change-avatar").text(this.files[0].name);
+});
+
+setTimeout(function() {
+  $('.alert').fadeOut('slow');
+}, 3000);
+
+$("#close").click(function(){
+  $(".alert").hide()
+});
+
+$(".show-nav").click(function(){
+  $(".buyer-status").show()
+  $(".show-nav").hide()
+  $(".show-nav1").show()
+})
+
+$(".show-nav1").click(function(){
+  $(".buyer-status").hide()
+  $(".show-nav").show()
+  $(".show-nav1").hide()
+})
+
+</script>
+
+{% endblock  %}

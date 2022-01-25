@@ -914,12 +914,6 @@ def changesellerpassword(request, username):
 
     return render(request,'./profiles/sellerprofile/profile.html', {'profile': profile})
         
-def resetpassword(request):
-    form = PasswordChangeForm(request.user, request.POST)
-    if form.is_valid():
-        user = form.save()
-        update_session_auth_hash(request, user) # Important, to update the session with the new password
-        return HttpResponse('Password changed successfully')
         
 
 
@@ -969,76 +963,7 @@ def delete_seller_account(request, username):
         
     return render(request,'./profiles/sellerprofile/profile.html', {'profile': profile})
 
-def forgot_password(request):    
-    if request.method == 'POST':  
-        data = request.POST["email"]
-        associated_users = CustomUser.objects.filter(Q(email=data))
-        if associated_users.exists():
-            for user in associated_users: 
-                current_site = "django-buildsoko.herokuapp.com"         
-                mail_subject = 'Password Reset Requested'
-                message = render_to_string('./authentication/reset.html', {
-                    'user': user.email,
-                    'domain': current_site,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'token': account_activation_token.make_token(user),
-                })
-                to_email = user.email
-                email = EmailMessage(mail_subject, message, to=[to_email])
-                email.send()
-                return redirect('sent')
 
-    return render(request, 'authentication/forgot_password.html',)
 
-def sent(request):
-    return render(request, 'authentication/sent.html',)
-
-def reset(request, uidb64,  token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = CustomUser.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        if request.method == 'POST':
-            password = request.POST["password1"]
-            password_confirmation = request.POST["password2"]
-            
-            new_password = password
-            confirm_password = password_confirmation
-            
-            min_length = 8
-        
-            if len(new_password) < min_length:
-                messages.add_message(request, messages.ERROR, "The password must be at least %d characters long." % min_length)
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
-
-            # At least one letter and one non-letter
-            elif not re.findall('\d', new_password):
-                messages.add_message(request, messages.ERROR, "The password must contain at least one letter and digit or" \
-                " punctuation character.")
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
-                
-            elif not re.findall('[A-Z]', new_password):
-                messages.add_message(request, messages.ERROR, "The password must contain at least an UPPERCASE letter and at least one digit or" \
-                " punctuation character.")
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
-    
-            elif new_password == confirm_password:
-                user.set_password(new_password)
-                user.save()
-                login(request, user)
-                                
-                messages.add_message(request, messages.SUCCESS, 'Password changed successfully.')
-                return redirect('/') 
-            
-            else:
-                messages.add_message(request, messages.ERROR, 'Passwords do not match!')
-                    
-        
-    else:
-        return HttpResponse('Activation link is invalid!')
-    
-    return render(request, 'authentication/reset_password.html')
 
 

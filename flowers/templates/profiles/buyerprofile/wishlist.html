@@ -1,0 +1,117 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/sidenav.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "navigations/mainnav.html" %}
+
+<br>
+
+<div class="container mt-3">
+
+<div class="row">
+
+<div class="col-md-3 col-lg-3 col-sm-3">
+
+  <ul class="nav flex-column profile-side-nav-main mb-4">
+
+    <a class="show-menu show-nav prof-side-nav-link px-3 pt-3 pb-2">
+      <h6>Profile navigation  <span class="float-end">
+        <i class="fas fa-angle-down down-buy" style="font-size: 21px;"></i>
+      </span></h6>
+    </a>
+
+    <a class="show-menu show-nav1 prof-side-nav-link px-3 pt-3 pb-2">
+      <h6>Hide navigation  <span class="float-end">
+        <i class="fas fa-angle-up up-buy" style="font-size: 21px;"></i>
+      </span></h6>
+    </a>
+
+      <div class="buyer-status">
+        <li class="nav-item prof-side-nav-link">
+          <a class="nav-link prof-side-nav-link active" aria-current="page"  href="{% url 'buyerprofile' request.user.username %}">
+            <i class="far fa-user"></i> <span class="side-prof-nav-name">My Account 
+             </span></a>
+        </li>
+        <li class="nav-item prof-side-nav-link">
+          <a class="nav-link prof-side-nav-link"  href="{% url 'wishlist' request.user.username %}"><i class="far fa-heart"></i><span class="side-prof-nav-name">Saved Items</span></a>
+        </li>
+        <li class="nav-item prof-side-nav-link log-out-link">
+          <a class="nav-link prof-side-nav-link"  href="/logout"><i class="fas fa-sign-out-alt"></i><span class="side-prof-nav-name">Logout</span></a>
+        </li>
+      </div>
+
+    </ul>
+      
+</div>
+
+
+<div class="col-md-9 col-lg-9 col-sm-9">           
+
+<div class="card">
+
+<div class="card-header">
+
+    <h3 class="saved mb-4">Saved</h3>
+    {% if wishlist %}
+
+    <p class="sub-saved mb-5">Find your saved items and get ready to order them.</p>
+
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+
+        {% for items in wishlist %}
+          
+        <div class="col">            
+
+            <a href="{% url 'singleproduct' items.wished_item.uuid %}">
+            <img
+                src="{{items.wished_item.images.url}}"
+                class="card-img-top saved-img"
+                alt="{{items.wished_item.title}}"
+            />
+            </a>
+            <span class="saved-prod-name">{{items.wished_item.category}}</span>
+            </div>
+
+        {% endfor %}
+
+        {% else %}
+
+        <p>You have 0 saved items in your wishlist.</p>
+       
+
+        </div>
+
+        {% endif %}
+
+        <br>
+        <br>
+
+        
+
+</div>
+<a class="float-end" href="{% url 'browse' %}"><i class="far fa-plus-square fa-2x"></i></a>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+
+<br />
+<br />       
+<br />
+
+
+
+
+{% endblock  %}

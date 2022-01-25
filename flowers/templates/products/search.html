@@ -220,10 +220,10 @@
                     <div class="card-foot-icon">
 
                       
-                      <a title="Compare" class="compare fone" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                      
                     {% if user.is_authenticated %}
                     <div class="popup">
-                      <a title="Save this product" class="add fone" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
+                      <a title="Save this product" class="add mx-3 fone" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
                     </div>
                     {% else %}
                     <i title="Login to save" class="far fa-heart ic disabled mx-3"></i>
