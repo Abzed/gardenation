@@ -1,0 +1,388 @@
+.vender-registration{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0%;
+}
+
+.vender-registration h2{
+    margin-left: -7px;
+}
+
+.logo-name-reg{
+    font-weight: bold;
+    padding: 0px;
+    color: #165F8E;
+}
+
+.img-logo-reg{
+    width: 70px;
+    height: auto;
+}
+
+.register-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #AFD8F3;
+    width: 48%;
+    text-align: center;
+}
+
+.register-welcome{
+
+    font-weight: 700;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 57.6px;
+    text-align: center;
+}
+
+.welcome-note{
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19.2px;
+    text-align: center;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+form{
+    padding-left: 30px;
+    padding-left: 30px;
+}
+
+.form-control-lg{
+    height: 48px;
+    width: 68%;
+    left: 0px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+    outline: none;
+    box-shadow: none;
+}
+
+
+.form-control-lg:hover{
+    border: 2px solid rgb(118, 19, 189);
+    outline: none;
+    box-shadow: none;
+}
+
+input:focus,
+input:active {
+    background-color: inherit !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    outline: none !important;
+    border:2px solid #1DB954 !important;
+}
+
+.name-center{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.name-input .form-control-lg{
+    text-align: left !important;
+}
+
+.dispay-none{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.business-name{
+    height: 48px;
+    width: 68%;
+    left: 0px;
+    top: 22px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+}
+
+.business-name:focus{
+    background-color: inherit;
+}
+
+.business-name:hover{
+    border: 2px solid rgb(118, 19, 189);
+}
+
+.email{
+    height: 48px;
+    width: 68%;
+    left: 0px;
+    top: 22px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+}
+
+.errors{
+    border: 1px solid #E50914 !important;
+}
+
+.pass{
+    border: 1px solid #1DB954 !important;
+}
+
+.help-block{
+    display: none;
+    color: #E50914;
+    height: 14px;
+    width: 235px;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.4000000059604645px;
+}
+
+/* .email:focus{
+    background-color: inherit;
+} */
+
+.email:hover{
+    border: 2px solid rgb(118, 19, 189);
+}
+
+.phone{
+    height: 48px;
+    width: 68%;
+    left: 0px;
+    top: 22px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+}
+
+/* .phone:focus{
+    background-color: inherit;
+} */
+
+.phone:hover{
+    border: 2px solid rgb(118, 19, 189);
+}
+
+.password{
+    height: 48px;
+    width: 68%;
+    left: 0px;
+    top: 22px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+}
+
+/* .password:focus{
+    background-color: inherit;
+} */
+
+.password:hover{
+    border: 2px solid rgb(118, 19, 189);
+}
+
+input[type="radio"] {
+    height: 24px;
+    width: 24px;
+    border: 1px solid #1C7BB8;
+    background-color: inherit;
+  }
+
+  input[type="radio"]:checked{
+      background-color: #1C7BB8;
+  }
+
+  input[type="checkbox"]{
+      background-color: #E5E5E5; 
+  }
+
+.form-check-input:focus,
+.form-check-input:active{
+    outline: initial !important;
+    color: #1C7BB8 !important;
+    background-color: #1C7BB8 !important;
+}
+
+
+  .register{
+    height: 60px;
+    width: 68%;
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    border-radius: 8px;
+    text-transform: capitalize;
+    background-color: #1C7BB8;    
+  }
+
+  .register:hover{
+    border: 2px solid #082435;
+  }
+
+  .google{
+    height: 60px;
+    width: 68%;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-transform: none;
+  }
+
+  .google:hover{
+      background-color: #E5E5E5;
+      color: black;
+  }
+
+  .sign-g{
+      padding-left: 7px;
+  }
+
+  .google img{
+      width: 27px;
+      height: 27px;
+      object-fit: cover;
+  }
+
+  .or-hr{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .or{
+    height: 0px;
+    width: 195px;
+    left: 344.5537109375px;
+    border: 1px solid #082435;
+    color: #082435;   
+    top: 5px; 
+  }
+
+  .or-p{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;    
+    display: flex;
+    align-items: center;
+    color: #082435;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .account{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .log{
+      padding-left: 5px;
+  }
+
+  .log-f{
+      padding-left: 90px;
+  }
+
+  .log:hover{
+      text-decoration: underline;
+  }
+
+.agree{
+    width: 347px;
+    border-radius: nullpx;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agree p{
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+.forgot{
+    display: inline-flex;
+}
+
+.dont{
+    font-family: 'Lato';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+.register-a{
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1C7BB8;
+}
+
+.register-a:hover{
+    text-decoration: underline;
+}
+
+#pass-sign::placeholder {
+    padding-left: 10px;
+}
+
+.left-label{
+    margin-left: -42%;
+    padding-bottom: 3px;
+    position: relative;
+}
+
+.name-left{
+    margin-left: -50%;
+}
+
+.disabled{
+    opacity:0.6; 
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+

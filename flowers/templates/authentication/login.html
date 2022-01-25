@@ -12,8 +12,7 @@
 
       <a href="/">
       <div class="container vender-registration mt-3">           
-          <img class="img-fluid img-logo-reg" src="../static/img/build.png" alt="buildsoko-logo" />
-          <h2 class="logo-name-reg">BUILDSOKO</h2>
+          <h1 class="logo-name-reg">Gardenation</h1>
       </div>
       </a>
 
@@ -24,19 +23,7 @@
         <p class="welcome-note mt-4">Welcome Back</p>
       </center>
 
-      {% if email %}
 
-      {% for message in messages %}
-      {% if message.tags == "error"%}
-      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-        <button type="button" id="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}{{ message.tags|title }}{% endif %}!
-        </strong> {{ message }}
-      </div>
-      {% endif %}
-      {% endfor %}
-        
-      {% endif %}
 
       <center>
         <form class="p-0" action="{% url 'login' %}" method="post">
@@ -44,7 +31,7 @@
          
         <div class="form inpt mt-4">
           <label class="text-left email-login left-label" style="margin-left: -61%;" for="email">Email</label>
-              <input type="email" id="email" name="email" class="form-control password" autocomplete="off" required />
+              <input type="text" id="email" name="username" class="form-control password" autocomplete="off" required />
           </div>
         
           <div class="form inpt mt-4">
@@ -62,9 +49,6 @@
         <button type="submit" class="btn btn-primary btn-block m-t-3 mb-4 register">Sign In</button>
         <input type="hidden" name="next" value="{{ next }}" />
         
-      <button type="sign" class="btn btn-primary btn-block mb-4 google" disabled> 
-        <img class="img-fluid mr-2" src="../static/img/search.png" alt="google-logo" /> 
-        <span class="sign-g">Sign in with Google</span></button>
     </form>
       </center>
       

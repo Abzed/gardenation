@@ -31,42 +31,19 @@
     <br />
 
     <label for="category">Select product category</label>
-    <select style="background-color: inherit !important;" class="form-select mb-5" name="sub_category" 
+    <select style="background-color: inherit !important;" class="form-select mb-4" name="category" 
     id="category" onchange="getCategoryValue();" aria-label="Default select example" required>
         <option selected disabled>Choose category...</option>
         {% for item in category %}
-    <option value="{{item.subcategory}}" >{{item.category}}</option>
+    <option value="{{item.category}}" >{{item.category}}</option>
         {% endfor %}
     </select>
 
-    <div class="add-select">
-        <div>
-            <label for="category">Select product type</label>
-        <select id="type" class="form-select" name="type" aria-label="Default select example" onchange="getTypeValue();" required>
-        <option selected disabled>Type...</option>
-        <option value="Auction">Auction</option>
-        <option value="Rent">Rent</option>
-        <option value="Sell">Sell</option>
-        <option value="Buy">Buy</option>
-        </select> 
-        </div>
 
-        <div>
-            <label for="category">Condition</label>
-            <select id="condition" class="form-select" name="condition" aria-label="Default select example" 
-            onchange="getConditionValue();" required>
-        <option selected disabled>Product condition...</option>
-            <option value="New">New</option>
-            <option value="Used">Used</option>
-            <option value="Manufacturer Refurbished">Manufacturer Refurbished</option>
-            <option value="For Parts & Not Working">For Parts & Not Working</option>
-            </select>
-        </div>
-    </div>
 
     <div class="row mb-4">
         <div class="col">
-        <div class="form input mt-4">
+        <div class="form input">
             <label style="color: #010609;" class="form-label" for="price">Price</label>
             <input placeholder="Ksh.000" name="price" type="number" id="price" class="title" required />
         </div>
@@ -74,18 +51,6 @@
 
     </div>
 
-    <div class="form-check check mt-3 mb-3">
-        <input
-            class="negotiatable"
-            type="checkbox"
-            id="negotiatable"
-            name="negotiatable" 
-            value="False"
-        />
-        <label class="form-check-label" for="flexCheckChecked">
-            Is Negotiatable
-        </label>
-        </div>
 
             <div class="box" id="drop_zone">
                 <i class="fas fa-cloud-upload-alt"></i>
@@ -138,16 +103,6 @@
          required disabled />
         </div>
 
-        <div class="form-group input-precise">
-        <label class="form-label" for="form12">Precise location</label>
-        <input type="text" placeholder="Search" id="precise_location" name="precise_location" class="title address"
-        {% if user.precise_location %}
-          value="{{ user.precise_location }}"
-        {% else %}
-        value=""
-        {% endif %}
-       disabled />
-        </div>
 
         <a class="disabled" href=""><p class="use mt-3"><span style="padding-right: 3.96px;"><i class="fas fa-map-marker-alt"></i></span> Use my current location</p></a>
 
@@ -177,22 +132,8 @@
 
         <br />
 
-        <h4 class="loc_cont mt-4">Agreement Policy</h4>
         <hr />
 
-        <div class="form-check edits mt-4 mb-4">
-        <input
-            class=""
-            type="checkbox"
-            id="agreement" 
-            name="agreement" 
-            value="False"
-            required
-        />
-        <label class="form-check-label px-2" for="flexCheckChecked3">
-        I agree to terms & conditions
-        </label>
-        </div>
 
         <button style="border-radius: 8px !important;" class="btn btn-primary btn-sm" type="submit">Post product</button>
         
@@ -211,10 +152,6 @@
 
     <script>
 
-        $("input[type='checkbox']").on('change', function(){
-            $(this).val(this.checked ? "True" : "False");
-            console.log(this.value)
-       });
 
         function handleFileSelect(evt) {
             evt.stopPropagation();
@@ -306,19 +243,7 @@
             }
             getCategoryValue();
 
-            function getTypeValue()
-            {
-                var selectedValue = document.getElementById("type").value;
-                console.log(selectedValue);
-            }
-            getTypeValue();
-
-            function getConditionValue()
-            {
-                var selectedValue = document.getElementById("condition").value;
-                console.log(selectedValue);
-            }
-            getConditionValue();
+            
 
             document.addEventListener("wheel", function(event){
                 if(document.activeElement.type === "number"){

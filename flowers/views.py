@@ -662,7 +662,7 @@ def descending_saved(request, username):
 
 @login_required
 def add(request, username):
-    category = Category.objects.all()
+    all_category = Category.objects.all()
     user = get_object_or_404(Seller, seller__username=username)
     if request.method == 'POST':
         title = request.POST["title"]
@@ -670,12 +670,14 @@ def add(request, username):
         location = request.POST.get("location", user.location) 
         images = request.FILES.getlist('images')
         phone_number = request.POST.get("phone_number", user.seller.phone_number)
+        category = request.POST["category"]
+        
+        cat = Category.objects.get(category=category)
                 
         for image in images: 
             img = image    
                    
-        product = Product.objects.create(user=user, title=title, images=img, price=price, 
-            location=location)
+        product = Product.objects.create(user=user, title=title, images=img, price=price, category=cat, location=location)
         
         cumstomuser = CustomUser.objects.filter(username=username).update(phone_number=phone_number)
                    
@@ -687,7 +689,7 @@ def add(request, username):
                         
         return HttpResponseRedirect(reverse('posted', args=[username]))
     
-    return render(request,'./profiles/sellerprofile/add.html', {'user': user, 'category': category})
+    return render(request,'./profiles/sellerprofile/add.html', {'user': user, 'category': all_category})
 
 
 def registration_type(request):
@@ -923,21 +925,17 @@ def resetpassword(request):
 
 
 def signin(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('/')
-            else:
-                messages.add_message(request, messages.INFO, 'Invalid email or password. Please try again.')
-        else:
-            messages.add_message(request, messages.ERROR, 'Invalid email or password. Please try again.')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(request, username=username, password=password)
+    
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect('/')
+    else:
+        messages.add_message(request, messages.ERROR, 'Invalid email or password. Please try again.')
 
-    email = request.POST.get('email')
-    return render(request, 'authentication/login.html', {'email': email})
+    return render(request, 'authentication/login.html', {'email': username})
 
 @login_required
 def logout(request):
