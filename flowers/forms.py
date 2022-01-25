@@ -47,7 +47,7 @@ class ProductForm(forms.ModelForm):
         
     class Meta:
         model = Product
-        exclude = ("user", "view", "date", "category", "agreement")
+        exclude = ("user", "view", "date")
         
 class ProductImageForm(forms.ModelForm):
     

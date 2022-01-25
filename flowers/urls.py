@@ -78,9 +78,6 @@ urlpatterns=[
     path('logout/', views.logout, name='logout'),
     path('account-type', views.registration_type, name='registration_type'),
     path('login', views.signin, name='login'),
-    path('forgot-password', views.forgot_password, name='forgot_password'),
-    path('reset-request-sent', views.sent, name='sent'),
-    path('reset/<str:uidb64>/<str:token>', views.reset, name='reset'),
     ] 
 
 if settings.DEBUG:

@@ -502,7 +502,6 @@ def edit_product(request, uuid, username):
         if form.is_valid() and images_form.is_valid():           
             data = form.save(commit=False)
             data.user = user
-            data.category = data.sub_category.category
             data.save()
             # image_data = images_form.save(commit=False) 
             # image_data.product = data

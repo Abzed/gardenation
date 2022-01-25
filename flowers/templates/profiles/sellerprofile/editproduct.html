@@ -1,0 +1,33 @@
+{% load static %}
+{% load bootstrap5 %}
+{%include 'base.html'%}
+
+{% block styles %}
+<link href="{% static 'css/sellernav.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/posted.css' %}">  
+{% endblock  %}
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+<div class="col-md-9">
+    <div class="card mt-3 p-3 mb-5">
+        <h3 class="mt-3 mb-4">Edit Product</h3>
+    <form class="form-group" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{ backend_form }}
+        {% bootstrap_form form %} 
+        {{ images_form.management_form }} 
+        {% for f in images_form %}
+        {{ f.as_p }}
+        {% endfor %}
+
+        <br>
+        <button type="submit" class="btn btn-sm btn-outline-success">Submit</button>
+    </form> 
+    </div>
+</div>
+</div>
+
+{% endblock  %}
