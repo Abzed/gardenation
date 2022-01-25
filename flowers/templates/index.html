@@ -4,6 +4,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/universal.css' %}">  
+<link rel="stylesheet" href="{% static 'css/index.css' %}">  
 {% endblock  %}
   
 
@@ -51,14 +52,15 @@
       
       <div class="carousel-caption d-none d-md-block">
         <h1 class="mt-5 main-car-txt">Search for <br />
-          building products <br />
-          and finishes across Kenya <br />
+          flowers for different <br />
+          occassions and let your family  <br />
+          and friends know that you care...
           </h1>
-          <p class="mt-3 p-car">Browse more than 5,000 materials with new ones listed <br />
+          <p class="mt-3 p-car">Browse more than 5,000 flowers with new ones listed <br />
           on a daily basis near you.</p>
 
           <a class="mt-4" href="{% url 'browse' %}">
-          <button class="carousel-btn mt-5" type="button"><span class="carousel-btn-txt">Browse Products</span></button>
+          <button class="carousel-btn mt-5" type="button"><span class="carousel-btn-txt">Browse Flowers</span></button>
       </div>      
     </div>
 
@@ -119,6 +121,7 @@
 
           <a class="mt-4" href="{% url 'browse' %}">
           <button class="carousel-btn mt-5" type="button"><span class="carousel-btn-txt">Browse Products</span></button>
+          </a>
       </div>      
     </div>
 
@@ -157,17 +160,13 @@
           <div class="card category-card h-100">
           <div class="card-body">
               <h5 class="card-title"><div class="rounded-circles">
-              <img class="img-fluid" src="../static/img/fence.png" alt="external" />
+              <img class="img-fluid" src="../static/img/logo0.jpg" alt="external" />
               </div></h5>
               <p class="card-text lead mt-4">
               {{ category.0.category }} <br /></p>
 
               <p class="text-ad">
-                {% if external < 2 %}
-                {{external}} ad posted               
-                {% else %}
-                {{external}} ads posted
-                {% endif %}
+                {{wedding}} posted               
               </p>
 
           </div>
@@ -182,17 +181,13 @@
       <div class="card category-card h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/closet.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo1.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.1 }} <br /></p>
           
               <p class="text-ad">
-                {% if fitting < 2 %}
-                {{fitting}} ad posted               
-                {% else %}
-                {{fitting}} ads posted
-                {% endif %}
+                {{funeral}} posted               
               </p>
                           
       </div>
@@ -207,17 +202,13 @@
       <div class="card category-card cat-two h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/asterisk.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo2.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.2 }} <br /></p>
 
           <p class="text-ad">
-                {% if general < 2 %}
-                {{general}} ad posted               
-                {% else %}
-                {{general}} ads posted
-                {% endif %}
+                {{date}} posted               
               </p>
 
       </div>
@@ -232,18 +223,13 @@
         <div class="card category-card int-lg cat-two h-100">
         <div class="card-body">
             <h5 class="card-title"><div class="rounded-circles">
-            <img class="img-fluid" src='../static/img/3d.png' alt="external" />
+            <img class="img-fluid" src="../static/img/logo3.jpg" alt="external" />
             </div></h5>
             <p class="card-text lead mt-4">
               {{ category.3 }} <br /></p>
             
               <p class="text-ad">
-                {% if internal < 2 %}
-                {{internal}} ad posted               
-                {% else %}
-                {{internal}} ads posted
-                {% endif %}
-              </p>
+                {{mother}} posted               
 
         </div>
         </div>
@@ -257,17 +243,13 @@
       <div class="card category-card cat-top cat-two h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/dog-house.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo4.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.4 }} <br /></p>
           
             <p class="text-ad">
-              {% if structure < 2 %}
-              {{structure}} ad posted               
-              {% else %}
-              {{structure}} ads posted
-              {% endif %}
+              {{thanks}} posted               
             </p>
 
       </div>
@@ -282,17 +264,13 @@
       <div class="card category-card cat-top cat-two h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/palace.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo5.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.5 }} <br /></p>
           
             <p class="text-ad">
-              {% if superstructure < 2 %}
-              {{superstructure}} ad posted               
-              {% else %}
-              {{superstructure}} ads posted
-              {% endif %}
+              {{valentine}} posted               
             </p>
 
       </div>
@@ -307,17 +285,13 @@
       <div class="card category-card cat-top cat-two h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/water-tap.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo6.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.6 }} <br /></p>
           
             <p class="text-ad">
-              {% if taps < 2 %}
-              {{taps}} ad posted               
-              {% else %}
-              {{taps}} ads posted
-              {% endif %}
+              {{birthday}} posted               
             </p>
 
       </div>
@@ -332,17 +306,13 @@
       <div class="card category-card cat-top cat-two h-100">
       <div class="card-body">
           <h5 class="card-title"><div class="rounded-circles">
-          <img class="img-fluid" src='../static/img/hammer.png' alt="external" />
+          <img class="img-fluid" src="../static/img/logo.jpg" alt="external" />
           </div></h5>
           <p class="card-text lead mt-4">
             {{ category.7 }} <br /></p>
           
             <p class="text-ad">
-              {% if tools < 2 %}
-              {{tools}} ad posted               
-              {% else %}
-              {{tools}} ads posted
-              {% endif %}
+              {{holiday}} posted               
             </p>
           
       </div>
@@ -382,7 +352,7 @@
                 role="tab"
                 aria-controls="ex3-pills-1"
                 aria-selected="true"
-                >Popular products</a>
+                >Popular flowers</a>
             </li>
 
             {% endif %}
@@ -397,7 +367,7 @@
                 role="tab"
                 aria-controls="ex3-pills-2"
                 aria-selected="false"
-                >Latest products</a>
+                >Latest flowers</a>
             </li>
             {% endif %}
 
@@ -443,8 +413,8 @@
 
                         <div class="card-foot-icon">
 
-                          <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
-                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                          
+                          
                         {% if user.is_authenticated %}
                         <div class="popup">
                           <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
@@ -506,8 +476,8 @@
 
                       <div class="card-foot-icon">
 
-                        <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
-                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                        
+                          
                         {% if user.is_authenticated %}
                         <div class="popup">
                           <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>
@@ -569,9 +539,7 @@
                       <p class="card-text price">Ksh. {{item.price}}</p>
 
                       <div class="card-foot-icon">
-                        
-                        <a type="button" title="Share" class="open-button"> <i class="fas fa-share-alt"></i></a>
-                          <a class="compare fone" title="Compare" data-compare="{{item.uuid}}"><i class="fas fa-exchange-alt ic"></i></a>
+                          
                         {% if user.is_authenticated %}
                         <div class="popup">
                           <a class="add" title="Save this product" data-product="{{item.uuid}}"><i class="far fa-heart ic"></i></a>

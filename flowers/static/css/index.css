@@ -1,0 +1,614 @@
+.img-car{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+    text-align: left !important;
+}
+
+.carousel-btn{
+    height: 48px;
+    width: 200px;
+    left: 0px;
+    top: 0px;
+    border-radius: 8px;
+    background-color: #1C7BB8;
+    border: none;
+}
+
+.carousel-btn-txt{
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color:#FFFFFF;
+}
+
+
+.main-car-txt{
+    font-family: Lato;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: 0em;
+    color:#010609;
+}
+
+.p-car{
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    color:#010609;
+}
+
+
+
+
+.shop{
+    font-family: Lato;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.line{
+    border-bottom: 3px solid #1C7BB8;
+}
+
+.rounded-circles{
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 11px;
+    background-color: #DCEEFA;
+    border-radius: 50%;
+}
+
+.lead{
+    font-family: Lato;
+    font-size: 17px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-overflow: ellipsis;
+}
+
+.text-ad{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.category-card .card-body{
+    height: 171px;
+    width: 287px;
+    max-height: 100%;
+    border-radius: 8px;
+}
+
+.category-card:hover{
+    background-color: #1C7BB8;
+    color: #FFFFFF !important;
+    cursor: pointer;
+}
+
+.category-card:hover  .rounded-circles{
+    background-color: white;
+}
+
+
+
+
+.overflow{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 22px;
+    width: 187px;
+    border-radius: nullpx;
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #010609;
+    text-transform: capitalize;
+}
+
+.card-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ic{
+    margin-left: 8px;
+}
+
+.lc{
+    margin-right: 3px;
+}
+
+.card-foot-icon i{
+    
+    height: 11.3px;
+    width: 12.5px;
+    border-radius: 0px;
+    color: #292D32;
+}
+
+.add{
+    cursor: pointer;
+}
+
+.add:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+}
+
+.fone{
+    cursor: pointer;
+}
+
+.fone:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+}
+
+.product-card{
+    width: auto;
+    height: 347px;
+    border-radius: 8px;
+}
+
+
+.product-img{
+    width: 275px;
+    height: 218px;;
+    padding: 7px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-card:hover > .product-img{
+    transform: scale(0.99);
+    transition: all .2s ease-in-out;
+    padding: 0px;
+}
+
+.product-heading{
+    font-family: Lato;
+    text-align: left;
+    color: #1C7BB8;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+    border-bottom: 3px solid #1C7BB8;
+}
+
+.location{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.prod-cat{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #526A7A;
+}
+
+.prod-location{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #526A7A;
+}
+
+.prod-icon-location{
+    padding-right: 9.96px;
+}
+
+.price{
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1C7BB8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.to-top-btn{
+    height: 44px;
+    width: 153px;
+    float: right !important;
+    border-radius: 8px;
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    padding: 10px, 20px, 10px, 20px;
+    border: none;
+}
+
+.to-top-btn:hover{
+    background-color: #FFFFFF;
+    color: #1C7BB8;
+}
+
+.to-top-icon{
+    padding-left: 14px;
+}
+
+.tabs{
+    width: 213px;
+    height: 34px;
+    color: #1C7BB8;
+    border-bottom: 1px solid #1C7BB8;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.main-tab .tabs{
+    width: 175px;
+    text-align: left;
+}
+
+.main-tab .tabs:hover{
+    width: 163px;
+    height: 34px;
+    color: #1C7BB8;
+    padding: 3px;
+    background: #DCEEFA !important;
+    border: 1px solid #1C7BB8 !important;
+}
+
+.actived{
+    width: 103px;
+    height: 34px;
+    color: #1C7BB8;
+    padding: 4px;
+    background: #DCEEFA !important;
+    border: 1px solid #DCEEFA !important;
+}
+
+.to-left{
+    margin-left: -50%;
+}
+
+.disabled{
+    opacity:0.6; 
+    pointer-events: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+    .product-card{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width: 2000px) {
+    /* for sumo sized (mac) screens */
+}
+@media only screen and (max-device-width: 480px) {
+   /* styles for mobile browsers smaller than 480px; (iPhone) */
+   .to-left{
+       margin-left: auto;
+       display: inline;
+   }
+
+   .tabs{
+       text-align: center;
+       border-bottom: none !important;
+       width: 150px;
+   }
+
+   .product-card{
+    width: 100%;
+    height: 347px;
+    border-radius: 8px;
+}
+
+}
+@media only screen and (device-width: 768px) {
+   /* default iPad screens */
+   .tabs{
+    padding-left: 20px;
+}
+
+
+
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+  
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+}
+
+
+
+
+
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .open-button:hover{
+      /* color: #1C7BB8 !important; */
+      font-size: 16px;
+      }
+
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin:-50px 0 0 -100px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 320px;
+    padding: 10px;
+    background-color: #E5E5E5;
+  }
+  
+  /* When the inputs get focus, do something */
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    /* background-color: #1C7BB8; */
+    /* color: #FFFFFF; */
+    border: none;
+    cursor: pointer;
+    width: 69%;
+    opacity: 0.8;
+    padding: 3px;
+    font-size: 24px;
+    border-radius: 8px !important;
+  }
+
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: #1C7BB8;
+    margin-top: 9px;
+    width: 55px;
+    height: 28px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 8px !important;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1C7BB8 !important;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  .fone{
+    cursor: pointer;
+}
+
+.fone:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+}
+
+
+
+
+  .popup2 {
+    width: 100%;
+    position: fixed;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    top: 0;
+    z-index: 100;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup2 .popuptext2 {
+    visibility: hidden;
+    width: 59%;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #1C7BB8;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    margin-top: 2%;
+  }
+  
+  /* Popup arrow */
+  .popup2 .popuptext2::after {
+    content: "";
+    position: fixed;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup2 .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

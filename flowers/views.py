@@ -7,25 +7,21 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as django_logout
-from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.core.mail import EmailMessage
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.core.paginator import Paginator,PageNotAnInteger, InvalidPage
+from django.core.paginator import Paginator
 from django.urls import reverse
 from django.conf import settings
-from django.db.models import Q, query
-from django.template import RequestContext
+from django.db.models import Q
 from .models import *
 from .forms import *
 from django.contrib.messages import constants as messages
 from django.contrib import messages
-from django.core import serializers
 import re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.hashers import check_password
@@ -43,19 +39,19 @@ def index(request, uuid=None):
     latest = Product.objects.all().order_by('-date')[0:4]
     popular = Product.objects.all().order_by('-view')[0:4]
     
-    external = Product.objects.filter(category__category__contains='External Works').all().count()
-    fitting = Product.objects.filter(category__category__contains='Fitting & Finishings').all().count()
-    general = Product.objects.filter(category__category__contains='General Finishes').all().count()
-    internal = Product.objects.filter(category__category__contains='Internal Finishes').all().count()
-    structure = Product.objects.filter(category__category__contains='Structure').all().count()
-    superstructure = Product.objects.filter(category__category__contains='Superstructure').all().count()
-    taps = Product.objects.filter(category__category__contains='Taps').all().count()
-    tools = Product.objects.filter(category__category__contains='Tools & Equipments').all().count()
+    wedding = Product.objects.filter(category__category__contains='Wedding').all().count()
+    funeral = Product.objects.filter(category__category__contains='Sympathy and Funeral').all().count()
+    date = Product.objects.filter(category__category__contains='Date').all().count()
+    mother = Product.objects.filter(category__category__contains="Mother's Day").all().count()
+    thanks = Product.objects.filter(category__category__contains='Thank You').all().count()
+    valentine = Product.objects.filter(category__category__contains='Valentines').all().count()
+    birthday = Product.objects.filter(category__category__contains='Birthday').all().count()
+    holiday = Product.objects.filter(category__category__contains='Holidays').all().count()
     
     return render(request, 'index.html', {'products': products, 'category': category, 
-    'wishlist':wishlist, 'latest': latest, 'popular': popular, 'external': external, 'fitting': fitting, 
-    'general': general, 'internal': internal, 'structure': structure, 'superstructure': superstructure, 
-    'taps': taps, 'tools': tools})
+    'wishlist':wishlist, 'latest': latest, 'popular': popular, 'wedding': wedding, 'funeral': funeral, 
+    'date': date, 'mother': mother, 'thanks': thanks, 'valentine': valentine, 
+    'birthday': birthday, 'holiday': holiday})
 
 def singleproduct(request, uuid):
     category = Category.objects.all()

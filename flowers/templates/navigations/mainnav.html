@@ -13,7 +13,7 @@
         <div class="d-flex nav-bg">
         <a class="navbar-brand me-2 mb-1 d-flex align-items-center nav-bg" href="/">
             <img class="nav-bg" 
-            src="{% static 'img/logo-supa-removebg.png' %}"
+            src="{% static 'img/logo.jpg' %}"
             height="40"
             alt="logo"
             loading="lazy"
@@ -60,16 +60,16 @@
           
         <ul class="navbar-nav flex-row nav-bg">
         <li class="nav-item me-3 me-lg-1 nav-bg">
-            <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'buyerprofile' request.user.first_name %}">
+            <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'buyerprofile' request.user.username %}">
             <span class="nav-bg"><i class="far fa-user fa-lg nav-bg user-icon"></i></span>
-            <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.first_name}}</span>
+            <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.username}}</span>
             
             </a>
         </li>
 
         
         <li class="nav-item dropdown me-3 me-lg-1 nav-bg">
-            <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'buyerprofile' request.user.first_name %}"
+            <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'buyerprofile' request.user.username %}"
             id="navbarDropdownMenuLink"
             role="button"
             data-mdb-toggle="dropdown"
@@ -84,13 +84,13 @@
             aria-labelledby="navbarDropdownMenuLink"
             >
             <li>
-                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'buyerprofile' request.user.first_name %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
+                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'buyerprofile' request.user.username %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
             </li>
             <li class="disabled">
                 <a class="dropdown-item nav-bg user profile-hover disabled" href=""><i class="far fa-envelope"></i> <span class="prof-icons"> Inbox </span> </a>
             </li>
             <li>
-                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'wishlist' request.user.first_name %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
+                <a class="dropdown-item nav-bg user profile-hover" href="{% url 'wishlist' request.user.username %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
             </li>
             <li>
                 <a class="dropdown-item nav-bg user profile-hover logout-line" href="/logout"><i class="fas fa-sign-out-alt"></i> <span class="prof-icons"> LOGOUT </span> </a>
@@ -104,15 +104,15 @@
 
         <ul class="navbar-nav flex-row nav-bg">
           <li class="nav-item me-3 me-lg-1 nav-bg">
-              <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'sellerprofile' request.user.first_name %}">
+              <a class="nav-link d-sm-flex align-items-sm-center nav-bg" href="{% url 'sellerprofile' request.user.username %}">
               <span class="nav-bg"><i class="far fa-user fa-lg nav-bg user-icon"></i></span>
-              <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.first_name}}</span>
+              <span class="d-none d-sm-block ms-1 nav-bg user-main"> Hi,{{ request.user.username}}</span>
               
               </a>
           </li>
   
           <li class="nav-item dropdown me-3 me-lg-1 nav-bg">
-              <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'sellerprofile' request.user.first_name %}"
+              <a class="nav-link dropdown-toggle hidden-arrow nav-bg" href="{% url 'sellerprofile' request.user.username %}"
               id="navbarDropdownMenuLink"
               role="button"
               data-mdb-toggle="dropdown"
@@ -125,13 +125,13 @@
               aria-labelledby="navbarDropdownMenuLink"
               >
               <li>
-                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'sellerprofile' request.user.first_name %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'sellerprofile' request.user.username %}"><i class="far fa-user"></i><span class="prof-icons"> My Account </span> </a>
               </li>
               <li class="">
-                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'add' request.user.first_name %}"><i class="fas fa-plus-circle"></i> <span class="prof-icons"> Sell Product </span> </a>
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'add' request.user.username %}"><i class="fas fa-plus-circle"></i> <span class="prof-icons"> Sell Product </span> </a>
               </li>
               <li>
-                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'saved' request.user.first_name %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
+                  <a class="dropdown-item nav-bg user profile-hover" href="{% url 'saved' request.user.username %}"><i class="far fa-heart"></i> <span class="prof-icons"> Saved Items </span> </a>
               </li>
               <li>
                   <a class="dropdown-item nav-bg user profile-hover logout-line" href="/logout"><i class="fas fa-sign-out-alt"></i> <span class="prof-icons"> LOGOUT </span> </a>
@@ -209,14 +209,14 @@
         
           
             <a href="{% url 'browse' %}">
-            <button class="navbar-toggler bottom-nav-names"><span class="bottom-nav-names">Browse products</span></button>
+            <button class="navbar-toggler bottom-nav-names"><span class="bottom-nav-names">Browse flowers</span></button>
             </a>
           </div>
 
           <div class="bottom-second">
 
             {% if user.is_seller %}
-            <a type="button" href="{% url 'add' request.user.first_name %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
+            <a type="button" href="{% url 'add' request.user.username %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
             {% elif user.is_buyer %}
             <a type="button" href="{% url 'sellersignup' %}" class="btn resp1 bottom-sell"><span class="bottom-sell-name">Sell Product</span></a>
             {% else %}
@@ -227,7 +227,7 @@
           
           {% if user.is_buyer %}
             
-          <a class="resp3" href="{% url 'wishlist' request.user.first_name %}">
+          <a class="resp3" href="{% url 'wishlist' request.user.username %}">
             <button
               class="navbar-toggler text-white"
               type="button"
@@ -240,7 +240,7 @@
              
   
               
-              <a class="resp4" href="{% url 'wishlist' request.user.first_name %}">
+              <a class="resp4" href="{% url 'wishlist' request.user.username %}">
               <button class="navbar-toggler text-white"
               type="button">
              <i class="far fa-heart b-icon"></i> <span class="bottom-nav-names"> Wishlist</span>
@@ -262,7 +262,7 @@
              
   
               
-              <a class="resp6" href="{% url 'saved' request.user.first_name %}">
+              <a class="resp6" href="{% url 'saved' request.user.username %}">
               <button class="navbar-toggler text-white"
               type="button">
              <i class="far fa-heart b-icon"></i> <span class="bottom-nav-names"> Wishlist</span>
