@@ -805,6 +805,8 @@ def buyersignup(request):
                 
                 buyer = Buyer.objects.create(buyer=user)
                 
+                login(request, user)
+                return HttpResponseRedirect('/')                
 
                 # login(request, user)
                 # return redirect('/')

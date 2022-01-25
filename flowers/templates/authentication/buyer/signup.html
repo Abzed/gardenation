@@ -19,24 +19,20 @@
     <div class="container register-wrapper mt-5">
 
     <div class="welcome-pair">
-        <h1 class="register-welcome mt-3">Welcome To Buildsoko</h1>
+        <h1 class="register-welcome mt-3">Welcome To Gardenation</h1>
     <center>
-        <p class="welcome-note mt-4">Get full access to building products and finishes across Kenya.</p>
+        <p class="welcome-note mt-4">Get full access to flowers across Kenya.</p>
     </center>
     </div>
 
     <form class="p-0" action="{% url 'buyersignup' %}" id="buyerform" method="post" autocomplete="off">
         {% csrf_token %}
-
-        {% for message in messages %}
-            <p style="color: red;"> <i class="fas fa-exclamation-triangle"></i>  {{message}}</p>
-            {% endfor %}
         
     <div class="name-center">
         
     <div class="inpt">
-        <label class="text-left name-register name-left" for="first_name">First Name</label>
-        <input type="text" name="first_name" class="form-control inpt-name form-control-lg" autocomplete="off" required />
+        <label class="text-left name-register name-left" for="first_name">Username</label>
+        <input type="text" name="username" class="form-control inpt-name form-control-lg" autocomplete="off" required />
     </div>
     <div class="inpt">
         <label for="last_name"></label>
@@ -73,41 +69,6 @@
     </div>
     </center>
 
-    <div class="gender-left d-flex justify-content-between mt-4">
-    <div class="form-check form-check-inline">
-    <input
-        class="form-check-input"
-        type="radio"
-        name="gender"
-        id="inlineRadio1"
-        value="Male"
-    />
-    <label class="form-check-label" for="inlineRadio1">Male</label>
-    </div>
-
-    <div class="form-check form-check-inline">
-    <input
-        class="form-check-input"
-        type="radio"
-        name="gender"
-        id="inlineRadio2"
-        value="Female"
-        
-    />
-    <label class="form-check-label" for="inlineRadio2">Female</label>
-    </div>
-
-    <div class="form-check form-check-inline">
-    <input
-        class="form-check-input"
-        type="radio"
-        name="gender"
-        id="inlineRadio3"
-        value="Other"
-    />
-    <label class="form-check-label" for="inlineRadio3">Custom</label>
-    </div>
-    </div>
 
     <br />
     <center>
@@ -115,15 +76,6 @@
     </center>
     <input type="hidden" name="next" value="{{next}}" />
     </form>
-
-
-
-    <br />
-    <center>
-    <button type="submit" class="btn btn-primary btn-block mb-4 google"> 
-        <img class="img-fluid mr-2" src="../static/img/search.png" alt="google-logo" /> 
-        <span class="sign-g">Sign in with Google</span></button>
-    </center>
     
 
     <div class="or-hr">
