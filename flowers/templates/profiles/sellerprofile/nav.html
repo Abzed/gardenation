@@ -1,0 +1,339 @@
+
+
+{% load static %}
+{% load bootstrap5 %}
+
+{% block styles %}
+<link href="{% static 'css/sellernav.css' %}" rel="stylesheet"> 
+<link href="{% static 'css/universal.css' %}" rel="stylesheet"> 
+{% endblock  %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light vendornav">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler selnav-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="sellernav-flex width-rem">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <!-- Navbar brand -->
+        <a class="navbar-brand sel-brand mt-2 " href="/">
+          <img 
+          src="{% static 'img/logo.jpg' %}"
+            height="33"
+            alt="gardenation Logo"
+            loading="lazy"
+          />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item search-profile">
+            <form method="get" action="{% url 'search_profile' request.user.username %}" autocomplete="off">
+                <input type="text" placeholder="Type in your keyword to search" id="search_profile" name="search_profile" class="form-control" />
+              </form>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+  
+      <!-- Right elements -->
+      <div class="d-flex align-items-center right-sel-nav img-body">
+        <!-- Icon -->
+        <a class="text-reset remove-sel-tog me-3 disabled" href="#">
+            <i class="far fa-comment-alt"></i>
+        </a>
+  
+        <!-- Notifications -->
+        <a
+          class="text-reset me-3 remove-sel-tog dropdown-toggle hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+        <i class="far fa-bell"></i>
+          <span class="badge rounded-pill badge-notification bg-primary">0</span>
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <li>
+            <a class="dropdown-item" href="#">No notification available</a>
+          </li>
+        </ul>
+
+        <a class="text-reset remove-sel-tog me-3">
+            <span>{{request.user.username}} <span class="hide-last">{{request.user.last_name}}</span></p>
+        </a>
+  
+        <!-- Avatar -->
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow remove-sel-tog prof-pic"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {% if request.user.avatar %}
+
+          <img
+            src="{{ request.user.avatar.url }}"
+            class="rounded-circle rounded remove-sel-tog pro-img"
+            height="32"
+            width="32"
+            alt="profile-photo"
+            loading="lazy"
+          />
+            
+          {% else %}
+          <img
+            src="{% static 'img/default.png' %}"
+            class="rounded-circle remove-sel-tog pro-img"
+            height="32"
+            alt="profile-photo"
+            loading="lazy"
+          />
+          {% endif %}
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <li>
+            <a class="dropdown-item" href="{% url 'sellerprofile' request.user.username %}">My profile</a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+
+
+
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-light vendornav2 p-4">
+      <div class="d-flex justify-content-between">
+
+        <div>
+          <h5 class="text-dark h4 mb-3">
+            <a class="navbar-brand sel-brand mt-2 " href="/">
+              <img 
+              src="{% static 'img/logo-supa-removebg.png' %}"
+                height="33"
+                alt="gardenation Logo"
+                loading="lazy"
+              />
+            </a>
+          </h5>
+        </div>
+
+        <div class="d-flex align-items-center img-body">
+          <!-- Icon -->
+          <a class="text-reset me-3 disabled" href="#">
+              <i class="far fa-comment-alt"></i>
+          </a>
+    
+          <!-- Notifications -->
+          <a
+            class="text-reset me-3 dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="far fa-bell"></i>
+            <span class="badge rounded-pill badge-notification bg-primary">0</span>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">No notification available</a>
+            </li>
+          </ul>
+  
+          <a class="text-reset me-3">
+              <span>{{request.user.username}} <span class="hide-last">{{request.user.last_name}}</span></p>
+          </a>
+    
+          <!-- Avatar -->
+          <a
+            class="dropdown-toggle d-flex align-items-center hidden-arrow prof-pic"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {% if request.user.avatar %}
+  
+            <img
+              src="{{ request.user.avatar.url }}"
+              class="rounded-circle rounded pro-img"
+              height="32"
+              width="32"
+              alt="profile-photo"
+              loading="lazy"
+            />
+              
+            {% else %}
+            <img
+              src="{% static 'img/default.png' %}"
+              class="rounded-circle pro-img"
+              height="32"
+              alt="profile-photo"
+              loading="lazy"
+            />
+            {% endif %}
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="{% url 'sellerprofile' request.user.username %}">My profile</a>
+            </li>
+  
+            <li>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <a class="main main-sub" href="{% url 'dashboard' request.user.username %}">
+       <span class="dash-padding" style="padding-right: 19px;font-size: 21px;">
+            <i class="fas fa-chart-pie"></i>
+        </span> <span class="name-to-hide">Dashboard</span>
+      </a><br /><br />
+      <a class="main main-sub" href="{% url 'posted' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-window-restore"></i></span><span class="name-to-hide">Your Products</span></a><br /><br />
+      <a class="main main-sub" href="{% url 'add' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="fas fa-plus-circle"></i></span><span class="name-to-hide">Add new products</span></a><br /><br />
+      <a class="main main-sub" href="{% url 'saved' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-heart"></i></span><span class="name-to-hide">Saved</span></a><br /><br />
+      <a class="main main-sub" href="{% url 'sellerprofile' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-user-circle"></i></span><span class="name-to-hide">Account</span></a><br /><br />
+      <a class="main main-sub" href="/logout"><span style="padding-right: 19px;font-size: 21px;"><i class="fas fa-sign-out-alt"></i></span><span class="name-to-hide">Logout</span></a><br />
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-light bg-light vendornav2">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-12 col-md-4 col-lg-3 col-sm-12 light bg-light">
+     <div class="hide-container">
+      <button
+      class="main navbar-toggler side-toggler icons-to-show mt-3 mb-3"
+      type="button"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <br class="icons-to-show" />
+
+      <h4 class="main name-to-hide main-title mt-5">MAIN</h4>      
+    
+      <a class="dashboard-btn" href="{% url 'dashboard' request.user.username %}">
+        <button class="dash-btn dash"><span class="dash-padding" style="font-size: 21px;">
+            <i class="fas fa-chart-pie"></i>
+        </span> <span class="name-to-hide">Dashboard</span></button>
+      </a>
+      <br>
+
+      <h4 class="main name-to-hide mt-5">PRODUCTS</h4>
+
+      <a class="main main-sub" href="{% url 'posted' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-window-restore"></i></span><span class="name-to-hide">Your Products</span></a><br /><br />
+      <a class="main main-sub" href="{% url 'add' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="fas fa-plus-circle"></i></span><span class="name-to-hide">Add new products</span></a><br /><br />
+      <a class="main main-sub" href="{% url 'saved' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-heart"></i></span><span class="name-to-hide">Saved</span></a><br /><br />
+      <br />
+
+      <h4 class="main name-to-hide mt-4">SETTINGS</h4>
+      <a class="main main-sub" href="{% url 'sellerprofile' request.user.username %}"><span style="padding-right: 19px;font-size: 21px;"><i class="far fa-user-circle"></i></span><span class="name-to-hide">Account</span></a><br /><br />
+      <a class="main main-sub" href="/logout"><span style="padding-right: 19px;font-size: 21px;"><i class="fas fa-sign-out-alt"></i></span><span class="name-to-hide">Logout</span></a><br /><br />
+    </div> 
+      
+    </div>
+
+
+
+
+
+
+
+
+  <script>
+
+    var width = $(window).width(); 
+    var width2 = $(window).width(); 
+
+    if ((width >= 1024)) {
+      $('.sellernav-flex').contents().unwrap();
+      $('#search_profile').attr('size',27);
+    }
+    else {
+      $('.sellernav-flex').contents().wrap();
+    }
+
+    if ((width2 <= 767)) {
+      $('.hide-container').hide();
+      $('.vendornav').hide();
+      $('.vendornav2').show();
+      $('.main-sub').removeClass('main');
+      $('.main-sub').addClass('main2');
+    }
+    else {
+      $('.hide-container').show();
+      $('.vendornav').show();
+      $('.vendornav2').hide();
+      $('.dash-padding').css('padding-right', '19px');
+      $('.main-sub').removeClass('main2');
+      $('.main-sub').addClass('main');
+    }
+
+    $('.navbar-toggler').click(function(){
+      $('.remove-sel-tog').slideToggle()
+
+
+    })
+
+  </script>

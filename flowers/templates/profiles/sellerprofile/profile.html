@@ -1,0 +1,281 @@
+{%include 'base.html'%}
+{% load static %}
+{% load cloudinary %}
+
+{% block styles %}
+<link href="{% static 'css/universal.css' %}" rel="stylesheet"> 
+<link rel="stylesheet" href="{% static 'css/sidenav.css' %}">  
+{% endblock  %}
+  
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+<div class="col-md-8 col-lg-9 col-12 col-sm-12 light2"> 
+<div class="card mt-3">
+
+    <div class="card-header">
+    
+        <h3 class="account-det mt-3">Account details</h3>
+        
+        <h4 class="account-det mt-4">Personal information</h4>
+        
+        <hr style="width: 75%; color: #AFD8F3;" />
+
+        {% for message in messages %}
+{% if message.tags == "error"%}
+<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+  <button type="button" id="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}{{ message.tags|title }}{% endif %}!
+  </strong> {{ message }}
+</div>
+{% else %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+  <button type="button" id="close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}{{ message.tags|title }}{% endif %}!
+  </strong> {{ message }}
+</div>
+{% endif %}
+{% endfor %}
+
+
+<form class="p-0" action="{% url 'sellerprofile_update' request.user.username %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="d-block profile-avatar mt-5 mb-4">  
+
+    <center>
+        {% if profile.seller.avatar.url != null  %}
+          <img class="img-fluid rounded" 
+          src="{{profile.seller.avatar.url}}" alt={{profile.seller.username}}-avatar />
+          {% else %}
+          <img class="img-fluid rounded" 
+          src="{% static 'img/default.png' %}" alt={profile.seller.username} />
+          {% endif %}
+          <h5 class="avatar-name mt-3">{{profile.buyer.username| title}} {{profile.buyer.last_name| title}}</h5>
+          <label class="change-avatar" for="avatar">Change Avatar</label>
+          <br>
+          <input type="file" id="avatar" style="display:none;" name="avatar" />
+          </center>
+
+
+</div>
+
+
+
+<div class="profile-inputs">
+<div class="row mb-4">
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="username">Username</label>
+        <input type="text" name="username" value="{{profile.seller.username| title}}"
+          id="username" class="form-control" />
+        
+    </div>
+    </div>
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="last_name">Last name</label>
+        <input type="text" name="last_name" value="{{profile.seller.last_name| title}}" id="last_name" class="form-control" />
+       
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="profile-inputs">
+<div class="row mb-4">
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="business_name">Business Name</label>
+        <input type="text" name="business_name" value={{profile.business_name}} id="business_name" class="form-control" />
+       
+    </div>
+    </div>
+    <div class="col">
+    <div class="form-group">
+    <label class="form-label" for="email">Email</label>
+    <input type="email" name="email" value={{profile.seller.email}} id="email" class="form-control" />
+        
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="profile-inputs">
+    <div class="row mb-4">
+        <div class="col">
+        <div class="form-group">
+            <label class="form-label" for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" value="{{profile.seller.phone_number}}" id="phone_number" class="form-control" />
+           
+        </div>
+        </div>
+    </div>
+    </div>
+
+<div class="profile-input-location mt-3">
+    <div class="row mb-4">
+        <div class="col">
+        <div class="form-group">
+        <label class="form-label" for="location">Location</label>
+        <input type="text" name="location" value="{{profile.location|truncatechars:26}}" id="location" class="form-control" />
+           
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+
+<br>
+
+<button type="submit" class="btn btn-primary mt-3" >Update Profile</button>
+</form>
+
+
+<h4 class="change-pass mt-5">Change Password</h4>
+
+<hr style="color: #AFD8F3; width: 60%;" />
+
+<form class="p-0" action="{% url 'changesellerpassword' request.user.username %}" method="post">
+    {% csrf_token %}           
+<div class="pass-form mb-4">
+    <label class="form-label" for="oldpass">Old Password</label>
+    <br>
+    <input type="password" id="oldpass" name="oldpassword" />
+    <!-- <i class="far fa-eye-slash" id="togglePassold"></i>
+    <i class="far fa-eye" id="togglePassold-slash"></i> -->
+    <br>
+    <br>
+    <label class="form-label" for="newpass">New Password</label>
+    <br>
+    <input type="password" id="newpass" name="password1" class="form-group" />
+    <!-- <i class="far fa-eye-slash" id="togglePassnew"></i>
+    <i class="far fa-eye" id="togglePassnew-slash"></i> -->
+    <br>
+    <br>
+
+    <label class="form-label" for="confirm">Confirm New Password</label>
+    <br>
+    <input type="password" id="confirm" name="password2" class="form-group" />
+    <!-- <i class="far fa-eye-slash" id="confirmpass"></i>
+    <i class="far fa-eye" id="confirmslash"></i> -->
+    <br>
+    <br>
+
+    <button type="submit" class="pass-btn">Change Password</button>
+</div>
+</form>
+
+<h4>Delete Account</h4>
+
+<hr />
+
+<p>This will permanently delete your <br />
+account and all of its data. You will <br />
+not be able to reactivate this account.</p>
+
+<button type="button" id="myBtn" class="btn btn-outline-primary delete-btn">Delete Account</button>
+    
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Your account will be permanently deleted...</p>
+      <div>
+        <a href="{% url 'delete_seller_account' request.user.username %}" type="button" class="btn btn-danger">delete</a>
+          <button type="button" id="close-btn" class="btn btn-secondary">cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+<br />
+<br />       
+<br />
+
+<script>
+
+$(document).ready(function(){
+    $("#togglePassold-slash").click(function(){
+        const password = document.querySelector('#oldpass');
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+      $("#togglePassold").toggle()
+    });
+
+    $("#togglePassnew-slash").click(function(){
+        const password = document.querySelector('#newpass');
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+      $("#togglePassnew").toggle()
+    });
+
+    $("#confirmslash").click(function(){
+        const password = document.querySelector('#confirm');
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+      $("#confirmpass").toggle()
+    });
+});
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+var btnClose = document.getElementById("close-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+btnClose.onclick = function() {
+modal.style.display = "none";
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+
+$("#avatar").change(function() {
+$(".change-avatar").text(this.files[0].name);
+});
+
+setTimeout(function() {
+$('.alert').fadeOut('slow');
+}, 3000);
+
+$("#close").click(function(){
+$(".alert").hide()
+})
+
+</script>
+
+{% endblock  %}

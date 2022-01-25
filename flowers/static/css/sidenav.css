@@ -1,0 +1,612 @@
+.profile-side-nav-main{
+    width: 207px;
+    height: auto;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px !important;
+    background-color: #FFFFFF;
+}
+
+.side-prof-nav-name{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #082435;
+    padding-left : 7px;
+}
+
+.prof-side-nav-link:hover{
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+    border-radius: 8px !important;
+}
+
+.prof-side-nav-link a:hover{
+    color: #FFFFFF;
+}
+
+.prof-side-nav-link:hover .side-prof-nav-name{
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+}
+
+.prof-side-nav-link:active{
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+}
+
+.log-out-link{
+    border-top: 1px solid black;
+}
+
+.account-det{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.30000001192092896px;
+    text-align: left;
+    color: #010609;
+}
+
+.profile-avatar{
+    margin-left: -23%;
+}
+
+.profile-avatar img{
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+.avatar-name{
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.30000001192092896px;
+    color: #082435;
+}
+
+.change-avatar{
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.30000001192092896px;
+    text-align: left;
+    color: #1C7BB8;
+    text-decoration: none;
+    border-bottom: 1px solid #1C7BB8;
+    cursor: pointer !important;
+}
+
+.profile-inputs{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-inputs input{
+    background: url(../img/check.svg) no-repeat scroll 7px 7px;
+    background-size: 21px;
+    background-position: 97% center;
+    display: flex;
+    width: 25vw;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #1DB954;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+}
+
+.profile-inputs label{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+}
+
+.profile-input-location input{
+    background: url(../img/check.svg) no-repeat scroll 7px 7px;
+    background-size: 21px;
+    background-position: 97% center;
+    display: flex;
+    width: 45%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #1DB954;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+}
+
+.profile-input-location label{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+}
+
+.profile-input-precise input{
+    background: url(../img/find.png) no-repeat scroll 7px 7px;
+    background-size: 21px;
+    background-position: 5% 50%;
+    display: flex;
+    width: 45%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #1DB954;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+    padding: 0px 51px;
+}
+
+.profile-input-precise label{
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #010609 !important;
+}
+
+.use{
+    font-family: Mulish;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+    color: #1C7BB8;
+}
+
+.loc{
+    padding-right: 7px;
+}
+
+textarea{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 75%;
+    border: 1px solid #AFD8F3;
+    border-radius: 8px !important;
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #859DAD;
+    padding: 12px 25px;
+    box-sizing: border-box;
+    resize: none;
+    }
+
+.change-pass{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.30000001192092896px;
+    text-align: left;
+    color: #082435;    
+}
+
+.pass-btn{
+    height: 48px;
+    width: 200px;
+    border-radius: 8px !important;
+    background-color: #1C7BB8;
+    color: #FFFFFF;
+    border: none;
+}
+
+.pass-form input{
+    height: 48px;
+    width: 45%;
+    left: 0px;
+    top: 22px;
+    border-radius: 8px;
+    border: 1px solid #1C7BB8 !important;    
+}
+
+.fa-eye-slash{
+    font-size: 21px;
+    position: absolute;
+    margin-left: -4.5%;
+    margin-top: 1.5%;
+    color: #1C7BB8;
+}
+
+.fa-eye{
+    font-size: 21px;
+    position: absolute;
+    margin-left: -4.5%;
+    margin-top: 1.5%;
+    color: #1C7BB8;
+}
+
+.delete-btn{
+    height: 48px;
+    width: 200px;
+    border: 1px solid #1C7BB8;
+    border-radius: 8px !important;
+    color: #1C7BB8;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+}
+
+.modal {
+    width: 300px !important;
+    height: auto;
+    display: none; /* Hidden by default */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /* padding: 200px; */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    width: 300px !important;
+    height: auto;
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .saved-prod-name{
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #082435;
+}
+
+.saved-img{
+    height: 180px;
+    width: 180px;
+    border-radius: 0px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.saved-img:hover{
+    transform: scale(1.07);
+    transition: all .2s ease-in-out;
+    padding-bottom: 5px;
+}
+
+.saved{
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #082435;
+}
+
+.sub-saved{
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #0F4161;
+}
+
+.disabled{
+    opacity:0.6; 
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .open-button:hover{
+      /* color: #1C7BB8 !important; */
+      font-size: 16px;
+      }
+
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin:-50px 0 0 -100px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 320px;
+    padding: 10px;
+    background-color: #E5E5E5;
+  }
+  
+  /* When the inputs get focus, do something */
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    /* background-color: #1C7BB8; */
+    /* color: #FFFFFF; */
+    border: none;
+    cursor: pointer;
+    width: 69%;
+    opacity: 0.8;
+    padding: 3px;
+    font-size: 24px;
+    border-radius: 8px !important;
+  }
+
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: #1C7BB8;
+    margin-top: 9px;
+    width: 55px;
+    height: 28px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 8px !important;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1C7BB8 !important;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  .fone{
+    cursor: pointer;
+}
+
+.fone:hover{
+    /* color: #1C7BB8 !important; */
+    font-size: 16px;
+}
+
+
+
+
+  .popup2 {
+    width: 100%;
+    position: fixed;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    top: 0;
+    z-index: 100;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup2 .popuptext2 {
+    visibility: hidden;
+    width: 59%;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #1C7BB8;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    margin-top: 2%;
+  }
+  
+  /* Popup arrow */
+  .popup2 .popuptext2::after {
+    content: "";
+    position: fixed;
+    border-style: solid;
+    border-color: #1C7BB8 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup2 .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+  .down-buy{
+    visibility: hidden;
+  }
+
+  .up-buy{
+    visibility: hidden;
+  }
+
+  .show-menu{
+    display: none;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

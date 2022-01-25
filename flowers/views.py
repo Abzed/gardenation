@@ -399,6 +399,13 @@ def sellerprofile(request, username):
     return render(request,'./profiles/sellerprofile/profile.html', {'profile': profile})
 
 @login_required
+def search_profile(request, first_name):
+    search_profile = request.GET.get("search_profile")
+    user = get_object_or_404(Seller, seller__first_name=first_name)
+    products = Product.objects.filter(Q(title__icontains=search_profile))
+    return render(request, './profiles/sellerprofile/search.html', {'products': products, 'user': user})
+
+@login_required
 def sellerprofile_update(request, username):
     
     user = get_object_or_404(CustomUser, username=username)

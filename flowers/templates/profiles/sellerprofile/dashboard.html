@@ -1,0 +1,277 @@
+{% load static %}
+{% load bootstrap5 %}
+{%include 'base.html'%}
+
+{% block styles %}
+<link href="{% static 'css/sellernav.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/posted.css' %}">  
+{% endblock  %}
+
+{% block content %} 
+
+{% include "./nav.html" %}
+
+<div class="col-md-8 col-lg-9 col-12 col-sm-12">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-sm-2 g-4 mt-2">
+
+  <a href="">
+    <div class="col">
+    <div class="card category-card h-100">
+    <div class="card-body">
+        <h5 class="card-title"><div class="rounded-circles">
+        <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+        </div></h5>
+        <span class="card-activity">
+          {{ submitted }}
+           Ads Remaining</span><br>
+        <span class="lead-activity">{% now |'M d, Y' %}</span>
+        <p class="card-activity">Account submission type</p>          
+    </div>
+    </div>
+    </div>
+    </a>  
+
+  <a href="">
+<div class="col">
+<div class="card category-card h-100">
+<div class="card-body">
+    <h5 class="card-title"><div class="rounded-circles">
+    <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+    </div></h5>
+    <span class="card-activity">Submitted Ads </span><br>
+        <span class="lead-activity">{{ submitted }}</span>
+        <p class="card-activity">Number of submitted ads</p>         
+</div>
+</div>
+</div>
+</a>
+
+<a href="">
+<div class="col">
+<div class="card category-card h-100">
+<div class="card-body">
+    <h5 class="card-title"><div class="rounded-circles">
+    <img class="img-fluid" src='{% static "img/star.png" %}' alt="external" />
+    </div></h5>
+    <span class="card-activity">Your rating</span><br>
+        <span class="lead-activity">
+          {% if rating != null %}
+          {{ rating| floatformat:"0" }}/5
+        {% else %}
+        0/5
+        {% endif %}
+      </span>
+        <p class="card-activity">Based on all your ads</p>          
+</div>
+</div>
+</div>
+</a>
+
+<a href="">
+  <div class="col">
+  <div class="card category-card h-100">
+  <div class="card-body">
+      <h5 class="card-title"><div class="rounded-circles">
+      <img class="img-fluid" src='{% static "img/restore.png" %}' alt="external" />
+      </div></h5>
+      <span class="card-activity">Favourite Ads</span><br>
+      <span class="lead-activity">
+        {% if saved != null %}
+        {{ saved.count }}
+      {% else %}
+      0
+      {% endif %}
+    </span>
+      <p class="card-activity">Number of ads you like</p>          
+  </div>
+  </div>
+  </div>
+  </a>
+
+</div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="posted-dash">
+        <div class="card mt-3 p-3">
+          <h5 class="posted-prod">Top Posts</h5>
+          <h5 class="posted-prod mt-2">Based on interaction</h5>
+      
+          <div class="table-responsive">
+          <div class="posted-prods">
+
+
+
+      
+          <div class="posted-filter">      
+            <form action="{% url 'search_dashfilter' request.user.username %}" method="get">
+              <input placeholder="Filter products" type="search" name="dashfilter" autocomplete="off" />
+              <input type="submit" style="display: none;">
+            </form>
+
+      <select class="form-select" name="sort" onChange="window.location.href=this.value">
+        <option selected disabled>Sort By...</option>
+        <option {% if request.resolver_match.url_name == 'dashsort_latest' %} selected {% endif %} value="{% url 'dashsort_latest' request.user.username %}">Latest</option>
+        <option {% if request.resolver_match.url_name == 'dashsort_oldest' %} selected {% endif %} value="{% url 'dashsort_oldest' request.user.username %}">Oldest</option>
+        </select>
+
+        <select id="type" class="form-select" onChange="window.location.href=this.value">
+          <option selected disabled>Ascending</option>
+          <option {% if request.resolver_match.url_name == 'dash_ascending' %} selected {% endif %} value="{% url 'dash_ascending' request.user.username %}">Ascending</option>
+          <option {% if request.resolver_match.url_name == 'dash_descending' %} selected {% endif %} value="{% url 'dash_descending' request.user.username %}">Decending</option>
+          </select>
+
+      
+      </div>
+              
+          </div>
+      
+          
+          <table class="table table-hover text-nowrap" id="posted">
+              <tr style="border-radius: 8px !important;">
+                  <th class="posted-header img-head" scope="col">Title</th>
+                  <th class="posted-header" scope="col">Status</th>
+                  <th class="posted-header" scope="col">Price</th>
+                  <th class="posted-header" scope="col">Expires</th>
+                  <th class="posted-header" scope="col">Comments</th>
+                  <th class="posted-header" scope="col">Saves</th>
+                  <th class="posted-header" scope="col">Views</th>
+                  <th class="posted-header" scope="col">Action</th>
+              </tr>
+              {% if products %}
+      
+              {% for item in products|slice:"3" %}
+                
+              <tr>
+                  <td class="prod-post">  
+                    <img class="posted-img img-fluid" 
+                    src="{{ item.images.url }}" alt="">            
+                    {{ item.title| title }} <br> <span class="posted-cat">{{ item.category.category }} > {{ item.sub_category.subcategory }}</span>
+                    </td>
+                    <td class="prod-pos">
+                      {% if item.live == True %}
+                      Live
+                      {% elif item.sold == True %}
+                      Sold
+                      {% elif item.expired == True %}
+                      Expired
+                      {% endif %}
+                    </td>
+                    <td class="prod-pos">Ksh.{{ item.price }}</td>
+                    <td class="prod-pos expires">{{ item.date|date:"M d, Y"  }}</td>
+                    <td class="prod-pos">{{ item.post_comment.count }}</td>
+                    <td class="prod-pos">{{ item.saves.count }}</td>
+                    <td class="prod-pos">{{ item.view }}</td>
+                  <td class="d-flex sub-icons">
+                  <a class="to-prod" href="{% url 'singleproduct' item.uuid %}"><i class="far fa-eye"></i></a>
+                  <a class="to-prod" href="{% url 'edit_product' item.uuid request.user.username %}"><i class="fas fa-edit"></i></a>
+                  <a class="to-prod" href="{% url 'delete_product' item.uuid %}"><i class="far fa-trash-alt"></i></a>
+                  <a class="to-prod" href=""><i class="fas fa-chart-line"></i></a>
+                  </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td>
+                  No products available...
+                </td>
+              </tr>
+              {% endif %}                        
+            
+              </table>
+            </div>
+      
+              <br />
+              <div class="d-flex justify-content-end">
+                <a href="{% url 'posted' request.user.username %}">See all products</a>
+              </div>
+    </div>
+  </div>
+</div>
+          
+          
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctxL = document.getElementById("myChart");
+  var myLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+      labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      datasets: [{
+          label: "20 Comments",
+          data: [5, 26, 15, 40, 12, 3, 18, 25,19, 12],
+          borderColor: [
+            '#AFD8F3',
+          ],
+          backgroundColor: [
+          '#AFD8F3',
+        ],
+          borderWidth: 2
+        },
+        {
+          label: "9 Saved",
+          data: [12, 9, 4, 25, 7, 21, 18, 16, 9, 3],
+          borderColor: [
+            '#1DB954',
+          ],
+          backgroundColor: [
+          '#1DB954',
+        ],
+          borderWidth: 2
+        },
+        {
+          label: "22 Views",
+          data: [14, 5, 2, 25, 8, 22, 15, 9, 8, 5],
+          borderColor: [
+            '#E50914',
+          ],
+          backgroundColor: [
+          '#E50914',
+        ],
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+            grid:{
+             display:false
+                 }
+           },
+        y: 
+           {
+         grid:{
+          display:false
+              }
+           }
+               }
+    }
+  });
+
+  function getTypeValue()
+  {
+      var selectedValue = document.getElementById("dashtype").value;
+      console.log(selectedValue);
+  }
+  getTypeValue();
+</script>
+
+{% endblock  %}
+{% endblock  %}
