@@ -743,11 +743,8 @@ def sellersignup(request):
                 user.save()
                 seller = Seller(seller=user, business_name=business_name)
                 seller.save()
-                
-                user = authenticate(request, email=email, password=password)
-                if user is not None:
-                    if user.is_active:
-                        login(request, user)
+
+                login(request, user)
                 return HttpResponseRedirect('/')
 
                 # login(request, user)
