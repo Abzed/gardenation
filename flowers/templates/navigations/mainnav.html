@@ -225,21 +225,7 @@
          
 
           
-          {% if user.is_buyer %}
-            
-          <a class="resp3" href="{% url 'wishlist' request.user.username %}">
-            <button
-              class="navbar-toggler text-white"
-              type="button"
-              
-            >
-            <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
-            </button>
-            </a>
-            
-             
-  
-              
+          {% if user.is_buyer %}                   
               <a class="resp4" href="{% url 'wishlist' request.user.username %}">
               <button class="navbar-toggler text-white"
               type="button">
@@ -248,19 +234,6 @@
               </a>
 
           {% elif user.is_seller %}
-
-          <a class="resp5" href="">
-            <button
-              class="navbar-toggler text-white disabled"
-              type="button" disabled
-              
-            >
-            <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
-            </button>
-            </a>
-            
-             
-  
               
               <a class="resp6" href="{% url 'saved' request.user.username %}">
               <button class="navbar-toggler text-white"
@@ -270,19 +243,6 @@
               </a>
 
           {% else %}
-          
-          <a class="resp7" title="Login required" href="/login">
-          <button
-            class="navbar-toggler text-white disabled"
-            type="button" disabled
-          >
-          <i class="fas fa-exchange-alt b-icon"></i> <span class="bottom-nav-names">Compare</span>
-          </button>
-          </a>
-          
-           
-
-            
             <a class="resp8" title="Login required" href="/login">
             <button disabled class="navbar-toggler text-white disabled"
             type="button">
