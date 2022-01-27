@@ -16,18 +16,18 @@ Gardenation is a free web application that allows users to buy and sell flowers 
 - Products can be be sorted and viewed with different orientations
 
 For further queries or concerns you can reach our developer
-[Abzed Mohammed] on github [https://github.com/Abzed][df1]
+[Abzed Mohammed](https://github.com/Abzed) on github
 
 ## Tech
 
 Below are languages and dependancies used to for this application:
 
 - [Python - Django](https://www.djangoproject.com/start/) - enables clean and rapid development of secure and maintainable websites.
-- [JavaScript] - for interactive web pages
+- JavaScript - for interactive web pages
 - [JQuery](https://jquery.com/) - fast, small, and feature-rich JavaScript library, facilitates event handling, CSS animation, and Ajax.
 - [MDBootstrap](https://mdbootstrap.com/) - uses bootstrap classes to produce astonishing material design pages
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/download/) - HTML, CSS, and JavaScript framework for creating responsive, mobile-first websites.
-- [Github] - hosting for software development and version control using
+- Github - hosting for software development and version control using
 - [Heroku](https://dashboard.heroku.com/) - building, running, and operating applications entirely in the cloud.
 
 
@@ -36,9 +36,9 @@ Below are languages and dependancies used to for this application:
 
 ## Installation
 
-Gardination requires [Python](https://www.python.org/downloads/) v3+ to run.
+Gardenation requires [Python](https://www.python.org/downloads/) v3+ to run.
 
-A text editor is also required i.e [Visual Studio](https://code.visualstudio.com/download)
+<!-- A text editor is also required i.e [Visual Studio](https://code.visualstudio.com/download) -->
 
 Open folder path in the command line.
 
