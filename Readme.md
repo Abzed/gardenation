@@ -1,9 +1,11 @@
-# Gardenate
+# Gardenation
 ## _Get full access to flowers accross Kenya_
+
+Gardenation is a free web application that allows users to buy and sell flowers across Kenya
 
 [![N|Solid](https://res.cloudinary.com/abzed/image/upload/v1643130211/gardenation_v9tbd1.png)](https://nodesource.com/products/nsolid)
 
-Gardenation is a free web application that allows users to buy and sell flowers across Kenya
+
 
 ## Features
 
