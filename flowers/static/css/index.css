@@ -38,7 +38,7 @@
     font-weight: 700;
     line-height: 58px;
     letter-spacing: 0em;
-    color:#010609;
+    color:#010609 !important;
 }
 
 .p-car{
@@ -48,7 +48,7 @@
     font-weight: 500;
     line-height: 22px;
     letter-spacing: 0em;
-    color:#010609;
+    color:#010609 !important;
 }
 
 

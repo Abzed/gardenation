@@ -2,18 +2,11 @@ from django.contrib.messages.constants import SUCCESS
 from django.forms.models import modelformset_factory
 from django.http.response import JsonResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
-from django.contrib.auth import get_user_model, login, update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as django_logout
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
-from django.core.mail import EmailMessage
 from django.http import HttpResponse
-from django.template.loader import render_to_string
 from django.core.paginator import Paginator
 from django.urls import reverse
 from django.conf import settings
@@ -25,15 +18,13 @@ from django.contrib import messages
 import re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.hashers import check_password
-from .tokens import account_activation_token
 from django.db.models import Max
     
 User = settings.AUTH_USER_MODEL
 
 
-def index(request, uuid=None):
+def index(request):
     products = Product.objects.all().order_by('-date')
-    p_id = Product.objects.filter(uuid=uuid)
     category = Category.objects.all()
     wishlist = Wishlist.objects.filter(wished_item__in=Product.objects.all())
     latest = Product.objects.all().order_by('-date')[0:4]
@@ -450,9 +441,9 @@ def dashboard(request, username):
     saved = Wishlist.objects.filter(user__username=username)
     return render(request, './profiles/sellerprofile/dashboard.html', {'products': products, 'rating': rating, 'saved': saved, 'submitted': submitted, 'submitted': submitted})
 
-def search_dashfilter(request, username):
+def search_dashfilter(request,username):
     title = request.GET.get("dashfilter")
-    products = Product.objects.filter(user__seller__username=username).filter(Q(title__icontains=title) | Q(sub_category__subcategory__icontains=title) | Q(category__category__icontains=title))
+    products = Product.objects.filter(user__seller__username=username).filter(Q(title__icontains=title) | Q(category__category__icontains=title))
     seller = get_object_or_404(Seller, seller__username=username)
     rating = Seller.user_rating(seller)
     saved = Wishlist.objects.filter(user__username=username)
@@ -560,7 +551,7 @@ def posted(request, username):
 
 def search_postedfilter(request, username):
     title = request.GET.get("postedfilter")
-    product = Product.objects.filter(user__seller__username=username).filter(Q(title__icontains=title) | Q(sub_category__subcategory__icontains=title) | Q(category__category__icontains=title))
+    product = Product.objects.filter(user__seller__username=username).filter(Q(title__icontains=title) | Q(category__category__icontains=title))
     
     paginator = Paginator(product, 8)
     page_number = request.GET.get('page')
@@ -614,7 +605,7 @@ def search_saved(request, username):
     title = request.GET.get("savedfilter")
     
     user = get_object_or_404(CustomUser, username=username)
-    wishlist = Wishlist.objects.filter(user=user).filter(Q(wished_item__title__icontains=title) | Q(wished_item__sub_category__subcategory__icontains=title) | Q(wished_item__category__category__icontains=title))
+    wishlist = Wishlist.objects.filter(user=user).filter(Q(wished_item__title__icontains=title) | Q(wished_item__category__category__icontains=title))
     
     paginator = Paginator(wishlist, 8)
     page_number = request.GET.get('page')
@@ -691,6 +682,8 @@ def add(request, username):
     return render(request,'./profiles/sellerprofile/add.html', {'user': user, 'category': all_category})
 
 
+
+
 def registration_type(request):
     return render(request, './authentication/registration_type.html',)
 
@@ -709,17 +702,17 @@ def sellersignup(request):
         min_length = 8
         
         if len(password) < min_length:
-            messages.info(request, "The password must be at least %d characters long." % min_length)
+            messages.error(request, "The password must be at least %d characters long." % min_length)
             return redirect('sellersignup')
 
         # At least one letter and one non-letter
         elif not re.findall('\d', password):
-            messages.info(request, "The password must contain at least one letter and at least one digit or" \
+            messages.error(request, "The password must contain at least one letter and at least one digit or" \
             " punctuation character.")
             return redirect('sellersignup')
             
         elif not re.findall('[A-Z]', password):
-            messages.info(request, "The password must contain at least an UPPERCASE letter and at least one digit or" \
+            messages.error(request, "The password must contain at least an UPPERCASE letter and at least one digit or" \
             " punctuation character.")
             return redirect('sellersignup')
         
@@ -729,10 +722,10 @@ def sellersignup(request):
         
         if password == password_confirmation:  
             if CustomUser.objects.filter(email = email).exists():                    
-                messages.info(request,'Email already exists')
+                messages.error(request,'Email already exists')
                 return redirect('sellersignup')
             elif CustomUser.objects.filter(username = username).exists():
-                messages.info(request,'A user with that name already exists')
+                messages.error(request,'A user with that name already exists')
                 return redirect('sellersignup')
             else:
                 user = CustomUser(username=username, last_name=last_name, email=email, phone_number=phone_number,
@@ -750,7 +743,7 @@ def sellersignup(request):
                 # return redirect('/')
                 # return redirect('login')
         else:
-            messages.info(request,'Passwords do not match')
+            messages.error(request,'Passwords do not match')
             return redirect('sellersignup')
     return render(request, './authentication/seller/signup.html')
 

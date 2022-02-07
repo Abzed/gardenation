@@ -26,7 +26,7 @@ class UserAccountManager(BaseUserManager):
         user.is_superuser = True
         user.save()
         return user
-    
+                         
     def get_short_name(self):
         return self.username
 
@@ -115,11 +115,11 @@ class Category(models.Model):
         return self.category
 
 
-class Picture(models.Model):
-    images = models.ImageField(upload_to='images/', blank=True, null=True,)
+# class Picture(models.Model):
+#     images = models.ImageField(upload_to='images/', blank=True, null=True,)
 
-    def __str__(self):
-        return self.id
+#     def __str__(self):
+#         return self.id
     
 
 class Product(models.Model):
